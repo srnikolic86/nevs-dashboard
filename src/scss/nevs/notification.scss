@@ -1,0 +1,16 @@
+.nevs-notification {
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  top: 10px;
+  left: 0;
+  z-index: 4;
+   &-message {
+     background: $notification-background;
+     color: $notification-foreground;
+     display: inline-block;
+     padding: 20px;
+     font-size: 16px;
+     border-radius: 5px;
+   }
+}

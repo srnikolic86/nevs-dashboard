@@ -1,0 +1,110 @@
+.nevs-table {
+  margin: 5px 5px 0;
+  display: block;
+  overflow-x: auto;
+  background: $table-body-background;
+  border-radius: 5px 5px 0 0;
+  border-collapse: collapse;
+  scrollbar-color: $scrollbar-foreground $scrollbar-background;
+  scrollbar-width: thin;
+  white-space: nowrap;
+
+  td {
+    padding: 10px;
+    border-bottom: 1px solid $table-row-border;
+  }
+
+  tr:last-child td {
+    border: none;
+  }
+
+  &-header td {
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    padding-bottom: 0;
+    border: none;
+  }
+
+  &-filters td {
+    position: sticky;
+    top: 28px;
+    z-index: 1;
+    border: none;
+  }
+
+  &-footer {
+    box-sizing: border-box;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    background: $table-header-background;
+    text-align: right;
+    border-radius: 0 0 5px 5px;
+  }
+
+  &-pagination {
+    text-align: right;
+
+    &-arrow {
+      cursor: pointer;
+    }
+  }
+
+  &-sort-arrow {
+    float: left;
+    margin-right: 5px;
+  }
+
+  &-sortable-header {
+    cursor: pointer;
+  }
+
+  tr:hover {
+    background: $table-row-hover;
+  }
+
+  &-header td {
+    background: $table-header-background !important;
+  }
+
+  &-footer td {
+    background: $table-header-background !important;
+  }
+
+
+  tbody {
+    display: table;
+    width: 100%;
+  }
+
+  thead {
+    display: table;
+    width: 100%;
+  }
+
+  &-button {
+    cursor: pointer;
+    margin: 5px;
+  }
+
+  &-linked-cell {
+    cursor: pointer;
+  }
+
+  &-filters td {
+    padding: 0;
+    background: $table-header-background;
+  }
+}
+
+.nevs-table::-webkit-scrollbar {
+  background: $scrollbar-background;
+  width: 10px;
+}
+
+.nevs-table::-webkit-scrollbar-thumb {
+  background: $scrollbar-foreground;
+}

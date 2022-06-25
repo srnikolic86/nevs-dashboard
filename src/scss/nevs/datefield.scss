@@ -1,0 +1,84 @@
+.nevs-date-field-picker {
+  max-width: 250px;
+  box-shadow: 0 0 50px 0 rgba(82, 63, 105, 0.15);
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: $date-field-picker-background;
+  border-radius: 5px;
+  color: $font-color;
+}
+
+.nevs-date-field-picker-year {
+  text-align: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid $date-field-picker-separator-color;
+}
+
+.nevs-date-field-picker-year-left {
+  float: left;
+  cursor: pointer;
+}
+.nevs-date-field-picker-year-right {
+  float: right;
+  cursor: pointer;
+}
+
+.nevs-date-field-picker-month {
+  text-align: center;
+  padding: 5px 20px;
+  border-bottom: 1px solid $date-field-picker-separator-color;
+}
+
+.nevs-date-field-picker-month-left {
+  float: left;
+  cursor: pointer;
+}
+.nevs-date-field-picker-month-right {
+  float: right;
+  cursor: pointer;
+}
+
+.nevs-date-field-picker-day {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  float: left;
+  cursor: pointer;
+}
+
+.nevs-date-field-picker-week {
+  border-bottom: 1px solid $date-field-picker-separator-color;
+}
+
+.nevs-date-field-picker-weekday {
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  float: left;
+}
+
+
+.nevs-date-field-picker-day:hover {
+  background: $date-field-picker-day-hover-background;
+}
+
+.nevs-date-field-picker-day-disabled {
+  background: $date-field-picker-day-disabled-background !important;
+}
+
+.nevs-date-field-picker-day-selected {
+  background: $date-field-picker-day-selected-background !important;
+}
+
+.datepicker-enter-active,
+.datepicker-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.datepicker-enter-from,
+.datepicker-leave-to {
+  opacity: 0;
+}

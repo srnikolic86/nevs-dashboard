@@ -1,0 +1,55 @@
+{
+  "buttons": {
+    "ok": "OK",
+    "cancel": "Odustani",
+    "yes": "Da",
+    "no": "Ne",
+    "login": "Prijava",
+    "add": "Dodaj",
+    "save": "Spremi",
+    "back": "Natrag"
+  },
+  "tooltips": {
+    "logout": "Odjava",
+    "openInNewWindow": "Otvori u novom prozoru",
+    "myProfile": "Moj profil"
+  },
+  "modules": {
+    "home": "Početna",
+    "users": "Korisnici",
+    "newUser": "Novi korisnik"
+  },
+  "pagination": {
+    "page": "stranica",
+    "of": "od",
+    "resultsPerPage": "rezultata po stranici"
+  },
+  "labels": {
+    "uploadInProgress": "Upload u tijeku.",
+    "menuFooter": "Lorem ipsum <a target=\"_blank\" href=\"https://google.com\">link</a>.",
+    "changePassword": "Promijeni lozinku",
+    "mandatoryField": "Ovo polje je obavezno.",
+    "invalidEmailAddress": "Unesena e-mail adres nije ispravna.",
+    "rememberLogin": "zapamti me"
+  },
+  "alerts": {
+    "serverError": "Došlo je do greške na poslužitelju",
+    "fileDeletionQuestion": "Jeste li sigurni da želite izbrisati ovu datoteku?",
+    "loginFailed": "Uneseni podaci nisu ispravni ili korisnički račun nije aktivan.",
+    "recordSaved": "Zapis je uspješno spremljen.",
+    "unauthorized": "Nemate dopuštenje za tu akciju."
+  },
+  "fields": {
+    "email": "E-mail",
+    "password": "Lozinka",
+    "firstName": "Ime",
+    "lastName": "Prezime",
+    "userActive": "Aktivan",
+    "permissions": "Dopuštenja"
+  },
+  "options": {
+    "yes": "Da",
+    "no": "Ne",
+    "all": "Svi"
+  }
+}

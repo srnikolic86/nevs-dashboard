@@ -1,0 +1,26 @@
+<?php
+
+const NEVS_CONFIG = [
+    'allowed_origins' => ['http://localhost:8083'],
+    'cookies' => [
+        'secure' => true,
+        'prefix' => 'nevs_',
+        'path' => '/api'
+    ],
+    'app_root' => '/var/www/html/api/',
+    'router_base' => 'api/',
+    'db' => [
+        'host' => 'db',
+        'username' => 'root',
+        'password' => 'root',
+        'database' => 'nevs',
+        'charset' => 'utf8',
+        'migrations_table' => 'nevs_migrations',
+        'model_table' => 'nevs_model',
+        'queue_table' => 'nevs_queue',
+        'migrations_folder' => 'Migrations/'
+    ],
+    'timezone' => 'Europe/Berlin',
+    'default_locale' => 'hr',
+    'enabled_logs' => []
+];

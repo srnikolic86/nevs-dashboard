@@ -1,0 +1,42 @@
+.nevs-field {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 5px;
+
+  &-content {
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    padding: 13px;
+    background: $field-background-base;
+    color: $font-color;
+    transition: background-color 0.2s ease;
+    width: 100%
+  }
+
+  &-label {
+    width: 100%;
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  &-hint {
+    width: 100%;
+    display: block;
+    font-size: 12px;
+    color: $field-hint-color;
+  }
+
+  &-error {
+    width: 100%;
+    display: block;
+    color: $error;
+    font-size: 12px;
+  }
+}
+
+.nevs-field-content:focus {
+  border: none;
+  outline: none;
+  background: $field-background-focused;
+}

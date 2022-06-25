@@ -1,0 +1,77 @@
+
+.nevs-dropdown-icon {
+  float: right;
+}
+
+.nevs-dropdown-holder {
+  position: relative;
+}
+
+.nevs-dropdown-frame {
+  z-index: 3;
+  box-shadow: 0px 0px 50px 0px rgba(82, 63, 105, 0.15);
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: $dropdown-background;
+  border-radius: 5px;
+}
+
+.nevs-dropdown-search-container {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.nevs-dropdown-search {
+  box-sizing: border-box;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: $field-background-base;
+  padding: 13px;
+  border-radius: 5px;
+  font-family: $font-family;
+  font-size: 14px;
+}
+
+.nevs-dropdown-search:focus {
+  border: none;
+  outline: none;
+}
+
+.nevs-dropdown-options {
+  max-height: 300px;
+  overflow: auto;
+  scrollbar-color: $scrollbar-foreground $scrollbar-background;
+  scrollbar-width: thin;
+}
+
+.nevs-dropdown-options::-webkit-scrollbar {
+  background: $scrollbar-background;
+  width: 10px;
+}
+
+.nevs-dropdown-options::-webkit-scrollbar-thumb {
+  background: $scrollbar-foreground;
+}
+
+.nevs-dropdown-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.nevs-dropdown-option:hover {
+  background: $dropdown-option-hover-background;
+}
+
+.dropdown-enter-active,
+.dropdown-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.dropdown-enter-from,
+.dropdown-leave-to {
+  opacity: 0;
+}

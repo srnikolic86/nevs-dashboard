@@ -1,0 +1,89 @@
+.nevs-main-menu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: $menu-width;
+  height: 100%;
+  background: $menu-background;
+  font-size: 18px;
+  z-index: 2;
+
+  &-logo {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  &-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  &-item {
+    display: block;
+    padding: 5px;
+    background: $menu-background;
+    color: $font-color;
+
+    &-icon {
+      margin-right: 5px;
+    }
+  }
+
+  &-item:visited {
+    color: $font-color;
+  }
+
+  &-item:hover {
+    background: $menu-background-hover;
+  }
+
+  &-subitem {
+    display: block;
+    padding: 5px 5px 5px 15px;
+    background: $menu-background;
+    color: $font-color;
+
+    &-icon {
+      margin-right: 5px;
+    }
+  }
+
+  &-subitem:visited {
+    color: $font-color;
+  }
+
+  &-subitem:hover {
+    background: $menu-background-hover;
+  }
+
+  .active, .active:hover {
+    background: $menu-background-selected;
+    color: $menu-color-selected !important;
+  }
+}
+
+@media only screen and (max-width: $menu-responsive) {
+  .nevs-main-menu {
+    padding-top: calc(10px + $top-bar-height);
+
+    &-logo {
+      display: none;
+    }
+  }
+}
+
+.main-menu-enter-active,
+.main-menu-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.main-menu-enter-from,
+.main-menu-leave-to {
+  opacity: 0;
+}

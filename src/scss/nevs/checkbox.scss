@@ -1,0 +1,10 @@
+.nevs-checkbox {
+  display: inline-block;
+  cursor: pointer;
+  color: $font-color;
+  line-height: 40px;
+
+  &-label {
+    margin-left: 5px;
+  }
+}

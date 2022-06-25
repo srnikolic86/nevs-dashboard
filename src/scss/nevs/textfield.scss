@@ -1,0 +1,16 @@
+.nevs-text-field {
+  font-family: $font-family;
+  font-size: 14px;
+  display: inline-block;
+  box-sizing: border-box;
+
+  ::-moz-selection { /* Code for Firefox */
+    color: red;
+    background: yellow;
+  }
+
+  ::selection {
+    color: red;
+    background: yellow;
+  }
+}

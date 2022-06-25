@@ -1,0 +1,9 @@
+{
+  "active": {
+    "yes": "Da",
+    "no": "Ne"
+  },
+  "permissions": {
+    "MANAGE_USERS": "Upravljanje korisnicima"
+  }
+}

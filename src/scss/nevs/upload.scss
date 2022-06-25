@@ -1,0 +1,12 @@
+.nevs-upload {
+
+  display: inline-block;
+
+  &-icon {
+    cursor: pointer;
+  }
+
+  &-file-input {
+    display: none;
+  }
+}

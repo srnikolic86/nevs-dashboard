@@ -1,0 +1,59 @@
+.nevs-button {
+  display: inline-block;
+  padding: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: $button-background;
+  color: $button-foreground;
+  transition: background-color 0.2s ease;
+
+  &.primary {
+    background: $primary;
+    color: $primary-foreground;
+  }
+
+  &.primary:hover {
+    background: $primary-hover;
+  }
+
+  &.secondary {
+    background: $secondary;
+    color: $secondary-foreground;
+  }
+
+  &.secondary:hover {
+    background: $secondary-hover;
+  }
+
+  &.error {
+    background: $error;
+    color: $error-foreground;
+  }
+
+  &.error:hover {
+    background: $error-hover;
+  }
+
+  &.warning {
+    background: $warning;
+    color: $warning-foreground;
+  }
+
+  &.warning:hover {
+    background: $warning-hover;
+  }
+
+  &.success {
+    background: $success;
+    color: $success-foreground;
+  }
+
+  &.success:hover {
+    background: $success-hover;
+  }
+}
+
+.nevs-button:hover {
+  background: $button-hover;
+}

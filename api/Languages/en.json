@@ -1,0 +1,9 @@
+{
+  "active": {
+    "yes": "Yes",
+    "no": "No"
+  },
+  "permissions": {
+    "MANAGE_USERS": "Users management"
+  }
+}

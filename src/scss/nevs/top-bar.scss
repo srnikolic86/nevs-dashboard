@@ -1,0 +1,58 @@
+.nevs-top-bar {
+  width: calc(100% - $menu-width);
+  height: $top-bar-height;
+  background: $top-bar-color;
+  position: fixed;
+  top: 0;
+  left: $menu-width;
+  line-height: $top-bar-height;
+  z-index: 3;
+
+  &-menu-button {
+    display: none;
+    padding: 0 10px;
+    cursor: pointer;
+  }
+
+  &-breadcrumbs {
+    display: inline-block;
+    padding: 0 10px;
+
+    &-item {
+      display: inline-block;
+
+      a, a:visited {
+        color: $font-color;
+      }
+
+      a.active:hover {
+        text-decoration: underline;
+      }
+
+      &-separator {
+        margin: 0 5px;
+      }
+    }
+  }
+
+  &-button {
+    cursor: pointer;
+    float: right;
+    padding: 0 10px;
+  }
+
+  &-button:hover {
+    color: $top-bar-button-hover-color;
+  }
+}
+
+@media only screen and (max-width: $menu-responsive) {
+  .nevs-top-bar {
+    left: 0;
+    width: 100%;
+
+    &-menu-button {
+      display: inline-block;
+    }
+  }
+}

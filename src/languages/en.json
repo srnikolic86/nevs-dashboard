@@ -1,0 +1,55 @@
+{
+  "buttons": {
+    "ok": "OK",
+    "cancel": "Cancel",
+    "yes": "Yes",
+    "no": "No",
+    "login": "Login",
+    "add": "Add",
+    "save": "Save",
+    "back": "Back"
+  },
+  "tooltips": {
+    "logout": "Logout",
+    "openInNewWindow": "Open in new window",
+    "myProfile": "My profile"
+  },
+  "modules": {
+    "home": "Home",
+    "users": "Users",
+    "newUser": "New user"
+  },
+  "pagination": {
+    "page": "page",
+    "of": "of",
+    "resultsPerPage": "results per page"
+  },
+  "labels": {
+    "uploadInProgress": "Upload in progress.",
+    "menuFooter": "Lorem ipsum <a target=\"_blank\" href=\"https://google.com\">link</a>.",
+    "changePassword": "Change password",
+    "mandatoryField": "This field is mandatory.",
+    "invalidEmailAddress": "Entered e-mail address is not valid.",
+    "rememberLogin": "remember me"
+  },
+  "alerts": {
+    "serverError": "There was an error on the server.",
+    "fileDeletionQuestion": "Are you sure that you want to delete this file?",
+    "loginFailed": "Entered credentials do not exist or this user account is not active.",
+    "recordSaved": "Record was successfully saved.",
+    "unauthorized": "You do not have permissions to do that."
+  },
+  "fields": {
+    "email": "E-mail",
+    "password": "Password",
+    "firstName": "Name",
+    "lastName": "Surname",
+    "userActive": "Active",
+    "permissions": "Permissions"
+  },
+  "options": {
+    "yes": "Yes",
+    "no": "No",
+    "all": "All"
+  }
+}

@@ -1,0 +1,39 @@
+body {
+  background: $app-background;
+  margin: 0;
+  font-family: $font-family;
+  font-size: 14px;
+  color: $font-color;
+}
+
+.nevs-clear-float {
+  clear: both;
+}
+
+.nevs-float-right {
+  float: right;
+}
+
+.nevs-float-left {
+  float: left;
+}
+
+.nevs-main-content {
+  margin-left: $menu-width;
+  margin-top: $top-bar-height;
+}
+
+a {
+  color: $primary;
+  text-decoration: none;
+}
+
+a:visited {
+  color: $primary;
+}
+
+@media only screen and (max-width: $menu-responsive) {
+  .nevs-main-content {
+    margin-left: 0;
+  }
+}
