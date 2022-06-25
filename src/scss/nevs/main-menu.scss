@@ -32,6 +32,9 @@
     color: $font-color;
 
     &-icon {
+      display: inline-block;
+      text-align: center;
+      width: 20px;
       margin-right: 5px;
     }
   }
@@ -51,6 +54,9 @@
     color: $font-color;
 
     &-icon {
+      display: inline-block;
+      width: 20px;
+      text-align: center;
       margin-right: 5px;
     }
   }
