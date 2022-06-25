@@ -21,6 +21,6 @@ const NEVS_CONFIG = [
         'migrations_folder' => 'Migrations/'
     ],
     'timezone' => 'Europe/Berlin',
-    'default_locale' => 'hr',
+    'default_locale' => 'en',
     'enabled_logs' => []
 ];
