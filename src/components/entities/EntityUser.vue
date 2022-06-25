@@ -142,6 +142,16 @@ export default {
         if (success) {
           if (data.user !== null) {
             vm.user.Fill(data.user);
+            vm.$store.commit('setBreadcrumbs', [
+              {
+                label: vm.$LANG.Get('modules.users'),
+                link: '/users'
+              },
+              {
+                label: vm.user.first_name + ' ' + vm.user.last_name,
+                link: null
+              }
+            ]);
           } else {
             vm.$LOCAL_BUS.TriggerEvent('popup', {text: vm.$LANG.Get('alerts.serverError'), type: 'alert'});
           }
