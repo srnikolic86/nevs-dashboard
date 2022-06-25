@@ -5,8 +5,8 @@ if (count($argv) < 2) {
 }
 
 require_once('../vendor/autoload.php');
-require_once('../Config/config.php');
-require_once('../App/helpers.php');
+require_once('../App/config.php');
+require_once('../App/Helpers.php');
 
 use Nevs\Database;
 use Nevs\Config;
@@ -27,6 +27,8 @@ if (count($argv) >= 3) {
 }
 
 Log::Write('Commands', 'running ' . $command_name . ' ' . json_encode($data));
+
+$command_class = 'App\\Commands\\'.$command_name;
 
 $command = new $command_class();
 $command->resolve($data);
