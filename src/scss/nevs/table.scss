@@ -43,6 +43,11 @@
     background: $table-header-background;
     text-align: right;
     border-radius: 0 0 5px 5px;
+
+    &-label {
+      display: inline-block;
+      line-height: 54px;
+    }
   }
 
   &-pagination {

@@ -17,20 +17,24 @@
     </tbody>
   </table>
   <div class="nevs-table-footer" :style="{'width': tableWidthComputed }">
-      <NevsNumberField :width="'70px'" :thousand-separator="''" :decimal-places="0"
-                       v-model="rowsPerPage"></NevsNumberField>
-      {{ $LANG.Get('pagination.resultsPerPage') }},
-      {{ $LANG.Get('pagination.page') }}
-      <span class="nevs-table-pagination-arrow" @click="modifyCurrentPage(-1)" v-show="currentPage > 1">
+    <NevsNumberField :width="'70px'" :thousand-separator="''" :decimal-places="0"
+                     v-model="rowsPerPage"></NevsNumberField>
+    <span class="nevs-table-footer-label">
+        {{ $LANG.Get('pagination.resultsPerPage') }},
+        {{ $LANG.Get('pagination.page') }}
+      </span>
+    <span class="nevs-table-pagination-arrow" @click="modifyCurrentPage(-1)" v-show="currentPage > 1">
             <i class="fa-solid fa-caret-left"></i>
           </span>
-      <NevsNumberField :width="'60px'" :thousand-separator="''" :decimal-places="0"
-                       v-model="currentPage"></NevsNumberField>
-      <span class="nevs-table-pagination-arrow" @click="modifyCurrentPage(1)" v-show="currentPage < totalPages">
+    <NevsNumberField :width="'60px'" :thousand-separator="''" :decimal-places="0"
+                     v-model="currentPage"></NevsNumberField>
+    <span class="nevs-table-pagination-arrow" @click="modifyCurrentPage(1)" v-show="currentPage < totalPages">
             <i class="fa-solid fa-caret-right"></i>
           </span>
-      {{ $LANG.Get('pagination.of') }}
-      {{ totalPages }}
+    <span class="nevs-table-footer-label">
+        {{ $LANG.Get('pagination.of') }}
+        {{ totalPages }}
+      </span>
   </div>
 </template>
 
