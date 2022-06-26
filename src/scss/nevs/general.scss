@@ -32,6 +32,29 @@ a:visited {
   color: $primary;
 }
 
+.nevs-text-primary {
+  color: $primary;
+}
+
+.nevs-text-secondary {
+  color: $secondary;
+}
+
+
+.nevs-text-warning {
+  color: $warning;
+}
+
+
+.nevs-text-error {
+  color: $error;
+}
+
+
+.nevs-text-success {
+  color: $success;
+}
+
 @media only screen and (max-width: $menu-responsive) {
   .nevs-main-content {
     margin-left: 0;
