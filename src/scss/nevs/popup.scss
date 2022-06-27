@@ -17,6 +17,7 @@
   margin-right: auto;
   margin-top: 100px;
 }
+
 .nevs-popup-text {
   padding: 20px;
 }
@@ -33,4 +34,16 @@
 
 .nevs-popup-buttons .nevs-button {
   margin-left: 10px;
+}
+
+@media only screen and (max-width: 1300px) {
+  .nevs-popup {
+    width: 50%;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .nevs-popup {
+    width: 80%;
+  }
 }
