@@ -98,6 +98,10 @@ export default {
       if (data.text === undefined) return;
       vm.type = data.type;
       vm.text = data.text;
+      vm.input = '';
+      if (data.default !== undefined) {
+        vm.input = data.default;
+      }
       vm.callback = (data.callback !== undefined) ? data.callback : null;
       vm.$nextTick(() => {
         vm.show = true;

@@ -305,7 +305,7 @@ this.$LOCAL_BUS.TriggerEvent('popup', { type: 'confirm', text: 'Are you sure?', 
   //do something (response is true or false)
 }});
 
-this.$LOCAL_BUS.TriggerEvent('popup', { type: 'input', text: 'Input something:', callback: (response) => {
+this.$LOCAL_BUS.TriggerEvent('popup', { type: 'input', text: 'Input something:', default: 'default value', callback: (response) => {
   //do something (response is a string)
 }});
 ```
