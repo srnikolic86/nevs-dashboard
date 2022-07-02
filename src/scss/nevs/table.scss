@@ -79,7 +79,6 @@
     background: $table-header-background !important;
   }
 
-
   tbody {
     display: table;
     width: 100%;
@@ -102,6 +101,10 @@
   &-filters td {
     padding: 0;
     background: $table-header-background;
+  }
+
+  &-actions {
+    text-align: right;
   }
 }
 
