@@ -1,7 +1,7 @@
 <template>
   <div :style="fieldStyle" class="nevs-field">
     <span v-if="label!== '' || reserveHeights" class="nevs-field-label">{{ label }}</span>
-    <input ref="input" v-model='value' class="nevs-number-field nevs-field-content" type="text"
+    <input :readonly="readonly" ref="input" v-model='value' class="nevs-number-field nevs-field-content" type="text"
            @focusin="focusIn" @focusout="focusOut"/>
     <span v-if="(hint!== '' || reserveHeights) && showHint" class="nevs-field-hint">{{ hint }}</span>
     <span v-if="(error!== '' || reserveHeights) && (!showHint || hint==='')" class="nevs-field-error">{{ error }}</span>
@@ -15,6 +15,10 @@ import Big from 'big.js';
 export default {
   name: "NevsNumberField",
   props: {
+    readonly: {
+      type: Boolean,
+      default: false
+    },
     width: {
       type: String,
       default: '100%'

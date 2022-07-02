@@ -53,15 +53,16 @@ Password: 12345
 ```html
 <NevsTextField v-model="value"></NevsTextField>
 ```
-| Prop    | Type           | Description                                                                   |
-|---------|----------------|-------------------------------------------------------------------------------|
-| v-model | String         | value                                                                         |
-| width   | String         | CSS directly outputted into _width_ (defaults to _'100%'_)                    |
-| label   | String         | label of the field                                                            |
-| hint    | String         | hint for the field                                                            |
-| error   | String         | error message                                                                 |
-| type    | String         | outputted into _type_ attribute of HTML _\<input\>_ tag, defaults to _'text'_ |
-| name    | String         | outputted into _name_ attribute of HTML _\<input\>_ tag if set                |
+| Prop     | Type     | Description                                                                   |
+|----------|----------|-------------------------------------------------------------------------------|
+| v-model  | String   | value                                                                         |
+| readonly | Boolean  | set to _true_ if you want this field to be readonly                           |
+| width    | String   | CSS directly outputted into _width_ (defaults to _'100%'_)                    |
+| label    | String   | label of the field                                                            |
+| hint     | String   | hint for the field                                                            |
+| error    | String   | error message                                                                 |
+| type     | String   | outputted into _type_ attribute of HTML _\<input\>_ tag, defaults to _'text'_ |
+| name     | String   | outputted into _name_ attribute of HTML _\<input\>_ tag if set                |
 
 # Masked field
 ```html
@@ -187,6 +188,7 @@ Options are in this form:
 | Prop               | Type             | Description                                                        |
 |--------------------|------------------|--------------------------------------------------------------------|
 | v-model            | Number or String | value with '.' as decimal separator and without thousand separator |
+| readonly           | Boolean          | set to _true_ if you want this field to be readonly                |
 | width              | String           | CSS directly outputted into _width_ (defaults to _'100%'_)         |
 | label              | String           | label of the field                                                 |
 | hint               | String           | hint for the field                                                 |
