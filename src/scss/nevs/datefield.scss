@@ -9,6 +9,7 @@
   background: $date-field-picker-background;
   border-radius: 5px;
   color: $font-color;
+  z-index: 3;
 }
 
 .nevs-date-field-picker-year {
