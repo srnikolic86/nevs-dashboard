@@ -53,6 +53,10 @@ export default {
       type: Boolean,
       default: false
     },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
     options: Array,
     ajax: String,
     minimumSearchLength: Number,
@@ -130,11 +134,13 @@ export default {
       this.$emit('update:modelValue', this.selected.value);
     },
     dropdownClick() {
-      this.toggleDropdown();
-      if (this.showDropdown) {
-        this.$nextTick(() => {
-          this.$refs.searchField.focus();
-        });
+      if (!this.readonly) {
+        this.toggleDropdown();
+        if (this.showDropdown) {
+          this.$nextTick(() => {
+            this.$refs.searchField.focus();
+          });
+        }
       }
     },
     toggleDropdown() {

@@ -1,7 +1,7 @@
 <template>
   <div :style="fieldStyle" class="nevs-field">
     <span v-if="label!== '' || reserveHeights" class="nevs-field-label">{{ label }}</span>
-    <textarea @focusin="showHint=true" @focusout="showHint=false" v-model='value' class="nevs-text-area nevs-field-content" />
+    <textarea :readonly="readonly" @focusin="showHint=true" @focusout="showHint=false" v-model='value' class="nevs-text-area nevs-field-content" />
     <span v-if="(hint!== '' || reserveHeights) && showHint" class="nevs-field-hint">{{ hint }}</span>
     <span v-if="(error!== '' || reserveHeights) && (!showHint || hint==='')" class="nevs-field-error">{{ error }}</span>
   </div>
@@ -29,6 +29,10 @@ export default {
       default: ''
     },
     reserveHeights: {
+      type: Boolean,
+      default: false
+    },
+    readonly: {
       type: Boolean,
       default: false
     },

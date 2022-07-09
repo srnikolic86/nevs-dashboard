@@ -68,26 +68,28 @@ Password: 12345
 ```html
 <NevsMaskedField v-model="value" :mask="'CCC-LLL-nnn'"></NevsMaskedField>
 ```
-| Prop    | Type        | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
-|---------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| v-model | String      | value                                                                                                                                                                                                                                                                                                                                                                                                         |
-| width   | String      | CSS directly outtputed into _width_ (defaults to _'100%'_)                                                                                                                                                                                                                                                                                                                                                    |
-| label   | String      | label of the field                                                                                                                                                                                                                                                                                                                                                                                            |
-| hint    | String      | hint for the field                                                                                                                                                                                                                                                                                                                                                                                            |
-| error   | String      | error message                                                                                                                                                                                                                                                                                                                                                                                            |
-| mask    | String      | C - any character mandatory<br/>c - any character optional<br/>A - any letter or digit mandatory<br/>a - any letter or digit optional<br/>L - any letter mandatory<br/>l - any letter optional<br/>N - any digit mandatory<br/>n - any digit optional<br/>X - any character besides letters and digits mandatory<br/>x - any character besides letters and digits optional<br/>\ - next character  is escaped |
+| Prop       | Type       | Description                                                                                                                                                                                                                                                                                                                                                                                                   |
+|------------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| v-model    | String     | value                                                                                                                                                                                                                                                                                                                                                                                                         |
+| readonly   | Boolean    | set to _true_ if you want this field to be readonly                                                                                                                                                                                                                                                                                                                                                           |
+| width      | String     | CSS directly outtputed into _width_ (defaults to _'100%'_)                                                                                                                                                                                                                                                                                                                                                    |
+| label      | String     | label of the field                                                                                                                                                                                                                                                                                                                                                                                            |
+| hint       | String     | hint for the field                                                                                                                                                                                                                                                                                                                                                                                            |
+| error      | String     | error message                                                                                                                                                                                                                                                                                                                                                                                                 |
+| mask       | String     | C - any character mandatory<br/>c - any character optional<br/>A - any letter or digit mandatory<br/>a - any letter or digit optional<br/>L - any letter mandatory<br/>l - any letter optional<br/>N - any digit mandatory<br/>n - any digit optional<br/>X - any character besides letters and digits mandatory<br/>x - any character besides letters and digits optional<br/>\ - next character  is escaped |
 
 # Text area
 ```html
 <NevsTextArea v-model="value"></NevsTextArea>
 ```
-| Prop    | Type           | Description                                                |
-|---------|----------------|------------------------------------------------------------|
-| v-model | String         | value                                                      |
-| width   | String         | CSS directly outtputed into _width_ (defaults to _'100%'_) |
-| label   | String         | label of the field                                         |
-| hint    | String         | hint for the field                                         |
-| error   | String         | error message                                              |
+| Prop       | Type      | Description                                                |
+|------------|-----------|------------------------------------------------------------|
+| v-model    | String    | value                                                      |
+| readonly   | Boolean   | set to _true_ if you want this field to be readonly        |
+| width      | String    | CSS directly outtputed into _width_ (defaults to _'100%'_) |
+| label      | String    | label of the field                                         |
+| hint       | String    | hint for the field                                         |
+| error      | String    | error message                                              |
 
 # Select
 ```html
@@ -96,6 +98,7 @@ Password: 12345
 | Prop                  | Type              | Description                                                                                        |
 |-----------------------|-------------------|----------------------------------------------------------------------------------------------------|
 | v-model               | String or Integer | value                                                                                              |
+| readonly              | Boolean           | set to _true_ if you want this field to be readonly                                                |
 | width                 | String            | CSS directly outtputed into _width_ (defaults to _'100%'_)                                         |
 | label                 | String            | label of the field                                                                                 |
 | hint                  | String            | hint for the field                                                                                 |
@@ -170,15 +173,16 @@ Options are in this form:
 ```html
 <NevsDateField v-model="selectedDate"></NevsDateField>
 ```
-| Prop    | Type     | Description                                                                                                     |
-|---------|----------|-----------------------------------------------------------------------------------------------------------------|
-| v-model | String   | value in YYYY-MM-DD format                                                                                      |
-| width   | String   | CSS directly outtputed into _width_ (defaults to _'100%'_)                                                      |
-| label   | String   | label of the field                                                                                              |
-| hint    | String   | hint for the field                                                                                              |
-| error   | String   | error message                                                                                                   |
-| format  | String   | date format to be used for display and input (moment.js formatting is accepted, default value is _'D.M.YYYY.'_) |
-| picker  | Boolean  | if the picker should be shown or not (default value is _true_)                                                  |
+| Prop      | Type     | Description                                                                                                     |
+|-----------|----------|-----------------------------------------------------------------------------------------------------------------|
+| v-model   | String   | value in YYYY-MM-DD format                                                                                      |
+| readonly  | Boolean  | set to _true_ if you want this field to be readonly                                                             |
+| width     | String   | CSS directly outtputed into _width_ (defaults to _'100%'_)                                                      |
+| label     | String   | label of the field                                                                                              |
+| hint      | String   | hint for the field                                                                                              |
+| error     | String   | error message                                                                                                   |
+| format    | String   | date format to be used for display and input (moment.js formatting is accepted, default value is _'D.M.YYYY.'_) |
+| picker    | Boolean  | if the picker should be shown or not (default value is _true_)                                                  |
 
 # Number field
 
@@ -201,14 +205,15 @@ Options are in this form:
 ```html
 <NevsCheckbox v-model="checkboxValue"></NevsCheckbox>
 ```
-| Prop    | Type         | Description                                                                         |
-|---------|--------------|-------------------------------------------------------------------------------------|
-| v-model | Boolean      | value                                                                               |
-| size    | String       | CSS directly outputted into _font-size_ of the Font Awesome icon (default _'25px'_) |
-| width   | String       | CSS directly outtputed into _width_ (defaults to _'100%'_)                          |
-| label   | String       | label of the field                                                                  |
-| hint    | String       | hint for the field                                                                  |
-| error   | String       | error message                                                                       |
+| Prop      | Type      | Description                                                                         |
+|-----------|-----------|-------------------------------------------------------------------------------------|
+| v-model   | Boolean   | value                                                                               |
+| readonly  | Boolean   | set to _true_ if you want this field to be readonly                                 |
+| size      | String    | CSS directly outputted into _font-size_ of the Font Awesome icon (default _'25px'_) |
+| width     | String    | CSS directly outputted into _width_ (defaults to _'100%'_)                          |
+| label     | String    | label of the field                                                                  |
+| hint      | String    | hint for the field                                                                  |
+| error     | String    | error message                                                                       |
 
 # File upload
 ```html

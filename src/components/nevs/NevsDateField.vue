@@ -1,7 +1,8 @@
 <template>
   <div :style="wrapperStyle" class="nevs-field">
     <span v-if="label!== '' || reserveHeights" class="nevs-field-label">{{ label }}</span>
-    <input v-model='formattedValue' class="nevs-date-field nevs-field-content" type="text" @focusin="openDropdown" @focusout="hideHint"/>
+    <input v-model='formattedValue' :readonly="readonly" class="nevs-date-field nevs-field-content" type="text"
+           @focusin="openDropdown" @focusout="hideHint"/>
     <span v-if="(hint!== '' || reserveHeights) && showHint" class="nevs-field-hint">{{ hint }}</span>
     <div class="nevs-dropdown-holder">
       <Transition name="datepicker">
@@ -26,7 +27,7 @@
                  :style="weekdayStyle" class="nevs-date-field-picker-weekday">
               {{ weekday }}
             </div>
-            <div class="nevs-clear-float" />
+            <div class="nevs-clear-float"/>
           </div>
           <div class="nevs-date-field-picker-days">
             <div v-for="(day, key) in pickerDays" :key="key"
@@ -79,6 +80,10 @@ export default {
       type: Boolean,
       default: true
     },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
     modelValue: String
   },
   emits: [
@@ -108,7 +113,7 @@ export default {
   computed: {
     weekdayStyle() {
       return {
-        width: Math.floor(100/7) + '%'
+        width: Math.floor(100 / 7) + '%'
       };
     },
     dayStyle() {
@@ -201,9 +206,11 @@ export default {
       this.pickerDays = JSON.parse(JSON.stringify(days));
     },
     openDropdown() {
-      this.showHint = true;
-      if (this.picker) {
-        this.showPicker = true;
+      if (!this.readonly) {
+        this.showHint = true;
+        if (this.picker) {
+          this.showPicker = true;
+        }
       }
     },
     hideHint() {

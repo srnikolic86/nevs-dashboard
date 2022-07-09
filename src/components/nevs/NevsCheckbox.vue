@@ -36,6 +36,10 @@ export default {
       type: Boolean,
       default: false
     },
+    readonly: {
+      type: Boolean,
+      default: false
+    },
     modelValue: Boolean,
     size: {
       type: String,
@@ -72,7 +76,9 @@ export default {
   },
   methods: {
     toggleValue() {
-      this.value = !this.value;
+      if (!this.readonly) {
+        this.value = !this.value;
+      }
     }
   },
   mounted() {
