@@ -163,6 +163,8 @@ class UserController extends Controller
 
         if (isset($data['password']) && $data['password'] === '') {
             unset($data['password']);
+        } else {
+            $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
         }
 
         $user->update($data);
