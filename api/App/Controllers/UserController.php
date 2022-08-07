@@ -73,7 +73,7 @@ class UserController extends Controller
 
     public function Add(): Response
     {
-        if (!in_array('USER_MANAGEMENT', User::Current()->permissions)) {
+        if (!in_array('MANAGE_USERS', User::Current()->permissions)) {
             return new Response(json_encode(['error' => 'unauthorized']), ['HTTP/1.1 401 Bad Request']);
         }
         $validation = $this->request->Validate([
