@@ -8,6 +8,10 @@
   font-size: 18px;
   z-index: 2;
 
+  &-separator {
+    border-bottom: 1px solid $font-color ;
+  }
+
   &-logo {
     width: 100%;
     height: auto;

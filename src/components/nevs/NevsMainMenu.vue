@@ -1,16 +1,24 @@
 <template>
   <div class="nevs-main-menu">
-    <img v-if="logo !== ''" class="nevs-main-menu-logo" :src="logo"/>
+    <img v-if="logo !== ''" :src="logo" class="nevs-main-menu-logo"/>
     <template v-for="(item1, key1) in items" :key="key1">
-      <a :class="{'nevs-main-menu-item': true, 'active': isSelected(item1)}" @click.prevent="menuClick(item1)"
-         :href="item1.link">
-        <span class="nevs-main-menu-item-icon" v-if="item1.icon !== null" v-html="item1.icon"></span>{{ item1.label }}
-      </a>
-      <a :class="{'nevs-main-menu-subitem': true, 'active': isSelected(item2)}" v-for="(item2, key2) in item1.children"
-         :key="key2" v-show="$store.state.selectedMenu === item1.id" @click.prevent="menuClick(item2)"
-         :href="item2.link">
-        <span class="nevs-main-menu-subitem-icon" v-if="item2.icon !== null" v-html="item2.icon"></span>{{ item2.label }}
-      </a>
+      <template v-if="item1.id!=='---'">
+        <a :class="{'nevs-main-menu-item': true, 'active': isSelected(item1)}" :href="item1.link"
+           @click.prevent="menuClick(item1)">
+          <span v-if="item1.icon !== null" class="nevs-main-menu-item-icon" v-html="item1.icon"></span>{{ item1.label }}
+        </a>
+        <a v-for="(item2, key2) in item1.children"
+           v-show="$store.state.selectedMenu === item1.id"
+           :key="key2" :class="{'nevs-main-menu-subitem': true, 'active': isSelected(item2)}" :href="item2.link"
+           @click.prevent="menuClick(item2)">
+          <span v-if="item2.icon !== null" class="nevs-main-menu-subitem-icon" v-html="item2.icon"></span>{{
+            item2.label
+          }}
+        </a>
+      </template>
+      <template v-if="item1.id==='---'">
+        <div class="nevs-main-menu-separator" />
+      </template>
     </template>
     <div class="nevs-main-menu-footer" v-html="$LANG.Get('labels.menuFooter')">
     </div>
