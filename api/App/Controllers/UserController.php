@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Helpers;
 use App\Language;
 use App\Models\User;
+use Nevs\Config;
 use Nevs\Controller;
 use Nevs\Response;
 
@@ -112,6 +113,8 @@ class UserController extends Controller
 
         $data = $this->request->data;
         $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
+
+        $data['locale'] = Config::Get('default_locale');
 
         $user = User::Create($data);
 
