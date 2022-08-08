@@ -165,7 +165,7 @@ export default {
   },
   methods: {
     dateClick(day) {
-      this.value = moment(this.pickerDisplay.year + '-' + day.month + '-' + day.day, 'YYYY-M-D').format(this.format);
+      this.value = moment(this.pickerDisplay.year + '-' + day.month + '-' + day.day, 'YYYY-M-D').format(this.baseFormat);
       this.showPicker = false;
       this.showHint = false;
     },
