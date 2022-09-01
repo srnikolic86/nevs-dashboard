@@ -2,6 +2,9 @@
 
 namespace App\Controllers;
 
+use App\Classes\Email;
+use App\Helpers;
+use App\Language;
 use App\Models\AccessToken;
 use Nevs\Config;
 use Nevs\Controller;
@@ -68,6 +71,37 @@ class AuthController extends Controller
     {
         return new Response(json_encode([
             'user' => User::Current()
+        ]));
+    }
+
+    public function PasswordReset(): Response
+    {
+        $validation = $this->request->Validate([
+            'email' => 'string'
+        ]);
+        if ($validation !== true) {
+            return new Response(json_encode($validation), ['HTTP/1.1 400 Bad Request']);
+        }
+
+        $email = $this->request->data['email'];
+
+        $users = User::Select('`email`=?', [$email]);
+        if (count($users) > 0) {
+            $user = $users[0];
+
+            $password = Helpers::GenerateRandomString();
+            $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+            $user->Update(['password' => $password_hash]);
+
+            $subject = Language::Get('emails.password_recovery.subject');
+            $body = str_replace('%password%', $password, Language::Get('emails.password_recovery.body'));
+
+            Email::Send($subject, $body, [$email]);
+        }
+
+        return new Response(json_encode([
+            'success' => true
         ]));
     }
 }

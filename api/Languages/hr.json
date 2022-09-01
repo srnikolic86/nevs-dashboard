@@ -5,5 +5,11 @@
   },
   "permissions": {
     "MANAGE_USERS": "Upravljanje korisnicima"
+  },
+  "emails": {
+    "password_recovery": {
+      "subject": "Nova lozinka",
+      "body": "Vaša nova lozinka: %password%"
+    }
   }
 }

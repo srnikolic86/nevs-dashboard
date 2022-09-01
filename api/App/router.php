@@ -7,7 +7,8 @@ use Nevs\Route;
 const NEVS_ROUTER = new Router([
     new RouteGroup("/public/", [
 
-        new Route("POST", "login", 'AuthController', "Login")
+        new Route("POST", "login", 'AuthController', "Login"),
+        new Route("POST", "password-reset", 'AuthController', "PasswordReset")
 
     ],  ['CorsMiddleware']),
 
