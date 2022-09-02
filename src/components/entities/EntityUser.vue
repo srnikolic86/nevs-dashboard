@@ -110,7 +110,11 @@ export default {
             vm.$LOCAL_BUS.TriggerEvent('notification', {text: this.$LANG.Get('alerts.recordSaved')});
             vm.backClick();
           } else {
-            vm.$LOCAL_BUS.TriggerEvent('popup', {text: vm.$LANG.Get('alerts.serverError'), type: 'alert'});
+            if (data.error === 'email_duplicate') {
+              vm.$LOCAL_BUS.TriggerEvent('popup', {text: vm.$LANG.Get('alerts.emailDuplicate'), type: 'alert'});
+            } else {
+              vm.$LOCAL_BUS.TriggerEvent('popup', {text: vm.$LANG.Get('alerts.serverError'), type: 'alert'});
+            }
           }
         })
       }

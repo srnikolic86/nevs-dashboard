@@ -40,7 +40,8 @@
     "fileDeletionQuestion": "Are you sure that you want to delete this file?",
     "loginFailed": "Entered credentials do not exist or this user account is not active.",
     "recordSaved": "Record was successfully saved.",
-    "unauthorized": "You do not have permissions to do that."
+    "unauthorized": "You do not have permissions to do that.",
+    "emailDuplicate": "Record with that e-mail address already exists."
   },
   "fields": {
     "email": "E-mail",

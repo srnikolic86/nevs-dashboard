@@ -111,6 +111,11 @@ class UserController extends Controller
             return new Response(json_encode($validation), ['HTTP/1.1 400 Bad Request']);
         }
 
+        $duplicates = User::Select('email=?', [$this->request->data['email']]);
+        if (count($duplicates) > 0) {
+            return new Response(json_encode(['error' => 'email_duplicate']), ['HTTP/1.1 400 Bad Request']);
+        }
+
         $data = $this->request->data;
         $data['password'] = password_hash($data['password'], PASSWORD_BCRYPT);
 
@@ -154,6 +159,11 @@ class UserController extends Controller
         }
         if ($validation !== true) {
             return new Response(json_encode($validation), ['HTTP/1.1 400 Bad Request']);
+        }
+
+        $duplicates = User::Select('id<>? AND email=?', [$this->request->parameters['id'], $this->request->data['email']]);
+        if (count($duplicates) > 0) {
+            return new Response(json_encode(['error' => 'email_duplicate']), ['HTTP/1.1 400 Bad Request']);
         }
 
         $user = User::Find($this->request->parameters['id']);

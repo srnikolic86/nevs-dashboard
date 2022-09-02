@@ -40,7 +40,8 @@
     "fileDeletionQuestion": "Jeste li sigurni da želite izbrisati ovu datoteku?",
     "loginFailed": "Uneseni podaci nisu ispravni ili korisnički račun nije aktivan.",
     "recordSaved": "Zapis je uspješno spremljen.",
-    "unauthorized": "Nemate dopuštenje za tu akciju."
+    "unauthorized": "Nemate dopuštenje za tu akciju.",
+    "emailDuplicate": "Zapis s tom e-mail adresom već postoji."
   },
   "fields": {
     "email": "E-mail",
