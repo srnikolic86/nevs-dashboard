@@ -96,6 +96,7 @@ export default {
       this.$refs.input.select();
     },
     cleanupNumber(value) {
+      let negative = (value !== '') ? value.charAt(0) === '-' : false;
       let cleanedUp = value;
       for (let i = 0; i < cleanedUp.length; i++) {
         if (!((/\d/).test(cleanedUp[i])) && cleanedUp[i] !== this.decimalSeparator) {
@@ -117,13 +118,16 @@ export default {
         preview = preview.slice(0, location) + this.thousandSeparator + preview.slice(location);
         location -= 3;
       }
+      if (negative) preview = '-' + preview;
       return preview;
     },
     formatNumber(value) {
       let preview = new Big(value).round(this.decimalPlaces).toFixed(this.decimalPlaces).toString().replace('.', this.decimalSeparator);
       let location = preview.indexOf(this.decimalSeparator) - 3;
       while (location > 0) {
-        preview = preview.slice(0, location) + this.thousandSeparator + preview.slice(location);
+        if (preview.slice(0, location) !== '-') {
+          preview = preview.slice(0, location) + this.thousandSeparator + preview.slice(location);
+        }
         location -= 3;
       }
       return preview;
