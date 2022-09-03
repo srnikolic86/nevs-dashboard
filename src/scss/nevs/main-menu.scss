@@ -31,7 +31,7 @@
   &-item {
     cursor: pointer;
     display: block;
-    padding: 5px;
+    padding: 15px;
     background: $menu-background;
     color: $font-color;
 
@@ -48,7 +48,7 @@
   }
 
   &-item:hover {
-    background: $menu-background-hover;
+    color: $menu-color-hover;
   }
 
   &-subitem {
@@ -70,7 +70,7 @@
   }
 
   &-subitem:hover {
-    background: $menu-background-hover;
+    color: $menu-color-hover;
   }
 
   .active, .active:hover {

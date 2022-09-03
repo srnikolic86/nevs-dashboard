@@ -55,13 +55,13 @@ $table-row-hover: #d2e1e8 !default;
 $table-row-border: #c5d8e2 !default;
 
 $menu-background: #1e1e2d !default;
-$menu-background-hover: #1b1b28 !default;
-$menu-background-selected: #1b1b28 !default;
-$menu-color-selected: white !default;
+$menu-background-selected: #14141e !default;
+$menu-color-hover: $primary !default;
+$menu-color-selected: $primary !default;
 $menu-width: 250px !default;
 $menu-responsive: 800px !default;
 
 $top-bar-height: 50px !default;
-$top-bar-color: white !default;
-$top-bar-button-hover-color: #484b5b !default;
-
+$top-bar-background: #28283c !default;
+$top-bar-color: #767b92 !default;
+$top-bar-button-hover-color: $primary !default;

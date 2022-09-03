@@ -1,7 +1,7 @@
 .nevs-top-bar {
   width: calc(100% - $menu-width);
   height: $top-bar-height;
-  background: $top-bar-color;
+  background: $top-bar-background;
   position: fixed;
   top: 0;
   left: $menu-width;
@@ -22,11 +22,11 @@
       display: inline-block;
 
       a, a:visited {
-        color: $font-color;
+        color: $top-bar-color;
       }
 
       a.active:hover {
-        text-decoration: underline;
+        color: $top-bar-button-hover-color;
       }
 
       &-separator {
@@ -36,6 +36,7 @@
   }
 
   &-button {
+    color: $top-bar-color;
     cursor: pointer;
     float: right;
     padding: 0 10px;
