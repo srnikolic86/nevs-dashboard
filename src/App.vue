@@ -112,6 +112,17 @@ export default {
         vm.sessionCheckDone = true;
       });
     }, false);
+    setInterval(() => {
+      if (vm.$store.state.user !== null) {
+        this.$API.APICall('get', 'public/heartbeat', {}, (data, success) => {
+          if (success) {
+            if (!data.logged_in) {
+              vm.$store.commit('setUser', null);
+            }
+          }
+        }, false);
+      }
+    }, 30000);
   }
 }
 

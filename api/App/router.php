@@ -8,7 +8,8 @@ const NEVS_ROUTER = new Router([
     new RouteGroup("/public/", [
 
         new Route("POST", "login", 'AuthController', "Login"),
-        new Route("POST", "password-reset", 'AuthController', "PasswordReset")
+        new Route("POST", "password-reset", 'AuthController', "PasswordReset"),
+        new Route("GET", "heartbeat", 'AuthController', "Heartbeat")
 
     ],  ['CorsMiddleware']),
 

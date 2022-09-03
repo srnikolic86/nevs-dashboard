@@ -104,4 +104,14 @@ class AuthController extends Controller
             'success' => true
         ]));
     }
+
+    public function Heartbeat(): Response
+    {
+        $user = User::Current();
+
+        return new Response(json_encode([
+            'logged_in' => $user != null
+        ]));
+    }
+
 }
