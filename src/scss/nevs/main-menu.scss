@@ -20,6 +20,7 @@
   }
 
   &-item {
+    width: max-content;
     cursor: pointer;
     display: block;
     padding: 15px;
@@ -44,6 +45,7 @@
 
   &-subitem {
     display: block;
+    width: max-content;
     padding: 5px 5px 5px 15px;
     background: $menu-background;
     color: $font-color;
