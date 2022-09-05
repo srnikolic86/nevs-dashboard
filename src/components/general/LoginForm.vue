@@ -12,12 +12,12 @@
       </div>
     </template>
     <template v-if="passwordRecoveryMode">
-      <div class="forgotten-password-explanation">{{ $LANG.Get('texts.forgottenPasswordExplanation') }}</div>
-      <NevsTextField class="forgotten-password-email" :name="'email'" :label="$LANG.Get('fields.email')+':'" :width="'100%'"
+      <div class="login-card-forgotten-password-explanation">{{ $LANG.Get('texts.forgottenPasswordExplanation') }}</div>
+      <NevsTextField class="login-card-forgotten-password-email" :name="'email'" :label="$LANG.Get('fields.email')+':'" :width="'100%'"
                      v-model="passwordResetData.email"></NevsTextField>
       <div class="login-card-footer">
-        <NevsButton @click="passwordRecoveryToggle" class="nevs-float-left">{{ $LANG.Get('buttons.cancel') }}</NevsButton>
-        <NevsButton @click="passwordRecoveryClick" class="nevs-float-right">{{ $LANG.Get('buttons.recoverPassword') }}</NevsButton>
+        <NevsButton @click="passwordRecoveryToggle">{{ $LANG.Get('buttons.cancel') }}</NevsButton>
+        <NevsButton class="login-card-forgotten-password-recovery-button" @click="passwordRecoveryClick">{{ $LANG.Get('buttons.recoverPassword') }}</NevsButton>
       </div>
     </template>
     <div class="nevs-clear-float"></div>
@@ -96,13 +96,4 @@ export default {
 </script>
 
 <style scoped>
-  .forgotten-password-button {
-    margin-top: 10px;
-    margin-right: 5px;
-    float: right;
-    cursor: pointer;
-  }
-  .forgotten-password-explanation {
-    margin: 5px 5px 15px;
-  }
 </style>

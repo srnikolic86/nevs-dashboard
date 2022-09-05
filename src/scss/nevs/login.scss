@@ -1,0 +1,46 @@
+.login-card {
+  width: 80%;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 150px;
+
+  &-footer {
+    padding: 5px;
+  }
+
+  &-forgotten-password {
+    &-button {
+      margin-top: 10px;
+      margin-right: 5px;
+      float: right;
+      cursor: pointer;
+    }
+
+    &-explanation {
+      margin: 5px 5px 15px;
+    }
+
+    &-recovery-button {
+      float: right;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 500px) {
+  .login-card {
+    margin-top: 20px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .login-card {
+    &-forgotten-password {
+      &-recovery-button {
+        float: none;
+        margin-top: 5px;
+      }
+    }
+  }
+}
