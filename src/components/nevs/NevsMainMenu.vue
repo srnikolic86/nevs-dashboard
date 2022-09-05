@@ -20,8 +20,6 @@
         <div class="nevs-main-menu-separator" />
       </template>
     </template>
-    <div class="nevs-main-menu-footer" v-html="$LANG.Get('labels.menuFooter')">
-    </div>
   </div>
 </template>
 

@@ -28,7 +28,6 @@
   "labels": {
     "forgottenPassword": "Zaboravili ste lozinku?",
     "uploadInProgress": "Upload u tijeku.",
-    "menuFooter": "Lorem ipsum <a target=\"_blank\" href=\"https://google.com\">link</a>.",
     "changePassword": "Promijeni lozinku",
     "mandatoryField": "Ovo polje je obavezno.",
     "invalidEmailAddress": "Unesena e-mail adres nije ispravna.",
