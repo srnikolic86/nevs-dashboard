@@ -129,6 +129,7 @@ export default {
     },
     removeOption(key) {
       this.selected.splice(key, 1);
+      this.$emit('update:modelValue', this.selected);
     },
     dropdownClick() {
       this.toggleDropdown();
