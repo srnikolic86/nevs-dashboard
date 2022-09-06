@@ -107,23 +107,14 @@ export default {
         'monthName': moment().format('MMMM'),
         'month': moment().format('M')
       },
-      pickerDays: []
+      pickerDays: [],
+      dayStyle: {},
+      weekdayStyle: {
+        width: Math.floor(100 / 7) + '%'
+      }
     }
   },
   computed: {
-    weekdayStyle() {
-      return {
-        width: Math.floor(100 / 7) + '%'
-      };
-    },
-    dayStyle() {
-      let size = Math.floor(250 / 7);
-      return {
-        width: size + 'px',
-        height: size + 'px',
-        lineHeight: size + 'px'
-      };
-    },
     wrapperStyle() {
       let style = {};
       if (this.width) {
@@ -164,6 +155,18 @@ export default {
     }
   },
   methods: {
+    refreshDayStyle() {
+      let size = Math.floor(250 / 7);
+      let windowWidth = window.innerWidth;
+      if (windowWidth <= 500) {
+        size = Math.floor((windowWidth - 20) / 7);
+      }
+      this.dayStyle = {
+        width: size + 'px',
+        height: size + 'px',
+        lineHeight: size + 'px'
+      };
+    },
     dateClick(day) {
       this.value = moment(this.pickerDisplay.year + '-' + day.month + '-' + day.day, 'YYYY-M-D').format(this.baseFormat);
       this.showPicker = false;
@@ -207,6 +210,7 @@ export default {
     },
     openDropdown() {
       if (!this.readonly) {
+        this.refreshDayStyle();
         this.showHint = true;
         if (this.picker) {
           this.showPicker = true;

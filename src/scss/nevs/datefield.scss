@@ -4,11 +4,10 @@
 }
 
 .nevs-date-field-picker {
-  max-width: 250px;
+  width: 250px;
   box-shadow: 0 0 50px 0 rgba(82, 63, 105, 0.15);
   box-sizing: border-box;
   position: absolute;
-  width: 100%;
   left: 0;
   top: 0;
   background: $date-field-picker-background;
@@ -88,4 +87,18 @@
 .datepicker-enter-from,
 .datepicker-leave-to {
   opacity: 0;
+}
+
+@media only screen and (max-width: 500px) {
+  .nevs-date-field-picker {
+    position: fixed;
+    width: calc(100vw - 20px);
+    left: 10px;
+    top: 10px;
+    max-width: none;
+  }
+
+  .nevs-date-field-picker-day {
+    width: calc((100vw - 20px) / 7);
+  }
 }
