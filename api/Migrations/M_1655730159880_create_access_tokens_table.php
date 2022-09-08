@@ -2,9 +2,9 @@
 use Nevs\Database;
 class M_1655730159880_create_access_tokens_table 
 {
-    function migrate() : void
+    function migrate(Database|null $DB = null) : void
     {
-        $DB = new Database();
+        if ($DB == null) $DB = new Database();
         $DB->CreateTable(['name'=>'access_tokens', 'fields'=>[
             [
                 'name' => 'id',

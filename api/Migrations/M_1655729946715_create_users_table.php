@@ -5,9 +5,9 @@ use Nevs\Database;
 
 class M_1655729946715_create_users_table
 {
-    function migrate(): void
+    function migrate(Database|null $DB = null) : void
     {
-        $DB = new Database();
+        if ($DB == null) $DB = new Database();
         $DB->CreateTable(['name' => 'users', 'fields' => [
             [
                 'name' => 'id',

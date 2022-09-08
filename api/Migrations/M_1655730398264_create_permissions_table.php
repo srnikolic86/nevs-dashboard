@@ -2,9 +2,9 @@
 use Nevs\Database;
 class M_1655730398264_create_permissions_table 
 {
-    function migrate() : void
+    function migrate(Database|null $DB = null) : void
     {
-        $DB = new Database();
+        if ($DB == null) $DB = new Database();
         $DB->CreateTable(['name'=>'permissions', 'fields'=>[
             [
                 'name' => 'id',

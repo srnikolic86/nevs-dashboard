@@ -2,9 +2,9 @@
 use Nevs\Database;
 class M_1655188661597_create_uploads_table 
 {
-    function migrate() : void
+    function migrate(Database|null $DB = null) : void
     {
-        $DB = new Database();
+        if ($DB == null) $DB = new Database();
         $DB->CreateTable(['name'=>'uploads', 'fields'=>[
             [
                 'name' => 'id',
