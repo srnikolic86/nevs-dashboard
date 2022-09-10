@@ -25,7 +25,7 @@ class AuthController extends Controller
         }
 
         $logged_in = null;
-        $users = User::Select('email=?', [$this->request->data['email']]);
+        $users = User::Select('active=1 AND email=?', [$this->request->data['email']]);
         foreach ($users as $user) {
             if (password_verify($this->request->data['password'], $user->password)) {
                 $logged_in = $user;
