@@ -56,9 +56,13 @@ export default {
           this.$store.commit('selectMenu', null);
         }
       } else {
-        this.$router.push(item.link);
-        if (window.innerWidth < 800) {
-          this.$emit('toggleMenu');
+        if (item.external === true) {
+          window.open(item.link);
+        } else {
+          this.$router.push(item.link);
+          if (window.innerWidth < 800) {
+            this.$emit('toggleMenu');
+          }
         }
       }
     }

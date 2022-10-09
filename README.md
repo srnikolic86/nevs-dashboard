@@ -418,13 +418,14 @@ Here is a JSON example of an item:
   "children": []
 }
 ```
-| Property | Description                                      |
-|----------|--------------------------------------------------|
-| id       | unique name of that item within the menu         |
-| label    | text to display                                  |
-| link     | link to open on click                            |
-| icon     | icon to display                                  |
-| children | array of child items (only 2 levels are allowed) |
+| Property | Description                                             |
+|----------|---------------------------------------------------------|
+| id       | unique name of that item within the menu                |
+| external | true if you just want to open this link in a new window |
+| label    | text to display                                         |
+| link     | link to open on click                                   |
+| icon     | icon to display                                         |
+| children | array of child items (only 2 levels are allowed)        |
 If item's _id_ is _'---'_ it will be shown as a separator (only works in first level of items).
 
 # Top bar
