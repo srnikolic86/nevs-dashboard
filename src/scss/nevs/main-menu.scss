@@ -43,7 +43,7 @@
     color: $menu-color-hover;
   }
 
-  &-item:focus, &-item:active {
+  &-item:focus, &-item:active, &-subitem:focus, &-subitem:active {
     outline: 0;
     border: none;
     -moz-outline-style: none;
