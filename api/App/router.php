@@ -7,6 +7,7 @@ use Nevs\Route;
 const NEVS_ROUTER = new Router([
     new RouteGroup("/public/", [
 
+        new Route("GET", "version", 'VersionController', "GetVersion"),
         new Route("POST", "login", 'AuthController', "Login"),
         new Route("POST", "password-reset", 'AuthController', "PasswordReset"),
         new Route("GET", "heartbeat", 'AuthController', "Heartbeat")

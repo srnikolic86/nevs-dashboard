@@ -108,9 +108,11 @@ class AuthController extends Controller
     public function Heartbeat(): Response
     {
         $user = User::Current();
+        $version = json_decode(file_get_contents(Config::Get('app_root') . 'App/version.json'), true);
 
         return new Response(json_encode([
-            'logged_in' => $user != null
+            'logged_in' => $user != null,
+            'version' => $version['version']
         ]));
     }
 

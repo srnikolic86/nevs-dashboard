@@ -98,6 +98,14 @@ export default {
     window.addEventListener('resize', this.resolveWindowResize);
     this.resolveWindowResize();
     let vm = this;
+    this.$API.APICall('get', 'public/version', {}, (data, success) => {
+      if (success) {
+        if (data.version !== this.$HELPERS.GetCookie('pausalko_version')) {
+          this.$HELPERS.SetCookie('nevs_version', data.version);
+          window.location.reload(true);
+        }
+      }
+    });
     this.$API.APICall('get', 'session', {}, (data, success) => {
       if (success) {
         vm.$store.commit('setUser', data.user);
@@ -118,6 +126,10 @@ export default {
           if (success) {
             if (!data.logged_in) {
               vm.$store.commit('setUser', null);
+            }
+            if (data.version !== this.$HELPERS.GetCookie('pausalko_version')) {
+              this.$HELPERS.SetCookie('nevs_version', data.version);
+              window.location.reload(true);
             }
           }
         }, false);
