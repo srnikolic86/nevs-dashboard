@@ -20,6 +20,21 @@ export default {
                         value: -1
                     }
                 ]
+            },
+            ToCroatianLower(s) {
+                let swaps = {
+                    'c': ['č', 'Č', 'ć', 'Ć'],
+                    'd': ['đ', 'Đ'],
+                    's': ['š', 'Š'],
+                    'z': ['ž', 'Ž']
+                }
+                for (let to in swaps) {
+                    for (let from of swaps[to]) {
+                        s = s.split(from).join(to);
+                    }
+                }
+                s = s.toLowerCase();
+                return s;
             }
 
         }

@@ -91,7 +91,7 @@ export default {
 
       let filtered = [];
       for (let option of this.allOptions) {
-        if (option.label.search(this.search) !== -1) {
+        if (this.$HELPERS.ToCroatianLower(option.label).search(this.$HELPERS.ToCroatianLower(this.search)) !== -1) {
           filtered.push(option);
         }
       }
@@ -142,7 +142,7 @@ export default {
     },
     removeOption(key) {
       this.selected.splice(key, 1);
-      this.$emit('update:modelValue', this.selected);
+      this.$emit('update:modelValue', this.getEmitValue());
     },
     dropdownClick() {
       this.toggleDropdown();
