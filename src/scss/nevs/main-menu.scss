@@ -43,6 +43,12 @@
     color: $menu-color-hover;
   }
 
+  &-item:focus, &-item:active {
+    outline: 0;
+    border: none;
+    -moz-outline-style: none;
+  }
+
   &-subitem {
     display: block;
     width: max-content;
