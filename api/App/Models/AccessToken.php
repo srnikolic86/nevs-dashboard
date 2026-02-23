@@ -62,7 +62,6 @@ class AccessToken extends Model
 
     static function Destroy($token): void {
         global $DB;
-        error_log($token);
         $DB->Execute('DELETE FROM `access_tokens` WHERE `token`=?', [$token]);
     }
 }
