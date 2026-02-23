@@ -20,12 +20,12 @@
 
 <script>
 
-import NevsLoader from "@/components/nevs/NevsLoader";
-import NevsNotification from "@/components/nevs/NevsNotification";
-import NevsPopup from "@/components/nevs/NevsPopup";
-import LoginForm from "@/components/general/LoginForm";
-import NevsMainMenu from "@/components/nevs/NevsMainMenu";
-import NevsTopBar from "@/components/nevs/NevsTopBar";
+import NevsLoader from "@/components/nevs/NevsLoader.vue";
+import NevsNotification from "@/components/nevs/NevsNotification.vue";
+import NevsPopup from "@/components/nevs/NevsPopup.vue";
+import LoginForm from "@/components/general/LoginForm.vue";
+import NevsMainMenu from "@/components/nevs/NevsMainMenu.vue";
+import NevsTopBar from "@/components/nevs/NevsTopBar.vue";
 
 export default {
     name: 'App',

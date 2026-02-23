@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import NevsButton from "@/components/nevs/NevsButton";
-import NevsTextField from "@/components/nevs/NevsTextField"
+import NevsButton from "@/components/nevs/NevsButton.vue";
+import NevsTextField from "@/components/nevs/NevsTextField.vue"
 
 export default {
   name: "NevsPopup",

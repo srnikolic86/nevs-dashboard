@@ -27,8 +27,8 @@ class UserController extends Controller
             "total_records" => 0
         ];
 
-        $sort = json_decode($this->request->data['sort'], true);
-        $filters = json_decode($this->request->data['filters'], true);
+        $sort = $this->request->data['sort'];
+        $filters = $this->request->data['filters'];
         $current_page = $this->request->data['currentPage'];
         $rows_per_page = $this->request->data['rowsPerPage'];
 

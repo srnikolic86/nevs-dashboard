@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import NevsTextField from "@/components/nevs/NevsTextField";
-import NevsCard from "@/components/nevs/NevsCard";
-import NevsButton from "@/components/nevs/NevsButton";
-import NevsCheckbox from "@/components/nevs/NevsCheckbox";
+import NevsTextField from "@/components/nevs/NevsTextField.vue";
+import NevsCard from "@/components/nevs/NevsCard.vue";
+import NevsButton from "@/components/nevs/NevsButton.vue";
+import NevsCheckbox from "@/components/nevs/NevsCheckbox.vue";
 
 export default {
   name: "LoginForm",

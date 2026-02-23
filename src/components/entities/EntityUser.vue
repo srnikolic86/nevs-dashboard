@@ -32,11 +32,11 @@
 
 <script>
 import User from '@/models/User';
-import NevsCard from "@/components/nevs/NevsCard";
-import NevsTextField from "@/components/nevs/NevsTextField";
-import NevsCheckbox from "@/components/nevs/NevsCheckbox";
-import NevsButton from "@/components/nevs/NevsButton";
-import NevsMultipleSelect from "@/components/nevs/NevsMultipleSelect";
+import NevsCard from "@/components/nevs/NevsCard.vue";
+import NevsTextField from "@/components/nevs/NevsTextField.vue";
+import NevsCheckbox from "@/components/nevs/NevsCheckbox.vue";
+import NevsButton from "@/components/nevs/NevsButton.vue";
+import NevsMultipleSelect from "@/components/nevs/NevsMultipleSelect.vue";
 
 export default {
   name: "EntityUser",

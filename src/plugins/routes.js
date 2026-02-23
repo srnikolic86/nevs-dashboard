@@ -1,6 +1,6 @@
-import ModuleHome from "@/components/modules/ModuleHome";
-import ModuleUsers from "@/components/modules/ModuleUsers";
-import EntityUser from "@/components/entities/EntityUser";
+import ModuleHome from "@/components/modules/ModuleHome.vue";
+import ModuleUsers from "@/components/modules/ModuleUsers.vue";
+import EntityUser from "@/components/entities/EntityUser.vue";
 
 export default [
     { path: '/', component: ModuleHome },

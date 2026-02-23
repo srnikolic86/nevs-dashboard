@@ -59,20 +59,20 @@
 </template>
 
 <script>
-import NevsCard from "@/components/nevs/NevsCard";
-import NevsTextField from "@/components/nevs/NevsTextField";
-import NevsMaskedField from "@/components/nevs/NevsMaskedField";
-import NevsTextArea from "@/components/nevs/NevsTextArea";
-import NevsNumberField from "@/components/nevs/NevsNumberField";
-import NevsDateField from "@/components/nevs/NevsDateField";
-import NevsCheckbox from "@/components/nevs/NevsCheckbox";
-import NevsSelect from "@/components/nevs/NevsSelect";
-import NevsMultipleSelect from "@/components/nevs/NevsMultipleSelect";
-import NevsAutocomplete from "@/components/nevs/NevsAutocomplete";
-import NevsMultipleAutocomplete from "@/components/nevs/NevsMultipleAutocomplete";
-import NevsUpload from "@/components/nevs/NevsUpload";
-import NevsButton from "@/components/nevs/NevsButton";
-import NevsActions from "@/components/nevs/NevsActions";
+import NevsCard from "@/components/nevs/NevsCard.vue";
+import NevsTextField from "@/components/nevs/NevsTextField.vue";
+import NevsMaskedField from "@/components/nevs/NevsMaskedField.vue";
+import NevsTextArea from "@/components/nevs/NevsTextArea.vue";
+import NevsNumberField from "@/components/nevs/NevsNumberField.vue";
+import NevsDateField from "@/components/nevs/NevsDateField.vue";
+import NevsCheckbox from "@/components/nevs/NevsCheckbox.vue";
+import NevsSelect from "@/components/nevs/NevsSelect.vue";
+import NevsMultipleSelect from "@/components/nevs/NevsMultipleSelect.vue";
+import NevsAutocomplete from "@/components/nevs/NevsAutocomplete.vue";
+import NevsMultipleAutocomplete from "@/components/nevs/NevsMultipleAutocomplete.vue";
+import NevsUpload from "@/components/nevs/NevsUpload.vue";
+import NevsButton from "@/components/nevs/NevsButton.vue";
+import NevsActions from "@/components/nevs/NevsActions.vue";
 
 export default {
   name: "ModuleHome",

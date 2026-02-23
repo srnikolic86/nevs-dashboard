@@ -44,11 +44,11 @@
 </template>
 
 <script>
-import NevsCard from "@/components/nevs/NevsCard";
-import NevsButton from "@/components/nevs/NevsButton";
-import NevsTable from "@/components/nevs/NevsTable";
-import NevsTextField from "@/components/nevs/NevsTextField";
-import NevsSelect from "@/components/nevs/NevsSelect";
+import NevsCard from "@/components/nevs/NevsCard.vue";
+import NevsButton from "@/components/nevs/NevsButton.vue";
+import NevsTable from "@/components/nevs/NevsTable.vue";
+import NevsTextField from "@/components/nevs/NevsTextField.vue";
+import NevsSelect from "@/components/nevs/NevsSelect.vue";
 
 export default {
   name: "ModuleUsers",

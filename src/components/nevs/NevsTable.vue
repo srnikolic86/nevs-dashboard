@@ -40,7 +40,7 @@
 
 <script>
 
-import NevsNumberField from "@/components/nevs/NevsNumberField";
+import NevsNumberField from "@/components/nevs/NevsNumberField.vue";
 
 export default {
   name: "NevsTable",
