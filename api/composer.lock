@@ -109,12 +109,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/srnikolic86/nevsphp.git",
-                "reference": "c9d9427bf3cdd18586d050c014bbb33cb315bdec"
+                "reference": "1d5bdc22d54dc073dca01f764399f771fb220f2d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/srnikolic86/nevsphp/zipball/c9d9427bf3cdd18586d050c014bbb33cb315bdec",
-                "reference": "c9d9427bf3cdd18586d050c014bbb33cb315bdec",
+                "url": "https://api.github.com/repos/srnikolic86/nevsphp/zipball/1d5bdc22d54dc073dca01f764399f771fb220f2d",
+                "reference": "1d5bdc22d54dc073dca01f764399f771fb220f2d",
                 "shasum": ""
             },
             "require": {
@@ -142,7 +142,7 @@
                 "issues": "https://github.com/srnikolic86/nevsphp/issues",
                 "source": "https://github.com/srnikolic86/nevsphp/tree/main"
             },
-            "time": "2022-06-21T05:40:14+00:00"
+            "time": "2025-12-29T15:51:12+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -500,5 +500,5 @@
         "php": ">= 8.1"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
