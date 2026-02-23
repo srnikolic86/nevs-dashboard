@@ -1,18 +1,20 @@
 <template>
-  <div v-if="show" class="nevs-popup-container">
-    <div class="nevs-popup">
-      <div class="nevs-popup-text" v-html="text"/>
-      <div v-if="type==='input'" class="nevs-popup-input">
-        <NevsTextField v-model="input" :width="'100%'"></NevsTextField>
-      </div>
-      <div class="nevs-popup-buttons">
-        <NevsButton class="error" v-if="type==='input'" @click="cancelClick">{{ $LANG.Get('buttons.cancel') }}</NevsButton>
-        <NevsButton class="success" v-if="type==='alert' || type==='input'" @click="okClick">{{ $LANG.Get('buttons.ok') }}</NevsButton>
-        <NevsButton class="error" v-if="type==='confirm'" @click="noClick">{{ $LANG.Get('buttons.no') }}</NevsButton>
-        <NevsButton class="success" v-if="type==='confirm'" @click="yesClick">{{ $LANG.Get('buttons.yes') }}</NevsButton>
+  <Transition name="nevs-popup">
+    <div v-if="show" class="nevs-popup-container">
+      <div class="nevs-popup">
+        <div class="nevs-popup-text" v-html="text"/>
+        <div v-if="type==='input'" class="nevs-popup-input">
+          <NevsTextField v-model="input" :width="'100%'"></NevsTextField>
+        </div>
+        <div class="nevs-popup-buttons">
+          <NevsButton class="error" v-if="type==='input'" @click="cancelClick">{{ $LANG.Get('buttons.cancel') }}</NevsButton>
+          <NevsButton class="success" v-if="type==='alert' || type==='input'" @click="okClick">{{ $LANG.Get('buttons.ok') }}</NevsButton>
+          <NevsButton class="error" v-if="type==='confirm'" @click="noClick">{{ $LANG.Get('buttons.no') }}</NevsButton>
+          <NevsButton class="success" v-if="type==='confirm'" @click="yesClick">{{ $LANG.Get('buttons.yes') }}</NevsButton>
+        </div>
       </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script>

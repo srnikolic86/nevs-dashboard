@@ -1,7 +1,9 @@
 <template>
-  <div v-if="show" class="nevs-notification">
-    <div class="nevs-notification-message" v-html="text"/>
-  </div>
+  <Transition name="nevs-notification">
+    <div v-if="show" class="nevs-notification">
+      <div class="nevs-notification-message" v-html="text"/>
+    </div>
+  </Transition>
 </template>
 
 <script>
