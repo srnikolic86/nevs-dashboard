@@ -12,11 +12,15 @@
     display: none;
     padding: 0 10px;
     cursor: pointer;
+    overflow: hidden;
   }
 
   &-breadcrumbs {
     display: inline-block;
     padding: 0 10px;
+    height: $top-bar-height;
+    width: calc(100% - 200px);
+    overflow: hidden;
 
     &-item {
       display: inline-block;
