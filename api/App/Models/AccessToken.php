@@ -19,7 +19,7 @@ class AccessToken extends Model
         $term = true;
         $token = '';
         while ($term) {
-            $token = md5(round(microtime(true) * 1000) . rand(0, 999999));
+            $token = bin2hex(random_bytes(32));
             $duplicates = AccessToken::Select('token=?', [$token]);
             $term = (count($duplicates) !== 0);
         }
