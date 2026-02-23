@@ -42,7 +42,7 @@ export default {
             showMenu: true,
             sessionCheckDone: false,
             menu: {
-                logo: 'https://via.placeholder.com/250x100',
+                logo: 'https://placehold.co/250x100',
                 items: []
             },
             topBarButtons: [
