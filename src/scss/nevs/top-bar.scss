@@ -1,3 +1,5 @@
+@use 'vars' as *;
+
 .nevs-top-bar {
   width: calc(100% - $menu-width);
   height: $top-bar-height;
