@@ -29,10 +29,10 @@ This is a web application template. It uses [NevsPHP](https://github.com/srnikol
 It has a log in screen and a user management module.
 
 # Tested with
- - PHP 8.1
- - Node.js 18.4.0
- - NPM 8.12.1
- - MariaDB 10.5.10
+ - PHP 8.3
+ - Node.js 22.22.0
+ - NPM 10.9.4
+ - MariaDB 11.0.2
 
 # Quick setup
 1. copy _api/App/config.php.example_ into _api/Config/App/config.php_ and setup your database connection
