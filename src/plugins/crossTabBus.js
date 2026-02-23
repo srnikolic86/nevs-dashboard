@@ -30,18 +30,51 @@ export default {
                         actions: []
                     });
                 }
-                this.events[index].actions.push(action);
+                let handle = null;
+                let exists = true;
+                while (exists) {
+                    handle = Math.floor(100000 + Math.random() * 900000);
+                    exists = false;
+                    for (let listenedEvent of this.events) {
+                        if (listenedEvent.name === name) {
+                            for (let action of listenedEvent.actions) {
+                                if (action.handle === handle) {
+                                    exists = true;
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                }
+                this.events[index].actions.push({
+                    handle: handle,
+                    run: action
+                });
+                return handle;
             },
             TriggerEvent(name, payload) {
                 window.localStorage.setItem('nevs-crosstab-' + name, JSON.stringify(payload));
                 for (let listenedEvent of this.events) {
                     if (listenedEvent.name === name) {
                         for (let action of listenedEvent.actions) {
-                            action(payload);
+                            action.run(payload);
                         }
+                        break;
                     }
                 }
                 window.localStorage.setItem('nevs-crosstab-' + name, '');
+            },
+            UnbindEvent(handle) {
+                for (let listenedEvent of this.events) {
+                    for (let actionIdx in listenedEvent.actions) {
+                        let action = listenedEvent.actions[actionIdx];
+                        if (action.handle === handle) {
+                            listenedEvent.actions.splice(actionIdx, 1);
+                            break;
+                        }
+                    }
+                }
             }
         }
 
