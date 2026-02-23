@@ -13,9 +13,22 @@ class UploadController extends Controller
     {
         $response = [];
 
+        $blocked_extensions = [
+            'php', 'php2', 'php3', 'php4', 'php5', 'php7', 'phtml', 'phar',
+            'py', 'pyc', 'rb', 'pl', 'cgi',
+            'sh', 'bash', 'zsh', 'fish',
+            'exe', 'bat', 'cmd', 'com', 'vbs', 'vbe', 'js', 'jse', 'wsf', 'wsh', 'ps1',
+            'htaccess', 'htpasswd'
+        ];
+
         $file = $this->request->files['file'];
 
         $base_file_name = $file['name'];
+        $extension = strtolower(pathinfo($base_file_name, PATHINFO_EXTENSION));
+
+        if (in_array($extension, $blocked_extensions)) {
+            return new Response(json_encode(['success' => false, 'error' => 'file type not allowed']), ['HTTP/1.1 400 Bad Request']);
+        }
 
         $file_name = $base_file_name;
         $increment = 0;
