@@ -79,9 +79,6 @@ export default {
     }
   },
   watch: {
-    totalRecords() {
-      this.reload();
-    },
     currentPage() {
       this.reload();
     },
