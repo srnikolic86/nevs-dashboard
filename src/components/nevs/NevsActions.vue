@@ -33,7 +33,8 @@ export default {
     },
     data() {
         return {
-            showDropdown: false
+            showDropdown: false,
+            ignoreNextListener: false
         }
     },
     computed: {
@@ -60,14 +61,30 @@ export default {
             this.toggleDropdown();
         },
         toggleDropdown() {
+            this.ignoreNextListener = true;
             this.showDropdown = !this.showDropdown;
+            if (this.showDropdown) {
+                document.addEventListener('click', this.handleClickOutside);
+            } else {
+                document.removeEventListener('click', this.handleClickOutside);
+            }
+        },
+        handleClickOutside(event) {
+            if (this.ignoreNextListener) {
+                this.ignoreNextListener = false;
+                return;
+            }
+            if (!this.$el.contains(event.target)) {
+                this.showDropdown = false;
+                document.removeEventListener('click', this.handleClickOutside);
+            }
         },
     },
     mounted() {
 
     },
     unmounted() {
-
+        document.removeEventListener('click', this.handleClickOutside);
     }
 }
 </script>
