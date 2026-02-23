@@ -31,7 +31,9 @@
     "changePassword": "Promijeni lozinku",
     "mandatoryField": "Ovo polje je obavezno.",
     "invalidEmailAddress": "Unesena e-mail adres nije ispravna.",
-    "rememberLogin": "zapamti me"
+    "rememberLogin": "zapamti me",
+    "chooseAction": "Odaberi akciju",
+    "cancel": "Odustani"
   },
   "alerts": {
     "passwordResetSuccessful": "Nova lozinka je poslana na unesenu e-mail adresu ako postoji korisnički račun s tom e-mail adresom.",

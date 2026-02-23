@@ -1,0 +1,18 @@
+.nevs-actions {
+  background: $actions-main-background;
+  color: $actions-main-foreground;
+  text-align: center;
+}
+
+.nevs-actions-holder {
+  color: $actions-box-foreground;
+  .nevs-dropdown-frame {
+    border: 1px solid $actions-box-background;
+  }
+  .nevs-dropdown-option {
+    background: $actions-box-background;
+  }
+  .nevs-dropdown-option:hover {
+    background: $actions-box-selection;
+  }
+}
