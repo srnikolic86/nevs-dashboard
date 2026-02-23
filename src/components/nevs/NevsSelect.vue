@@ -175,7 +175,9 @@ export default {
         }
         let vm = this;
         this.crossTabReloadHandle = this.$CROSS_TAB_BUS.ListenToEvent('reload-data', () => {
-            vm.loadAPIOptions();
+            if (vm.ajax) {
+                vm.loadAPIOptions();
+            }
         });
     },
     unmounted() {
