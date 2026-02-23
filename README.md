@@ -241,6 +241,28 @@ Here is a JSON example of the value (object):
 | name     | String | Name of the file.                                                             |
 | link     | String | Link to be used to access the file.                                           |
 
+# Actions dropdown
+```html
+<NevsActions :width="'200px'" :actions="actions" :context="context"></NevsActions>
+```
+| Prop    | Type   | Description                                                                        |
+|---------|--------|------------------------------------------------------------------------------------|
+| actions | Array  | array of objects each containing the label, the action and the visibility function |
+| context | Object | this object is passed to action                                                    |
+| width   | String | CSS directly outtputed into _width_ (defaults to _'100%'_)                         |
+Here is an example of the actions element:
+```js
+{
+    label: 'Do something',
+    action: (context) => {
+        // do something based on context
+    },
+    visible: (context) => {
+        return true; // true or false based on context
+    }
+}
+```
+
 # API access
 To access the API you should use $API global property.\
 Here is an example of how to use it from any Vue component:
