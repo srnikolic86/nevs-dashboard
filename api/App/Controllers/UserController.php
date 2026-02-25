@@ -57,7 +57,7 @@ class UserController extends Controller
         $response['total_records'] = count($DB->ExecuteSelect($query, $params));
 
         $query .= ' ORDER BY `' . mysqli_real_escape_string($DB->db, $sort['field']) . '` ';
-        $query .= (!$sort['descending']) ? 'ASC' : 'DESC';
+        $query .= ($sort['descending'] == 'false') ? 'ASC' : 'DESC';
 
         $start_record = ($current_page - 1) * $rows_per_page;
         $query .= ' LIMIT ' . $start_record . ', ' . $rows_per_page;
