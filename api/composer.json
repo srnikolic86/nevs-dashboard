@@ -14,7 +14,7 @@
   "require": {
     "php": ">= 8.5",
     "srnikolic86/nevsphp": "dev-main",
-    "nesbot/carbon": "^2.58"
+    "nesbot/carbon": "^3.0"
   },
   "autoload": {
     "psr-4": {
