@@ -28,7 +28,10 @@ class UserController extends Controller
         ];
 
         $sort = $this->request->data['sort'];
-        $filters = $this->request->data['filters'];
+        $filters = [];
+        if (isset($this->request->data['filters'])) {
+            $filters = $this->request->data['filters'];
+        }
         $current_page = $this->request->data['currentPage'];
         $rows_per_page = $this->request->data['rowsPerPage'];
 
