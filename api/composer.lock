@@ -234,12 +234,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/srnikolic86/nevsphp.git",
-                "reference": "1d5bdc22d54dc073dca01f764399f771fb220f2d"
+                "reference": "14be2610f52a00f9eb6873f249f4c386017abc8a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/srnikolic86/nevsphp/zipball/1d5bdc22d54dc073dca01f764399f771fb220f2d",
-                "reference": "1d5bdc22d54dc073dca01f764399f771fb220f2d",
+                "url": "https://api.github.com/repos/srnikolic86/nevsphp/zipball/14be2610f52a00f9eb6873f249f4c386017abc8a",
+                "reference": "14be2610f52a00f9eb6873f249f4c386017abc8a",
                 "shasum": ""
             },
             "require": {
@@ -267,7 +267,7 @@
                 "issues": "https://github.com/srnikolic86/nevsphp/issues",
                 "source": "https://github.com/srnikolic86/nevsphp/tree/main"
             },
-            "time": "2025-12-29T15:51:12+00:00"
+            "time": "2026-03-02T16:06:36+00:00"
         },
         {
             "name": "symfony/clock",
