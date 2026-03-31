@@ -1,4 +1,5 @@
 import '@fortawesome/fontawesome-free/js/all.min.js'
+import 'moment/locale/hr'
 
 import './scss/style.scss'
 
