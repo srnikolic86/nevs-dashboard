@@ -9,7 +9,7 @@ export default {
                     for (let listenedEvent of this.events) {
                         if (event.key === 'nevs-crosstab-' + listenedEvent.name) {
                             for (let action of listenedEvent.actions) {
-                                action(JSON.parse(event.newValue));
+                                action.run(JSON.parse(event.newValue));
                             }
                         }
                     }
