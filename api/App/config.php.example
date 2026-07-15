@@ -35,6 +35,18 @@ const NEVS_CONFIG = [
             'use_path_style' => true
         ]
     ],
+    // SMTP settings for App\Classes\Email. Fill these in per environment. 'demo_recipient', when set,
+    // redirects all outgoing mail to that address (with the real recipients appended to the body) for testing.
+    'mail' => [
+        'demo_recipient' => '',
+        'from' => '',
+        'from_name' => '',
+        'host' => '',
+        'username' => '',
+        'password' => '',
+        'encryption' => 'ssl',
+        'port' => '465'
+    ],
     'timezone' => 'Europe/Berlin',
     'default_locale' => 'en',
     'enabled_logs' => []
