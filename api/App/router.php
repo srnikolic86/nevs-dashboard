@@ -12,7 +12,7 @@ const NEVS_ROUTER = new Router([
         new Route("POST", "password-reset", 'AuthController', "PasswordReset"),
         new Route("GET", "heartbeat", 'AuthController', "Heartbeat")
 
-    ],  ['CorsMiddleware']),
+    ],  ['CorsMiddleware', 'MaintenanceMiddleware']),
 
     new RouteGroup("/", [
 
@@ -30,5 +30,5 @@ const NEVS_ROUTER = new Router([
         new RouteGroup("select/", [
             new Route("GET", "permissions", 'PermissionsController', "Select"),
         ])
-    ],  ['CorsMiddleware', 'AuthMiddleware'])
+    ],  ['CorsMiddleware', 'AuthMiddleware', 'MaintenanceMiddleware'])
 ]);

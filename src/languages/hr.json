@@ -33,7 +33,10 @@
     "invalidEmailAddress": "Unesena e-mail adres nije ispravna.",
     "rememberLogin": "zapamti me",
     "chooseAction": "Odaberi akciju",
-    "cancel": "Odustani"
+    "cancel": "Odustani",
+    "maintenanceTitle": "Aplikacija je u održavanju",
+    "maintenanceMessage": "Trenutno provodimo održavanje. Molimo pokušajte ponovo kasnije.",
+    "maintenancePlanned": "Planirano je održavanje aplikacije %date% u %time%. Očekivano vrijeme trajanja je %hours% i u tom vremenu može doći do prekida u radu aplikacije."
   },
   "alerts": {
     "passwordResetSuccessful": "Nova lozinka je poslana na unesenu e-mail adresu ako postoji korisnički račun s tom e-mail adresom.",

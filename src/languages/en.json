@@ -32,7 +32,10 @@
     "changePassword": "Change password",
     "mandatoryField": "This field is mandatory.",
     "invalidEmailAddress": "Entered e-mail address is not valid.",
-    "rememberLogin": "remember me"
+    "rememberLogin": "remember me",
+    "maintenanceTitle": "Under Maintenance",
+    "maintenanceMessage": "We are currently performing maintenance. Please try again later.",
+    "maintenancePlanned": "Planned maintenance on %date% at %time%. The expected duration is %hours% during which the application may experience interruptions."
   },
   "alerts": {
     "passwordResetSuccessful": "New password was sent to the entered e-mail address if there is an account associated with it.",

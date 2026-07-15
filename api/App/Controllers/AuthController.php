@@ -112,7 +112,10 @@ class AuthController extends Controller
 
         return new Response(json_encode([
             'logged_in' => $user != null,
-            'version' => $version['version']
+            'version' => $version['version'],
+            'maintenance_date' => Config::Get('maintenance_date'),
+            'maintenance_time' => Config::Get('maintenance_time'),
+            'maintenance_hours' => Config::Get('maintenance_hours')
         ]));
     }
 

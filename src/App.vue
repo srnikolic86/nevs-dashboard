@@ -1,5 +1,10 @@
 <template>
-    <div v-if="sessionCheckDone" class="app-container">
+    <div v-if="maintenance" class="maintenance-screen">
+        <i class="fa-solid fa-screwdriver-wrench maintenance-icon"></i>
+        <h1>{{ $LANG.Get('labels.maintenanceTitle') }}</h1>
+        <p>{{ $LANG.Get('labels.maintenanceMessage') }}</p>
+    </div>
+    <div v-else-if="sessionCheckDone" class="app-container">
         <NevsLoader v-if="$store.state.loaderCount > 0"></NevsLoader>
         <NevsNotification></NevsNotification>
         <NevsPopup></NevsPopup>
@@ -12,6 +17,9 @@
             <NevsTopBar :breadcrumbs="$store.state.breadcrumbs" :buttons="topBarButtons"
                         @toggleMenu="showMenu=!showMenu"></NevsTopBar>
             <div class="nevs-main-content">
+                <div v-if="maintenanceDate !== null" class="maintenance-planned-warning">
+                    {{ maintenancePlannedText }}
+                </div>
                 <RouterView></RouterView>
             </div>
         </template>
@@ -39,6 +47,10 @@ export default {
     },
     data() {
         return {
+            maintenance: false,
+            maintenanceDate: null,
+            maintenanceTime: null,
+            maintenanceHours: null,
             showMenu: true,
             sessionCheckDone: false,
             menu: {
@@ -73,6 +85,18 @@ export default {
             ]
         }
     },
+    computed: {
+        maintenancePlannedText() {
+            if (this.maintenanceDate === null) return '';
+            const dateParts = this.maintenanceDate.split('-');
+            const formattedDate = `${parseInt(dateParts[2])}.${parseInt(dateParts[1])}.${dateParts[0]}.`;
+            const formattedTime = this.maintenanceTime ? this.maintenanceTime.substring(0, 5) : '';
+            return this.$LANG.Get('labels.maintenancePlanned')
+                .replace('%date%', formattedDate)
+                .replace('%time%', formattedTime)
+                .replace('%hours%', this.maintenanceHours);
+        }
+    },
     methods: {
         resolveWindowResize() {
             this.showMenu = window.innerWidth >= 800;
@@ -102,11 +126,18 @@ export default {
         this.resolveWindowResize();
         let vm = this;
         this.$API.APICall('get', 'public/version', {}, (data, success) => {
-            if (success) {
-                if (data.version !== this.$HELPERS.GetCookie('nevs_version')) {
-                    this.$HELPERS.SetCookie('nevs_version', data.version);
-                    window.location.reload(true);
+            if (!success) {
+                if (data && data.error === 'maintenance in progress') {
+                    vm.maintenance = true;
                 }
+                return;
+            }
+            vm.maintenanceDate = data.maintenance_date ?? null;
+            vm.maintenanceTime = data.maintenance_time ?? null;
+            vm.maintenanceHours = data.maintenance_hours ?? null;
+            if (data.version !== this.$HELPERS.GetCookie('nevs_version')) {
+                this.$HELPERS.SetCookie('nevs_version', data.version);
+                window.location.reload(true);
             }
         });
         this.$API.APICall('get', 'session', {}, (data, success) => {
@@ -124,21 +155,70 @@ export default {
             });
         }, false);
         setInterval(() => {
-            if (vm.$store.state.user !== null) {
-                this.$API.APICall('get', 'public/heartbeat', {}, (data, success) => {
-                    if (success) {
-                        if (!data.logged_in) {
-                            vm.$store.commit('setUser', null);
-                        }
-                        if (data.version !== this.$HELPERS.GetCookie('nevs_version')) {
-                            this.$HELPERS.SetCookie('nevs_version', data.version);
-                            window.location.reload(true);
-                        }
+            this.$API.APICall('get', 'public/heartbeat', {}, (data, success) => {
+                if (!success) {
+                    if (data && data.error === 'maintenance in progress') {
+                        vm.maintenance = true;
                     }
-                }, false);
-            }
+                    return;
+                }
+                vm.maintenance = false;
+                vm.maintenanceDate = data.maintenance_date ?? null;
+                vm.maintenanceTime = data.maintenance_time ?? null;
+                vm.maintenanceHours = data.maintenance_hours ?? null;
+                if (vm.$store.state.user !== null) {
+                    if (!data.logged_in) {
+                        vm.$store.commit('setUser', null);
+                    }
+                    if (data.version !== this.$HELPERS.GetCookie('nevs_version')) {
+                        this.$HELPERS.SetCookie('nevs_version', data.version);
+                        window.location.reload(true);
+                    }
+                }
+            }, false);
         }, 30000);
     }
 }
 
 </script>
+
+<style scoped>
+.maintenance-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: #f4f6f8;
+    text-align: center;
+    padding: 20px;
+}
+
+.maintenance-icon {
+    font-size: 80px;
+    color: #999;
+    margin-bottom: 30px;
+}
+
+.maintenance-screen h1 {
+    font-size: 28px;
+    color: #444;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.maintenance-screen p {
+    font-size: 16px;
+    color: #777;
+    max-width: 480px;
+    line-height: 1.6;
+}
+
+.maintenance-planned-warning {
+    margin: 10px;
+    background: #F88379;
+    padding: 10px;
+    color: black;
+    border-radius: 10px;
+}
+</style>

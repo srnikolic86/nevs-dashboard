@@ -33,7 +33,7 @@ class AuthMiddleware extends Middleware
         return null;
     }
 
-    public function After(Request &$request, Response &$response): void
+    public function After(Request &$request, null|Response &$response): void
     {
 
     }

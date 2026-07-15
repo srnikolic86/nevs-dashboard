@@ -9,6 +9,10 @@ const NEVS_CONFIG = [
     ],
     'app_root' => '/var/www/html/api/',
     'router_base' => 'api/',
+    'maintenance' => false,
+    'maintenance_date' => null,
+    'maintenance_time' => null,
+    'maintenance_hours' => '1 sat',
     'db' => [
         'host' => 'db',
         'username' => 'root',

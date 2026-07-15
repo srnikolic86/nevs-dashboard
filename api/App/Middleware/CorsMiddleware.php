@@ -14,7 +14,7 @@ class CorsMiddleware extends Middleware
         return null;
     }
 
-    public function After(Request &$request, Response &$response): void
+    public function After(Request &$request, null|Response &$response): void
     {
         if (isset($_SERVER['HTTP_ORIGIN'])) {
             if (in_array($_SERVER['HTTP_ORIGIN'], Config::get('allowed_origins'))) {
