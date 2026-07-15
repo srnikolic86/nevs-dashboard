@@ -1,0 +1,55 @@
+@use 'vars' as *;
+
+// Shared look for the small catalog listing tables (products, memberships, packages, wares). A clean,
+// warm-palette table with a soft header, subtle row separators and a gentle hover - modern but still simple.
+// Apply to the <table> element. Works with or without an explicit <thead> (the header rules only bite where
+// there are <th> cells). Right-aligned columns keep their inline `text-align: right`.
+@mixin mini-grid {
+    width: 100%;
+    max-width: 700px;
+    margin-top: 20px;
+    clear: both;
+    border-collapse: collapse;
+    font-size: 15px;
+    color: $ink-strong;
+
+    th {
+        background: $sand-100;
+        color: $ink-muted;
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        text-align: left;
+        padding: 11px 14px;
+        border-bottom: 1px solid $sand-300;
+    }
+
+    td {
+        text-align: left;
+        padding: 12px 14px;
+        border-bottom: 1px solid $sand-200;
+    }
+
+    tr:last-child td {
+        border-bottom: none;
+    }
+
+    tr:hover td {
+        background: $peach-wash;
+    }
+}
+
+// A clickable action icon (edit / delete) inside a grid row. Apply to the <span> wrapping the icon.
+@mixin grid-action {
+    display: inline-block;
+    margin-left: 12px;
+    font-size: 14px;
+    color: $ink-muted;
+    cursor: pointer;
+    transition: color 0.12s ease;
+
+    &:hover {
+        color: $primary;
+    }
+}
