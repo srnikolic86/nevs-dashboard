@@ -24,6 +24,17 @@ const NEVS_CONFIG = [
         'queue_table' => 'nevs_queue',
         'migrations_folder' => 'Migrations/'
     ],
+    'uploads' => [
+        'driver' => 'filesystem', // filesystem or s3
+        's3' => [
+            'endpoint' => '',
+            'region' => '',
+            'bucket' => '',
+            'key' => '',
+            'secret' => '',
+            'use_path_style' => true
+        ]
+    ],
     'timezone' => 'Europe/Berlin',
     'default_locale' => 'en',
     'enabled_logs' => []

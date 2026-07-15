@@ -1,0 +1,217 @@
+@use 'vars' as *;
+
+.nevs-calendar {
+    border: 1px solid $calendar-border;
+    border-radius: 8px;
+    overflow: hidden;
+    background: $calendar-background;
+}
+
+.nevs-calendar-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 12px;
+    background: $calendar-toolbar-background;
+    border-bottom: 1px solid $calendar-border;
+}
+
+.nevs-calendar-nav {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nevs-calendar-nav-button, .nevs-calendar-today-button, .nevs-calendar-view-button {
+    cursor: pointer;
+    user-select: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid $calendar-button-border;
+    background: $calendar-button-background;
+    color: $calendar-heading-color;
+    font-size: 13px;
+}
+
+.nevs-calendar-nav-button:hover, .nevs-calendar-today-button:hover, .nevs-calendar-view-button:hover {
+    background: $calendar-button-hover-background;
+}
+
+.nevs-calendar-view-button.active {
+    background: $calendar-view-active-background;
+    border-color: $calendar-view-active-border;
+}
+
+.nevs-calendar-title {
+    font-size: 17px;
+    font-weight: 600;
+    color: $calendar-heading-color;
+}
+
+.nevs-calendar-tools {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.nevs-calendar-compact {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 13px;
+    color: $calendar-heading-color;
+    cursor: pointer;
+    user-select: none;
+}
+
+.nevs-calendar-compact input {
+    cursor: pointer;
+}
+
+.nevs-calendar-views {
+    display: flex;
+    gap: 6px;
+}
+
+/* MONTH */
+.nevs-calendar-month-header {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: $calendar-muted-background;
+    border-bottom: 1px solid $calendar-header-border;
+}
+
+.nevs-calendar-month-header-cell {
+    padding: 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: $calendar-muted-color;
+}
+
+.nevs-calendar-month-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.nevs-calendar-month-cell {
+    min-height: 110px;
+    border-right: 1px solid $calendar-grid-border;
+    border-bottom: 1px solid $calendar-grid-border;
+    padding: 4px;
+    overflow: hidden;
+}
+
+.nevs-calendar-month-cell-outside {
+    background: $calendar-muted-background;
+    color: $calendar-outside-color;
+}
+
+.nevs-calendar-month-cell-today {
+    background: $calendar-today-background;
+}
+
+.nevs-calendar-month-daynum {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.nevs-calendar-pill {
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: $calendar-event-color;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.nevs-calendar-pill-time {
+    font-weight: 600;
+}
+
+/* TIME GRID (WEEK/DAY) */
+.nevs-calendar-timegrid-header {
+    display: flex;
+    border-bottom: 1px solid $calendar-header-border;
+    background: $calendar-muted-background;
+}
+
+.nevs-calendar-gutter-header {
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.nevs-calendar-day-header {
+    flex: 1;
+    text-align: center;
+    padding: 8px 4px;
+    font-size: 13px;
+    font-weight: 600;
+    color: $calendar-heading-color;
+    border-left: 1px solid $calendar-grid-border;
+}
+
+.nevs-calendar-day-header-today {
+    background: $calendar-today-background;
+}
+
+.nevs-calendar-timegrid-body {
+    display: flex;
+    max-height: 600px;
+    overflow-y: auto;
+}
+
+.nevs-calendar-gutter {
+    width: 60px;
+    flex-shrink: 0;
+}
+
+.nevs-calendar-hour-label {
+    font-size: 11px;
+    color: $calendar-hour-label-color;
+    text-align: right;
+    padding-right: 6px;
+    box-sizing: border-box;
+    border-bottom: 1px solid $calendar-line-border;
+}
+
+.nevs-calendar-day-column {
+    flex: 1;
+    position: relative;
+    border-left: 1px solid $calendar-grid-border;
+}
+
+.nevs-calendar-hour-line {
+    border-bottom: 1px solid $calendar-line-border;
+    box-sizing: border-box;
+}
+
+.nevs-calendar-event {
+    position: absolute;
+    border-radius: 5px;
+    padding: 3px 6px;
+    box-sizing: border-box;
+    overflow: hidden;
+    color: $calendar-event-color;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.nevs-calendar-event-title {
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nevs-calendar-event-html {
+    font-size: 11px;
+    line-height: 1.3;
+}

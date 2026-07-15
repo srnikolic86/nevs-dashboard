@@ -8,6 +8,10 @@
   left: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
+  // Never let a modal grow taller than the viewport: if it does, the overlay itself scrolls so the whole
+  // modal (including its buttons) stays reachable. Scrolling here rather than on .nevs-popup avoids clipping
+  // the absolutely-positioned dropdowns / date pickers that live inside modals.
+  overflow-y: auto;
 }
 
 .nevs-popup {
@@ -18,6 +22,12 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 100px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+  // Never taller than the viewport (accounting for the top + bottom margins): the popup itself scrolls
+  // when its content would otherwise push it past the bottom of the screen.
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
 }
 
 .nevs-popup-text {
@@ -48,6 +58,7 @@
   .nevs-popup {
     width: 80%;
     margin-top: 20px;
+    max-height: calc(100vh - 40px);
   }
 }
 

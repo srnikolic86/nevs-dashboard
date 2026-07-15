@@ -33,7 +33,7 @@
           </span>
     <span class="nevs-table-footer-label">
         {{ $LANG.Get('pagination.of') }}
-        {{ totalPages }}
+        {{ totalPagesDisplay }}
       </span>
   </div>
 </template>
@@ -61,6 +61,9 @@ export default {
   ],
   data() {
     return {
+      // Must match Helpers::CappedCount's cap on the backend: past this many rows the API returns -1 instead
+      // of an exact total, and pages are capped here.
+      COUNTED_CAP: 10000,
       currentPage: 1,
       rowsPerPage: 20,
       sort: {
@@ -73,9 +76,18 @@ export default {
     }
   },
   computed: {
+    // The API returns -1 for total records when the exact count would be too expensive (more than the cap).
+    // In that case pages are capped at COUNTED_CAP and the page count is shown as "<n>+".
+    countIsCapped() {
+      return this.totalRecords === -1;
+    },
     totalPages() {
       if (this.rowsPerPage === 0) return 0;
+      if (this.countIsCapped) return Math.ceil(this.COUNTED_CAP / this.rowsPerPage);
       return Math.ceil(this.totalRecords / this.rowsPerPage);
+    },
+    totalPagesDisplay() {
+      return this.countIsCapped ? this.totalPages + '+' : this.totalPages;
     }
   },
   watch: {

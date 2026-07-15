@@ -13,7 +13,10 @@
   "tooltips": {
     "logout": "Logout",
     "openInNewWindow": "Open in new window",
-    "myProfile": "My profile"
+    "myProfile": "My profile",
+    "changePhoto": "Change photo",
+    "uploadPhoto": "Upload photo",
+    "delete": "Delete"
   },
   "modules": {
     "home": "Home",
@@ -35,7 +38,14 @@
     "rememberLogin": "remember me",
     "maintenanceTitle": "Under Maintenance",
     "maintenanceMessage": "We are currently performing maintenance. Please try again later.",
-    "maintenancePlanned": "Planned maintenance on %date% at %time%. The expected duration is %hours% during which the application may experience interruptions."
+    "maintenancePlanned": "Planned maintenance on %date% at %time%. The expected duration is %hours% during which the application may experience interruptions.",
+    "calendarCompact": "Hide empty hours",
+    "calendarDay": "Day",
+    "calendarWeek": "Week",
+    "calendarMonth": "Month",
+    "calendarToday": "Today",
+    "allowedFileTypes": "Allowed formats: PDF, Word, Excel, images, etc.",
+    "dropFilesHere": "Drop files here or click to select"
   },
   "alerts": {
     "passwordResetSuccessful": "New password was sent to the entered e-mail address if there is an account associated with it.",
@@ -44,7 +54,9 @@
     "loginFailed": "Entered credentials do not exist or this user account is not active.",
     "recordSaved": "Record was successfully saved.",
     "unauthorized": "You do not have permissions to do that.",
-    "emailDuplicate": "Record with that e-mail address already exists."
+    "emailDuplicate": "Record with that e-mail address already exists.",
+    "fileTooLargeList": "The following files are too large (maximum %size% MB) and will not be uploaded:",
+    "fileTypeNotAllowed": "The following files are of a disallowed type and will not be uploaded:"
   },
   "fields": {
     "email": "E-mail",

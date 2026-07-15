@@ -1,0 +1,43 @@
+@use 'vars' as *;
+
+.nevs-multi-upload-input {
+  display: none;
+}
+
+.nevs-multi-upload-zone {
+  border: 2px dashed $multi-upload-border;
+  border-radius: 8px;
+  padding: 25px 15px;
+  text-align: center;
+  cursor: pointer;
+  color: $multi-upload-foreground;
+  background: $multi-upload-background;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.nevs-multi-upload-zone:hover {
+  border-color: $multi-upload-accent;
+  background: $multi-upload-hover-background;
+}
+
+.nevs-multi-upload-zone-active {
+  border-color: $multi-upload-accent;
+  background: $multi-upload-active-background;
+}
+
+.nevs-multi-upload-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.nevs-multi-upload-text {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.nevs-multi-upload-subtext {
+  font-size: 12px;
+  margin-top: 4px;
+  color: $multi-upload-subtext;
+}

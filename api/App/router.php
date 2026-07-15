@@ -27,8 +27,12 @@ const NEVS_ROUTER = new Router([
         new Route("PUT", "users", 'UserController', "Update", ['id']),
         new Route("POST", "users", 'UserController', "Add"),
 
+        new Route("GET", "user-data", 'UserDataController', "Get"),
+        new Route("POST", "user-data", 'UserDataController', "Set"),
+
         new RouteGroup("select/", [
             new Route("GET", "permissions", 'PermissionsController', "Select"),
+            new Route("GET", "users", 'UserController', "Select"),
         ])
     ],  ['CorsMiddleware', 'AuthMiddleware', 'MaintenanceMiddleware'])
 ]);

@@ -2,11 +2,13 @@
     <div :style="wrapperStyle" class="nevs-field">
         <span v-if="label!== '' || reserveHeights" class="nevs-field-label">{{ label }}</span>
         <input v-model='formattedValue' :readonly="readonly" class="nevs-date-field nevs-field-content" type="text"
-               @focusin="openDropdown" @focusout="hideHint"/>
+               ref="fieldInput" @focusin="openDropdown" @focusout="hideHint"/>
         <span v-if="(hint!== '' || reserveHeights) && showHint" class="nevs-field-hint">{{ hint }}</span>
-        <div class="nevs-dropdown-holder">
+        <!-- Teleported to <body> with fixed coordinates so the picker is never clipped by a scrollable ancestor
+             (e.g. a capped modal). -->
+        <Teleport to="body">
             <Transition name="datepicker">
-                <div v-show="showPicker" class="nevs-date-field-picker">
+                <div v-show="showPicker" ref="picker" class="nevs-date-field-picker" :style="pickerStyle">
                     <div class="nevs-date-field-picker-year">
                         <div class="nevs-date-field-picker-year-left" @click="changeYear(-1);"><i
                             class="fa-solid fa-angle-left"></i>
@@ -39,7 +41,7 @@
                     </div>
                 </div>
             </Transition>
-        </div>
+        </Teleport>
         <span v-if="(error!== '' || reserveHeights) && (!showHint || hint==='')" class="nevs-field-error">{{ error }}</span>
     </div>
 </template>
@@ -108,6 +110,7 @@ export default {
                 'month': moment().format('M')
             },
             pickerDays: [],
+            pickerStyle: {},
             dayStyle: {},
             weekdayStyle: {
                 width: Math.floor(100 / 7) + '%'
@@ -171,7 +174,47 @@ export default {
             this.value = moment(this.pickerDisplay.year + '-' + day.month + '-' + day.day, 'YYYY-M-D').format(this.baseFormat);
             this.showPicker = false;
             this.showHint = false;
+            this.detachPickerListeners();
             document.removeEventListener('click', this.handleClickOutside);
+        },
+        updatePickerPosition() {
+            if (!this.$refs.fieldInput) return;
+            let rect = this.$refs.fieldInput.getBoundingClientRect();
+            // Picker is 250px wide; keep it within the viewport horizontally.
+            let left = Math.min(rect.left, window.innerWidth - 258);
+            if (left < 8) left = 8;
+
+            // The picker is fixed-positioned (teleported to <body>) and can't grow the page scroll, so open it
+            // upward when there isn't enough room below to show it fully. Its height varies (6 vs 5 day rows), so
+            // measure it when it is already rendered (scroll/resize) and fall back to an estimate on first open.
+            const margin = 8;
+            const pickerHeight = (this.$refs.picker && this.$refs.picker.offsetHeight) ? this.$refs.picker.offsetHeight : 360;
+            const spaceBelow = window.innerHeight - rect.bottom - margin;
+            const spaceAbove = rect.top - margin;
+            const openUp = spaceBelow < pickerHeight && spaceAbove > spaceBelow;
+
+            let style = {
+                position: 'fixed',
+                left: left + 'px',
+                zIndex: 200
+            };
+            if (openUp) {
+                // Reset the base rule's `top: 0`, otherwise the picker stretches from the top of the screen.
+                style.top = 'auto';
+                style.bottom = (window.innerHeight - rect.top) + 'px';
+            } else {
+                style.top = rect.bottom + 'px';
+                style.bottom = 'auto';
+            }
+            this.pickerStyle = style;
+        },
+        attachPickerListeners() {
+            window.addEventListener('scroll', this.updatePickerPosition, true);
+            window.addEventListener('resize', this.updatePickerPosition);
+        },
+        detachPickerListeners() {
+            window.removeEventListener('scroll', this.updatePickerPosition, true);
+            window.removeEventListener('resize', this.updatePickerPosition);
         },
         changeYear(amount) {
             this.pickerDisplay.year = parseInt(this.pickerDisplay.year) + amount;
@@ -215,6 +258,8 @@ export default {
                 this.showHint = true;
                 if (this.picker) {
                     this.showPicker = true;
+                    this.updatePickerPosition();
+                    this.attachPickerListeners();
                     document.addEventListener('click', this.handleClickOutside);
                 }
             }
@@ -225,9 +270,13 @@ export default {
             }
         },
         handleClickOutside(event) {
-            if (!this.$el.contains(event.target)) {
+            // The picker is teleported to <body>, so "outside" must also exclude the picker itself.
+            let insideField = this.$el.contains(event.target);
+            let insidePicker = this.$refs.picker && this.$refs.picker.contains(event.target);
+            if (!insideField && !insidePicker) {
                 this.showPicker = false;
                 this.showHint = false;
+                this.detachPickerListeners();
                 document.removeEventListener('click', this.handleClickOutside);
             }
         },
@@ -271,6 +320,7 @@ export default {
     },
     unmounted() {
         document.removeEventListener('click', this.handleClickOutside);
+        this.detachPickerListeners();
     }
 }
 

@@ -19,6 +19,21 @@ class UserController extends Controller
         ]));
     }
 
+    public function Select(): Response
+    {
+        // Example ajax select endpoint (GET select/users). Capped, server-side-searched options for an
+        // ajax NevsSelect/NevsMultipleSelect/NevsAutocomplete; never returns every user, and always includes
+        // the currently-selected value(s) via `protected` so the field keeps its label. See Helpers::SelectOptions.
+        return new Response(json_encode(Helpers::SelectOptions([
+            'data' => $this->request->data,
+            'table' => 'users',
+            'base_where' => '`active` = 1',
+            'search' => ['first_name', 'last_name'],
+            'order' => '`first_name` ASC, `last_name` ASC',
+            'label' => fn($row) => $row['first_name'] . ' ' . $row['last_name'],
+        ])));
+    }
+
     public function GetMultiple(): Response
     {
         global $DB;
@@ -57,7 +72,10 @@ class UserController extends Controller
             }
         }
 
-        $response['total_records'] = count($DB->ExecuteSelect($query, $params));
+        // Capped count (see Helpers::CappedCount) instead of materialising every matching row just to count
+        // them. NevsTable renders a -1 total as "N+". This is 8940e68's users-grid optimization, via f5ae815.
+        $id_query = str_replace('SELECT * FROM `users`', 'SELECT `id` FROM `users`', $query);
+        $response['total_records'] = Helpers::CappedCount($id_query, $params);
 
         $query .= ' ORDER BY `' . mysqli_real_escape_string($DB->db, $sort['field']) . '` ';
         $query .= ($sort['descending'] == 'false') ? 'ASC' : 'DESC';

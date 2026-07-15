@@ -6,11 +6,11 @@
   text-align: center;
 }
 
-.nevs-actions-holder {
+// The dropdown is teleported to <body>, so these overrides target the frame class directly instead of the
+// (no longer surrounding) .nevs-actions-holder.
+.nevs-actions-frame {
   color: $actions-box-foreground;
-  .nevs-dropdown-frame {
-    border: 1px solid $actions-box-background;
-  }
+  border: 1px solid $actions-box-background;
   .nevs-dropdown-option {
     background: $actions-box-background;
   }

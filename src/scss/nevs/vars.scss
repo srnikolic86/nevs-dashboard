@@ -28,6 +28,11 @@ $button-hover: #84889f !default;
 $field-background-base: #f5f8fa !default;
 $field-background-focused: #eef3f7 !default;
 $field-hint-color: #b5b5b5 !default;
+// Optional border around fields for extra contrast against the page background. Off by default; a project can
+// turn it on by setting e.g. `1px solid <color>`. The focused state reuses the same border unless overridden,
+// which (with box-sizing: border-box) keeps the field from shifting when focused.
+$field-border: 1px solid #d3d9e3 !default;
+$field-border-focus: 1px solid $primary !default;
 
 $dropdown-background: #ffffff !default;
 $dropdown-border-color: #dde7ef !default;
@@ -72,3 +77,71 @@ $top-bar-height: 50px !default;
 $top-bar-background: #28283c !default;
 $top-bar-color: #767b92 !default;
 $top-bar-button-hover-color: $primary !default;
+
+// --- Ported from fytlix for the full Nevs component library (2026-07-15). Neutral !default values;
+// override in the project-level src/scss/vars.scss for theming. ---
+
+// NevsMultiUpload
+$multi-upload-border: #b7bcc0 !default;
+$multi-upload-foreground: #5e6278 !default;
+$multi-upload-background: #fafbfc !default;
+$multi-upload-accent: #ffb04d !default;
+$multi-upload-hover-background: #fff7ec !default;
+$multi-upload-active-background: #ffeccc !default;
+$multi-upload-subtext: #9aa0ac !default;
+
+// NevsTabs / NevsTab
+$tabs-background: #d7e3ea !default;
+$tabs-color: #5e6278 !default;
+$tabs-hover-background: #c6d8e2 !default;
+$tabs-hover-color: #5e6278 !default;
+$tabs-active-background: $primary !default;
+$tabs-active-hover-background: $primary-hover !default;
+$tabs-active-color: $primary-foreground !default;
+$tabs-body-background: #f5f8fa !default;
+$tabs-body-border: #b7bcc0 !default;
+
+// NevsWysiwyg
+$wysiwyg-border: #dde7ef !default;
+$wysiwyg-toolbar-background: #f5f8fa !default;
+$wysiwyg-background: #ffffff !default;
+
+// NevsCalendar
+$calendar-border: #e3e7ee !default;
+$calendar-background: #ffffff !default;
+$calendar-toolbar-background: #f1f4f8 !default;
+$calendar-button-background: #ffffff !default;
+$calendar-button-border: #d3d9e3 !default;
+$calendar-button-hover-background: #e9eef5 !default;
+$calendar-view-active-background: #ffd496 !default;
+$calendar-view-active-border: #f0ad4e !default;
+$calendar-heading-color: #2f3545 !default;
+$calendar-muted-background: #fafbfc !default;
+$calendar-muted-color: #5e6278 !default;
+$calendar-header-border: #e8ebf1 !default;
+$calendar-grid-border: #eef1f5 !default;
+$calendar-line-border: #f3f5f8 !default;
+$calendar-outside-color: #b0b6c2 !default;
+$calendar-today-background: #fff7ec !default;
+$calendar-hour-label-color: #9aa0ac !default;
+$calendar-event-color: #1d2939 !default;
+
+// NevsChart
+$chart-bar-background: #f4863b !default;
+$chart-bar-hover-background: #d96f28 !default;
+$chart-grid-line: #eceff4 !default;
+$chart-axis-line: #d5dae1 !default;
+$chart-muted-color: #8a94a6 !default;
+$chart-label-color: $font-color !default;
+
+// --- Neutral base/palette vars needed by ported grid/photo components (2026-07-15). Grayscale defaults;
+// override in the project theme layer for a branded palette. ---
+$white: #ffffff !default;
+$ink-strong: #1d2939 !default;
+$ink-muted: #5e6278 !default;
+$ink-faint: #9aa0ac !default;
+$sand-100: #f5f8fa !default;
+$sand-200: #eef1f5 !default;
+$sand-300: #e3e7ee !default;
+$peach-wash: #eef2f7 !default;
+$danger: #c8362f !default;

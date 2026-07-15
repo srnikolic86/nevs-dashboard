@@ -1,0 +1,27 @@
+@use 'vars' as *;
+
+.nevs-wysiwyg {
+  display: block;
+  width: 100%;
+
+  .ql-toolbar.ql-snow,
+  .ql-container.ql-snow {
+    border-color: $wysiwyg-border;
+  }
+
+  .ql-toolbar.ql-snow {
+    border-radius: 5px 5px 0 0;
+    background: $wysiwyg-toolbar-background;
+  }
+
+  .ql-container.ql-snow {
+    border-radius: 0 0 5px 5px;
+    background: $wysiwyg-background;
+    font-family: $font-family;
+  }
+
+  .ql-editor {
+    min-height: 180px;
+    font-size: 14px;
+  }
+}

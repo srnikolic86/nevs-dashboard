@@ -1,0 +1,51 @@
+@use 'vars' as *;
+
+.nevs-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 6px;
+  background: $tabs-background;
+  border-radius: 10px;
+}
+
+.nevs-tab {
+  border: none;
+  cursor: pointer;
+  border-radius: 7px;
+  background: transparent;
+  color: $tabs-color;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.nevs-tab:hover {
+  background: $tabs-hover-background;
+  color: $tabs-hover-color;
+}
+
+.nevs-tab.active {
+  background: $tabs-active-background;
+  color: $tabs-active-color;
+}
+
+.nevs-tab.active:hover {
+  background: $tabs-active-hover-background;
+  color: $tabs-active-color;
+}
+
+.nevs-tab-body {
+  padding: 15px;
+  border: 2px solid $tabs-body-border;
+  border-radius: 10px;
+  background: $tabs-body-background;
+}
+
+.nevs-tab-body::after {
+  content: "";
+  display: block;
+  clear: both;
+}

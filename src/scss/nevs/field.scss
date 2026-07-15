@@ -8,7 +8,7 @@
 
   &-content {
     box-sizing: border-box;
-    border: none;
+    border: $field-border;
     border-radius: 5px;
     padding: 13px;
     background: $field-background-base;
@@ -39,7 +39,7 @@
 }
 
 .nevs-field-content:focus {
-  border: none;
+  border: $field-border-focus;
   outline: none;
   background: $field-background-focused;
 }

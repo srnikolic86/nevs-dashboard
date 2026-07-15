@@ -19,6 +19,14 @@
 - [Notifications](#notifications)
 - [Popups](#popups)
 - [Data table](#data-table)
+- [Simple grid](#simple-grid)
+- [Tiny grid](#tiny-grid)
+- [Chart](#chart)
+- [Photo upload](#photo-upload)
+- [Multi upload](#multi-upload)
+- [Tabs](#tabs)
+- [Calendar](#calendar)
+- [WYSIWYG editor](#wysiwyg-editor)
 - [Translations](#translations)
 - [Card](#card)
 - [Menu](#menu)
@@ -381,6 +389,179 @@ Here is a JSON example of an object that goes into _fields_ array:
 | width    | This is optional and it defaults to _"auto"_ (this is outputted directly into css _width_ property of _\<td\>_ in the header). |
 | sortable | This is optional and it defaults to _true_ (if _false_ the user will not be able to sort using this column).                   |
 
+
+# Simple grid
+A lightweight, non-paginated table for rendering an array of records. Cell content and a per-row actions
+column can be customised with slots.
+```html
+<NevsSimpleGrid :fields="fields" :records="records" :empty-text="'No records.'" @row-click="onRowClick">
+    <template #cell-score="{ record }">{{ record.score }} pts</template>
+    <template #actions="{ record }">
+        <i class="fa-solid fa-pen-to-square" @click.stop="edit(record)"></i>
+    </template>
+</NevsSimpleGrid>
+```
+| Prop         | Type     | Description                                                                              |
+|--------------|----------|------------------------------------------------------------------------------------------|
+| fields       | Array    | column definitions (see below)                                                           |
+| records      | Array    | array of record objects                                                                  |
+| empty-text   | String   | text shown when _records_ is empty                                                       |
+| clickable    | Boolean  | if rows are clickable (default _true_)                                                   |
+| row-class    | Function | optional _(record) => string_ returning a CSS class for the row                          |
+| fixed-layout | Boolean  | if _true_ uses a fixed table layout so per-field _width_ values are honoured exactly     |
+
+Event _row-click_ is emitted with the clicked record.
+
+Each element of _fields_ is in this form:
+```json
+{
+  "name": "score",
+  "label": "Score",
+  "align": "R",
+  "width": "120px"
+}
+```
+| Property | Description                                                                    |
+|----------|--------------------------------------------------------------------------------|
+| name     | key of the property in the record (also the name of the _cell-<name>_ slot)    |
+| label    | column header text                                                             |
+| align    | optional, _"R"_ right-aligns the column (defaults to left)                     |
+| width    | optional CSS width for the column                                              |
+
+Slots: _cell-<name>_ (scoped, provides _record_) overrides how a cell is rendered; _actions_ (scoped, provides _record_) renders a trailing actions column.
+
+# Tiny grid
+A compact, capped-width grid for small lists (e.g. line items) with an optional row action column.
+```html
+<NevsTinyGrid :columns="columns" :records="records" :actions="actions" @action="onAction"></NevsTinyGrid>
+```
+| Prop        | Type     | Description                                                                     |
+|-------------|----------|---------------------------------------------------------------------------------|
+| columns     | Array    | column definitions (see below), required                                        |
+| records     | Array    | array of record objects, required                                               |
+| actions     | Array    | optional row action icons (see below)                                           |
+| empty-text  | String   | text for the single full-width row shown when there are no records              |
+| is-inactive | Function | optional _(record) => boolean_ marking a row as inactive (dimmed + italic)      |
+| max-width   | String   | optional override of the grid's default max width (e.g. _'900px'_)              |
+
+Event _action_ is emitted with _(name, record)_ when a row action icon is clicked.
+
+Each element of _columns_ is in this form:
+```json
+{
+  "key": "price",
+  "label": "Price",
+  "align": "right",
+  "width": "120px"
+}
+```
+Each element of _actions_ is in this form:
+```json
+{
+  "name": "delete",
+  "icon": "fa-solid fa-trash",
+  "tooltip": "Delete",
+  "show": true
+}
+```
+_show_ is optional and may be a boolean or a _(record) => boolean_ predicate; omitted means always visible. Slot _cell-<key>_ (scoped, provides _record_ and _index_) overrides cell rendering.
+
+# Chart
+A dependency-free bar chart rendered as inline SVG.
+```html
+<NevsChart :labels="labels" :values="values" :title="'Monthly Revenue'" :suffix="' €'"></NevsChart>
+```
+| Prop       | Type   | Description                                                        |
+|------------|--------|--------------------------------------------------------------------|
+| labels     | Array  | array of category labels (X axis)                                  |
+| values     | Array  | array of numeric values, aligned with _labels_                    |
+| title      | String | optional chart title                                              |
+| suffix     | String | optional string appended to value labels (e.g. _' €'_)           |
+| height     | Number | chart height in pixels (default _280_)                            |
+| empty-text | String | text shown when _labels_ is empty                                 |
+
+# Photo upload
+A square avatar-style uploader that previews the selected image and supports replacing/removing it.
+```html
+<NevsPhotoUpload v-model="photo"></NevsPhotoUpload>
+```
+| Prop    | Type   | Description                                                     |
+|---------|--------|-----------------------------------------------------------------|
+| v-model | Object | value (same _{ id, name, link }_ shape as the file upload)     |
+| size    | String | CSS size of the square (default _'120px'_)                     |
+| accept  | String | outputted into _accept_ of the file input (default _'image/*'_) |
+
+# Multi upload
+A drag-and-drop dropzone for uploading several files at once, with client-side size and type validation.
+```html
+<NevsMultiUpload :max-size-mb="10" @uploaded="onUploaded"></NevsMultiUpload>
+```
+| Prop        | Type   | Description                                                          |
+|-------------|--------|----------------------------------------------------------------------|
+| extensions  | Array  | allowed file extensions (defaults to a common document/image set)   |
+| max-size-mb | Number | maximum size per file in MB (default _25_)                          |
+
+Event _uploaded_ is emitted with an array of the uploaded file objects once the upload completes.
+
+# Tabs
+A tab strip (_NevsTabs_) paired with one or more tab panes (_NevsTab_). The strip and every pane are bound to the same active value.
+```html
+<NevsTabs v-model="activeTab" :tabs="tabs"></NevsTabs>
+<NevsTab :model-value="activeTab" value="overview">Overview content</NevsTab>
+<NevsTab :model-value="activeTab" value="details">Details content</NevsTab>
+```
+_NevsTabs_ props:
+| Prop    | Type              | Description                                                        |
+|---------|-------------------|--------------------------------------------------------------------|
+| v-model | String or Integer | the value of the currently active tab                             |
+| tabs    | Array             | array of _{ value, label, visible? }_; a tab is shown unless _visible_ is explicitly _false_ |
+
+_NevsTab_ props:
+| Prop        | Type              | Description                                                    |
+|-------------|-------------------|----------------------------------------------------------------|
+| value       | String or Integer | this pane's identifier                                        |
+| model-value | String or Integer | the active tab value; the pane's slot is shown while it equals _value_ |
+
+# Calendar
+A month/week/day calendar that renders events and asks the parent to load data for the visible range.
+```html
+<NevsCalendar :events="events" @range-change="onRangeChange" @event-click="onEventClick"></NevsCalendar>
+```
+| Prop   | Type  | Description               |
+|--------|-------|---------------------------|
+| events | Array | array of event objects (see below) |
+
+Events are in this form:
+```json
+{
+  "name": "Team standup",
+  "start": "2026-07-15 09:30",
+  "end": "2026-07-15 10:00",
+  "color": "#4d4dff",
+  "html": ""
+}
+```
+| Property | Description                                                              |
+|----------|--------------------------------------------------------------------------|
+| name     | event title                                                              |
+| start    | start datetime in _"YYYY-MM-DD HH:mm(:ss)"_ format                       |
+| end      | end datetime in _"YYYY-MM-DD HH:mm(:ss)"_ format                         |
+| color    | optional event colour                                                    |
+| html     | optional custom HTML for the event tooltip                               |
+
+Event _range-change_ is emitted (on mount, navigation and view switch) so the parent can fetch events for the newly visible range. Event _event-click_ is emitted with the original event object when an event is clicked.
+
+# WYSIWYG editor
+A rich text editor backed by [Quill](https://quilljs.com/). The value is the editor's HTML.
+```html
+<NevsWysiwyg v-model="html" :label="'Description'"></NevsWysiwyg>
+```
+| Prop     | Type    | Description                                          |
+|----------|---------|------------------------------------------------------|
+| v-model  | String  | value as an HTML string                             |
+| label    | String  | label of the field                                  |
+| error    | String  | error message                                        |
+| readonly | Boolean | set to _true_ to make the editor read only          |
 
 # Translations
 Default locale is set in _config.json_ for frontend and _config.php_ for backend.\

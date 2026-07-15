@@ -13,7 +13,10 @@
   "tooltips": {
     "logout": "Odjava",
     "openInNewWindow": "Otvori u novom prozoru",
-    "myProfile": "Moj profil"
+    "myProfile": "Moj profil",
+    "changePhoto": "Promijeni fotografiju",
+    "uploadPhoto": "Učitaj fotografiju",
+    "delete": "Izbriši"
   },
   "modules": {
     "home": "Početna",
@@ -36,7 +39,14 @@
     "cancel": "Odustani",
     "maintenanceTitle": "Aplikacija je u održavanju",
     "maintenanceMessage": "Trenutno provodimo održavanje. Molimo pokušajte ponovo kasnije.",
-    "maintenancePlanned": "Planirano je održavanje aplikacije %date% u %time%. Očekivano vrijeme trajanja je %hours% i u tom vremenu može doći do prekida u radu aplikacije."
+    "maintenancePlanned": "Planirano je održavanje aplikacije %date% u %time%. Očekivano vrijeme trajanja je %hours% i u tom vremenu može doći do prekida u radu aplikacije.",
+    "calendarCompact": "Sakrij prazne sate",
+    "calendarDay": "Dan",
+    "calendarWeek": "Tjedan",
+    "calendarMonth": "Mjesec",
+    "calendarToday": "Danas",
+    "allowedFileTypes": "Dozvoljeni formati: PDF, Word, Excel, slike i sl.",
+    "dropFilesHere": "Povucite datoteke ovdje ili kliknite za odabir"
   },
   "alerts": {
     "passwordResetSuccessful": "Nova lozinka je poslana na unesenu e-mail adresu ako postoji korisnički račun s tom e-mail adresom.",
@@ -45,7 +55,9 @@
     "loginFailed": "Uneseni podaci nisu ispravni ili korisnički račun nije aktivan.",
     "recordSaved": "Zapis je uspješno spremljen.",
     "unauthorized": "Nemate dopuštenje za tu akciju.",
-    "emailDuplicate": "Zapis s tom e-mail adresom već postoji."
+    "emailDuplicate": "Zapis s tom e-mail adresom već postoji.",
+    "fileTooLargeList": "Sljedeće datoteke su prevelike (najveća dozvoljena veličina je %size% MB) i neće biti učitane:",
+    "fileTypeNotAllowed": "Sljedeće datoteke nisu dozvoljenog formata i neće biti učitane:"
   },
   "fields": {
     "email": "E-mail",
