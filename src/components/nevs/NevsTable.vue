@@ -17,8 +17,11 @@
     </tbody>
   </table>
   <div class="nevs-table-footer" :style="{'width': tableWidthComputed }">
-    <NevsNumberField :width="'70px'" :thousand-separator="''" :decimal-places="0"
-                     v-model="rowsPerPage"></NevsNumberField>
+    <!-- Plain inputs rather than NevsNumberField: these only ever hold a small whole number, and the field
+         component's label/hint/error slots make the footer taller than it needs to be. -->
+    <input class="nevs-table-footer-input" type="text" inputmode="numeric" maxlength="6"
+           :value="rowsPerPageText" @input="digitsOnly($event, 'rowsPerPageText')"
+           @focus="$event.target.select()" @blur="commitRowsPerPage" @keyup.enter="$event.target.blur()"/>
     <span class="nevs-table-footer-label">
         {{ $LANG.Get('pagination.resultsPerPage') }},
         {{ $LANG.Get('pagination.page') }}
@@ -26,8 +29,9 @@
     <span class="nevs-table-pagination-arrow" @click="modifyCurrentPage(-1)" v-show="currentPage > 1">
             <i class="fa-solid fa-caret-left"></i>
           </span>
-    <NevsNumberField :width="'60px'" :thousand-separator="''" :decimal-places="0"
-                     v-model="currentPage"></NevsNumberField>
+    <input class="nevs-table-footer-input" type="text" inputmode="numeric" maxlength="6"
+           :value="currentPageText" @input="digitsOnly($event, 'currentPageText')"
+           @focus="$event.target.select()" @blur="commitCurrentPage" @keyup.enter="$event.target.blur()"/>
     <span class="nevs-table-pagination-arrow" @click="modifyCurrentPage(1)" v-show="currentPage < totalPages">
             <i class="fa-solid fa-caret-right"></i>
           </span>
@@ -40,13 +44,8 @@
 
 <script>
 
-import NevsNumberField from "@/components/nevs/NevsNumberField.vue";
-
 export default {
   name: "NevsTable",
-  components: {
-    NevsNumberField
-  },
   props: {
     fields: Array,
     totalRecords: Number,
@@ -66,6 +65,10 @@ export default {
       COUNTED_CAP: 10000,
       currentPage: 1,
       rowsPerPage: 20,
+      // What the footer inputs show. Kept apart from the numbers above so typing does not fire a reload on
+      // every keystroke - the value is committed on blur or Enter.
+      currentPageText: '1',
+      rowsPerPageText: '20',
       sort: {
         field: '',
         descending: false
@@ -92,9 +95,11 @@ export default {
   },
   watch: {
     currentPage() {
+      this.currentPageText = this.currentPage.toString();
       this.reload();
     },
     rowsPerPage() {
+      this.rowsPerPageText = this.rowsPerPage.toString();
       this.reload();
     },
     height() {
@@ -115,6 +120,26 @@ export default {
     },
     modifyCurrentPage(modifier) {
       this.currentPage += modifier;
+    },
+    // Digits only. The element is written back to as well, otherwise a rejected character stays on screen:
+    // the bound value did not change, so there is nothing for Vue to re-render.
+    digitsOnly(event, key) {
+      let cleaned = event.target.value.replace(/\D/g, '');
+      this[key] = cleaned;
+      if (event.target.value !== cleaned) event.target.value = cleaned;
+    },
+    commitRowsPerPage() {
+      let value = parseInt(this.rowsPerPageText, 10);
+      if (isNaN(value) || value < 1) value = 1;
+      this.rowsPerPageText = value.toString();
+      // An unchanged value leaves the watcher (and the reload it triggers) alone.
+      this.rowsPerPage = value;
+    },
+    commitCurrentPage() {
+      let value = parseInt(this.currentPageText, 10);
+      if (isNaN(value) || value < 1) value = 1;
+      this.currentPageText = value.toString();
+      this.currentPage = value;
     },
     toggleSort(field) {
       if (!this.checkSortable(field)) return;

@@ -16,7 +16,10 @@
     "myProfile": "My profile",
     "changePhoto": "Change photo",
     "uploadPhoto": "Upload photo",
-    "delete": "Delete"
+    "delete": "Delete",
+    "showFilters": "Show filters",
+    "hideFilters": "Hide filters",
+    "clearFilter": "Clear filter"
   },
   "modules": {
     "home": "Home",
@@ -45,7 +48,9 @@
     "calendarMonth": "Month",
     "calendarToday": "Today",
     "allowedFileTypes": "Allowed formats: PDF, Word, Excel, images, etc.",
-    "dropFilesHere": "Drop files here or click to select"
+    "dropFilesHere": "Drop files here or click to select",
+    "filters": "Filters",
+    "noActiveFilters": "No active filters"
   },
   "alerts": {
     "passwordResetSuccessful": "New password was sent to the entered e-mail address if there is an account associated with it.",

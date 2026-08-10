@@ -69,7 +69,9 @@ export default {
         modelValue: [Number, String]
     },
     emits: [
-        'update:modelValue'
+        'update:modelValue',
+        // Carries the whole chosen option, for callers that also need its label (v-model only gives the value).
+        'select'
     ],
     data() {
         return {
@@ -150,6 +152,7 @@ export default {
         selectOption(option) {
             this.selected = option;
             this.$emit('update:modelValue', this.selected.value);
+            this.$emit('select', this.selected);
         },
         dropdownClick() {
             if (!this.readonly) {

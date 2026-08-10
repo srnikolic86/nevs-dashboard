@@ -1,0 +1,99 @@
+@use 'vars' as *;
+
+// Collapsible filter panel that sits above a NevsTable (NevsTableFilters). Collapsed it is a single header row
+// listing the active filter values; expanded it reveals the filter fields themselves.
+.nevs-table-filters-panel {
+  background: white;
+  border-radius: 5px;
+  box-shadow: 0 0 50px 0 rgba(82, 63, 105, 0.15);
+  margin-bottom: 10px;
+
+  &-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  &-title {
+    font-weight: 600;
+    white-space: nowrap;
+
+    i {
+      margin-right: 5px;
+      color: $field-hint-color;
+    }
+  }
+
+  // Takes the leftover width so the toggle arrow stays pinned to the right edge. Kept on one line: the
+  // collapsed panel is meant to be exactly as tall as the buttons it sits next to, so the pills clip
+  // instead of wrapping - expanding the panel is what shows everything.
+  &-summary {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    gap: 5px;
+  }
+
+  // No vertical padding, border or line-height here on purpose: the pills have to stay shorter than the
+  // title next to them, so the header's height stays "padding + one line of text", same as a NevsButton.
+  &-pill {
+    background: $field-background-base;
+    border-radius: 5px;
+    padding: 0 8px;
+    font-size: 12px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &-label {
+      color: $field-hint-color;
+    }
+
+    // Inherits the pill's 12px font so it cannot make the collapsed header taller than a button.
+    &-clear {
+      margin-left: 5px;
+      cursor: pointer;
+      color: $field-hint-color;
+    }
+
+    &-clear:hover {
+      color: $error;
+    }
+  }
+
+  &-empty {
+    color: $field-hint-color;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  &-toggle {
+    margin-left: auto;
+    color: $field-hint-color;
+  }
+
+  &-body {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 5px 10px 5px;
+    border-top: 1px solid $table-row-border;
+
+    // The field components set their own width inline (100% by default), so it takes !important to lay them
+    // out in columns here.
+    .nevs-field {
+      width: $table-filters-field-width !important;
+    }
+  }
+}
+
+@media only screen and (max-width: $menu-responsive) {
+  .nevs-table-filters-panel-body .nevs-field {
+    width: 100% !important;
+  }
+}

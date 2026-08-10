@@ -89,6 +89,65 @@
   }
 }
 
+// Desktop-only icon rail (NevsMainMenu `collapse` prop). The menu sits at $menu-collapsed-width and expands back
+// to full width over the content while hovered, so the content offset stays put and nothing reflows on hover.
+@media only screen and (min-width: #{$menu-responsive + 1px}) {
+  .nevs-main-menu.nevs-main-menu-collapsed {
+    width: $menu-collapsed-width;
+    overflow-x: hidden;
+    transition: width 0.2s ease;
+    // Above the top bar, otherwise the expanded menu is covered by it.
+    z-index: 4;
+
+    .nevs-main-menu-item-label,
+    .nevs-main-menu-subitem-label {
+      display: none;
+    }
+
+    // Sub-items mostly have no icon, so they would collapse to blank rows.
+    .nevs-main-menu-subitem {
+      display: none;
+    }
+
+    // With the sub-items hidden there is nothing to mark as selected, so the owning group carries the highlight.
+    .parent-active {
+      color: $menu-color-selected;
+    }
+
+    // Expanded again: the selected sub-item is visible and marks itself, so the group goes back to normal.
+    &:hover .parent-active {
+      color: $font-color;
+    }
+
+    &:hover .parent-active:hover {
+      color: $menu-color-hover;
+    }
+
+    &:hover {
+      width: $menu-width;
+
+      .nevs-main-menu-item-label,
+      .nevs-main-menu-subitem-label {
+        display: inline;
+      }
+
+      // v-show still wins via its inline style, so only the open group's sub-items come back.
+      .nevs-main-menu-subitem {
+        display: block;
+      }
+    }
+  }
+
+  .nevs-main-menu.nevs-main-menu-collapsed ~ .nevs-main-content {
+    margin-left: $menu-collapsed-width;
+  }
+
+  .nevs-main-menu.nevs-main-menu-collapsed ~ .nevs-top-bar {
+    left: $menu-collapsed-width;
+    width: calc(100% - $menu-collapsed-width);
+  }
+}
+
 .main-menu-enter-active,
 .main-menu-leave-active {
   transition: opacity 0.2s ease;

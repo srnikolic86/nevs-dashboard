@@ -11,7 +11,7 @@
         <LoginForm :postLogin="setupMenu" v-if="$store.state.user === null"></LoginForm>
         <template v-if="$store.state.user !== null">
             <Transition name="main-menu">
-                <NevsMainMenu v-show="showMenu" :items="menu.items" :logo="menu.logo"
+                <NevsMainMenu :collapse="true" v-show="showMenu" :items="menu.items" :logo="menu.logo"
                               @toggleMenu="showMenu=!showMenu"></NevsMainMenu>
             </Transition>
             <NevsTopBar :breadcrumbs="$store.state.breadcrumbs" :buttons="topBarButtons"

@@ -66,11 +66,24 @@ $table-body-background: #dfeaef !default;
 $table-header-background: #b8cfdb !default;
 $table-row-hover: #d2e1e8 !default;
 $table-row-border: #c5d8e2 !default;
+// Padding of every NevsTable cell. Keep it a single length: the sticky offset of the filter row is derived
+// from it in table.scss, so a shorthand like `10px 15px` would break that arithmetic.
+$table-cell-padding: 10px !default;
+// Border drawn around a whole NevsTable, footer included. Off by default; a project can turn it on by
+// setting e.g. `1px solid <color>`.
+$table-border: none !default;
+// Height of the pagination footer's single line, and of the inputs sitting on it. Together with the
+// footer's 4px padding this is what the whole footer measures.
+$table-footer-line-height: 26px !default;
+// Column width of the fields inside a NevsTableFilters panel.
+$table-filters-field-width: 300px !default;
 
 $menu-background: #1e1e2d !default;
 $menu-color-hover: $primary !default;
 $menu-color-selected: $primary !default;
 $menu-width: 250px !default;
+// Width of the icon-only rail used by NevsMainMenu's `collapse` mode.
+$menu-collapsed-width: 60px !default;
 $menu-responsive: 800px !default;
 
 $top-bar-height: 50px !default;

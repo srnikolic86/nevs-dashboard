@@ -19,8 +19,10 @@
 - [Notifications](#notifications)
 - [Popups](#popups)
 - [Data table](#data-table)
+- [Table filters](#table-filters)
 - [Simple grid](#simple-grid)
 - [Tiny grid](#tiny-grid)
+- [Tree view](#tree-view)
 - [Chart](#chart)
 - [Photo upload](#photo-upload)
 - [Multi upload](#multi-upload)
@@ -390,6 +392,50 @@ Here is a JSON example of an object that goes into _fields_ array:
 | sortable | This is optional and it defaults to _true_ (if _false_ the user will not be able to sort using this column).                   |
 
 
+# Table filters
+A collapsible panel meant to sit directly above a [_NevsTable_](#data-table). Collapsed it is a single
+header row listing the currently applied filters; expanded it reveals the filter fields themselves.
+```html
+<NevsTableFilters :summary="filterSummary" @clear="clearFilter">
+    <NevsTextField :label="'Name'" v-model="filters.name"></NevsTextField>
+    <NevsSelect :label="'Status'" :options="statuses" :nullable="true"
+                v-model="filters.status" @select="filterStatusLabel = $event.label"></NevsSelect>
+</NevsTableFilters>
+<NevsTable :fields="fields" :total-records="totalRecords" @reload="reload">
+    <!-- rows -->
+</NevsTable>
+```
+
+| Prop             | Type    | Description                                                                        |
+|------------------|---------|------------------------------------------------------------------------------------|
+| summary          | Array   | human readable description of the applied filters (see below)                      |
+| title            | String  | panel title, defaults to the _labels.filters_ translation                          |
+| default-expanded | Boolean | if _true_ the panel starts expanded (default _false_)                              |
+
+Filter fields go into the default slot. They are laid out in columns of _$table-filters-field-width_
+and fall back to full width below the responsive breakpoint.
+
+Here is a JSON example of a _summary_ entry:
+```json
+{
+  "name": "status",
+  "label": "Status",
+  "value": "Active"
+}
+```
+| Property | Description                                                                                            |
+|----------|---------------------------------------------------------------------------------------------------------|
+| label    | name of the filter to display                                                                          |
+| value    | applied value to display, entries with an empty value are dropped                                      |
+| name     | optional identifier, entries that have it get a reset icon that emits _clear_                          |
+
+Because entries with an empty value are dropped, the whole list of filters can be handed over and the
+component will pick the active ones. Event _clear_ is emitted with the whole entry when its reset icon
+is clicked; the component does not own the filter values, so resetting one is up to the parent.
+
+Note that _NevsSelect_ emits a _select_ event carrying the whole chosen option, which is how a filter's
+label (rather than its value) can be put into the summary.
+
 # Simple grid
 A lightweight, non-paginated table for rendering an array of records. Cell content and a per-row actions
 column can be customised with slots.
@@ -465,6 +511,41 @@ Each element of _actions_ is in this form:
 }
 ```
 _show_ is optional and may be a boolean or a _(record) => boolean_ predicate; omitted means always visible. Slot _cell-<key>_ (scoped, provides _record_ and _index_) overrides cell rendering.
+
+# Tree view
+Renders a hierarchy of records as a collapsible tree, with optional per-node actions and a badge.
+```html
+<NevsTreeView :items="categories" :selected="selectedCategoryId" :actions="actions"
+              :tag="(node) => node.count" @select="selectCategory" @action="categoryAction"></NevsTreeView>
+```
+
+| Prop         | Type            | Description                                                                     |
+|--------------|-----------------|----------------------------------------------------------------------------------|
+| items        | Array           | flat array of records, the tree is built from _parent-field_                    |
+| tree         | Array           | already nested records (each with a _children_ array), used instead of _items_  |
+| id-field     | String          | name of the identifier property (default _"id"_)                               |
+| label-field  | String          | name of the property to display (default _"name"_)                             |
+| parent-field | String          | name of the parent identifier property (default _"parent_id"_)                 |
+| selected     | Number / String | identifier of the highlighted node                                             |
+| actions      | Array           | per-node action buttons, shown while the row is hovered                        |
+| tag          | Function        | optional _(node) => string_ returning a small badge shown next to the label     |
+
+Pass either _items_ or _tree_. With _items_ the component builds the hierarchy itself, treating a
+_parent-field_ that is _null_, _0_, empty or unknown as a root.
+
+Event _select_ is emitted with the clicked node. Event _action_ is emitted with two parameters, the
+action's _name_ and the node it was triggered on.
+
+Here is a JSON example of an action:
+```json
+{
+  "name": "delete",
+  "icon": "fa-solid fa-trash",
+  "tooltip": "Delete",
+  "show": true
+}
+```
+_show_ is optional and may be a boolean or a _(node) => boolean_ predicate; omitted means always visible.
 
 # Chart
 A dependency-free bar chart rendered as inline SVG.
@@ -599,7 +680,7 @@ _NevsCard_ can be used to frame fields and other content when creating forms.
 
 ```html
 <NevsMainMenu @toggleMenu="toggleMenu" v-show="showMenu" :items="items"
-              :logo="logo"></NevsMainMenu>
+              :logo="logo" :collapse="true"></NevsMainMenu>
 ```
 _NevsMainMenu_ can be used in combination with [_NevsTopBar_](#top-bar) to create a responsive side menu.
 
@@ -608,8 +689,14 @@ _NevsMainMenu_ can be used in combination with [_NevsTopBar_](#top-bar) to creat
 | v-show        | Boolean | should be bound to a boolean that hides and shows the menu   |
 | items         | Array   | contains an array of menu items                              |
 | logo          | String  | contains a link to an image that is displayed on the top     |
+| collapse      | Boolean | shrinks the menu to an icon only rail (default _false_)      |
 
 Event _toggleMenu_ should toggle the boolean(_v-show_).
+
+With _collapse_ enabled the menu sits at _$menu-collapsed-width_ showing only the item icons, and expands
+back to _$menu-width_ over the content while the mouse is over it. Sub-items are hidden while it is
+collapsed, so the group that owns the selected sub-item carries the highlight instead. The prop only has
+an effect above the responsive breakpoint, below it the menu is toggled by the top bar as usual.
 
 Here is a JSON example of an item:
 ```json

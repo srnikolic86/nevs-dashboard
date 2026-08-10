@@ -1,1 +1,3 @@
+// vars first: it configures nevs/vars, which Sass only allows before that module is loaded by anything else.
+@use 'vars';
 @use 'nevs/style';

@@ -1,0 +1,13 @@
+// Project-level theming: configures the Nevs defaults declared in nevs/vars.scss.
+//
+// Two rules make this work, and breaking either one silently falls back to the Nevs values:
+//   - no !default here (that means "only if unset", which is how nevs/vars.scss declares its own fallbacks)
+//   - this file has to be loaded before any nevs stylesheet, otherwise the module is already loaded and Sass
+//     refuses to configure it. See the @use order in style.scss.
+// Only list what actually differs from nevs/vars.scss; anything left out keeps its default.
+//@use 'nevs/vars' with (
+//  $table-body-background: #dfeaef,
+//  $table-header-background: #b8cfdb,
+//  $table-row-hover: #d2e1e8,
+//  $table-row-border: #c5d8e2
+//);

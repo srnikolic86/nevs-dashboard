@@ -16,7 +16,10 @@
     "myProfile": "Moj profil",
     "changePhoto": "Promijeni fotografiju",
     "uploadPhoto": "Učitaj fotografiju",
-    "delete": "Izbriši"
+    "delete": "Izbriši",
+    "showFilters": "Prikaži filtere",
+    "hideFilters": "Sakrij filtere",
+    "clearFilter": "Poništi filter"
   },
   "modules": {
     "home": "Početna",
@@ -46,7 +49,9 @@
     "calendarMonth": "Mjesec",
     "calendarToday": "Danas",
     "allowedFileTypes": "Dozvoljeni formati: PDF, Word, Excel, slike i sl.",
-    "dropFilesHere": "Povucite datoteke ovdje ili kliknite za odabir"
+    "dropFilesHere": "Povucite datoteke ovdje ili kliknite za odabir",
+    "filters": "Filteri",
+    "noActiveFilters": "Nema aktivnih filtera"
   },
   "alerts": {
     "passwordResetSuccessful": "Nova lozinka je poslana na unesenu e-mail adresu ako postoji korisnički račun s tom e-mail adresom.",
