@@ -221,4 +221,24 @@ export default {
     color: black;
     border-radius: 10px;
 }
+
+/* Every grid in the app, from here rather than from each module: the routed views render inside elements that
+   carry this component's scope attribute, so :deep reaches their tables however deep they sit.
+   NevsActions renders a whole NevsField, so an actions cell stacks the table's cell padding on the field's own
+   padding on the padding inside the control - about twice the height of the plain text cells beside it, and a
+   row takes its tallest cell. Trimmed so the actions column stops setting the row height on its own. */
+:deep(.nevs-table-actions) {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+:deep(.nevs-table-actions .nevs-field) {
+    padding: 0;
+}
+
+/* Vertical only: the trigger would look cramped without its horizontal padding. */
+:deep(.nevs-table-actions .nevs-field-content) {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
 </style>
