@@ -11,7 +11,7 @@
         <LoginForm :postLogin="setupMenu" v-if="$store.state.user === null"></LoginForm>
         <template v-if="$store.state.user !== null">
             <Transition name="main-menu">
-                <NevsMainMenu :collapse="true" v-show="showMenu" :items="menu.items" :logo="menu.logo"
+                <NevsMainMenu v-show="showMenu" :items="menu.items" :logo="menu.logo"
                               @toggleMenu="showMenu=!showMenu"></NevsMainMenu>
             </Transition>
             <NevsTopBar :breadcrumbs="$store.state.breadcrumbs" :buttons="topBarButtons"
@@ -142,6 +142,8 @@ export default {
         });
         this.$API.APICall('get', 'session', {}, (data, success) => {
             if (success) {
+                // Before setUser, which is what puts the menu on screen: it reads its stored state as it is created.
+                vm.$store.commit('setUserData', data.user_data);
                 vm.$store.commit('setUser', data.user);
                 vm.$store.commit('setLocale', data.user.locale);
                 vm.$nextTick(() => {

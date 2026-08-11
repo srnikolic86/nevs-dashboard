@@ -83,6 +83,8 @@ export default {
       let vm = this;
       this.$API.APICall('post', 'public/login', this.loginData, (data, success) => {
         if (success) {
+          // Before setUser, which is what puts the menu on screen: it reads its stored state as it is created.
+          vm.$store.commit('setUserData', data.user_data);
           vm.$store.commit('setUser', data.user);
           vm.$store.commit('setLocale', data.user.locale);
           vm.postLogin();

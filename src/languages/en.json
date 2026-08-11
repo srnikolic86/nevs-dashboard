@@ -19,7 +19,9 @@
     "delete": "Delete",
     "showFilters": "Show filters",
     "hideFilters": "Hide filters",
-    "clearFilter": "Clear filter"
+    "clearFilter": "Clear filter",
+    "enableMenuCollapse": "Auto-collapse menu",
+    "disableMenuCollapse": "Keep menu expanded"
   },
   "modules": {
     "home": "Home",

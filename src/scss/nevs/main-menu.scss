@@ -11,8 +11,48 @@
   font-size: 18px;
   z-index: 2;
 
+  // Column so the footer can be pushed to the bottom of the menu with an auto margin. The items keep their
+  // own height instead of being squeezed to fit, so a menu taller than the viewport still scrolls.
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    flex-shrink: 0;
+  }
+
   &-separator {
     border-bottom: 1px solid $font-color ;
+  }
+
+  &-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 5px;
+    margin-top: auto;
+    background: $menu-background;
+    // Stays reachable when there are more items than fit: the auto margin only pushes it down while there is
+    // free space, so past that it sticks to the bottom edge of the scrolled menu instead of scrolling away.
+    position: sticky;
+    bottom: 0;
+  }
+
+  &-collapse-toggle {
+    cursor: pointer;
+    padding: 5px;
+    font-size: 16px;
+    color: $font-color;
+
+    // Pinned (auto-collapse off, the menu stays open) is the engaged state, so it carries the same accent as a
+    // selected menu item; unpinned drops back to the plain menu colour. The icon carries the same distinction
+    // (fa-thumbtack / fa-thumbtack-slash), so the state does not rest on colour alone.
+    &.pinned {
+      color: $menu-color-selected;
+    }
+
+    // Listed after .pinned, which it shares specificity with, so hover reads the same from either state.
+    &:hover {
+      color: $menu-color-hover;
+    }
   }
 
   &-logo {
@@ -86,11 +126,16 @@
     &-logo {
       display: none;
     }
+
+    // Auto-collapse is desktop-only, so the pin that toggles it has nothing to do here.
+    &-footer {
+      display: none;
+    }
   }
 }
 
-// Desktop-only icon rail (NevsMainMenu `collapse` prop). The menu sits at $menu-collapsed-width and expands back
-// to full width over the content while hovered, so the content offset stays put and nothing reflows on hover.
+// Desktop-only icon rail (NevsMainMenu `autoCollapse` state). The menu sits at $menu-collapsed-width and expands
+// back to full width over the content while hovered, so the content offset stays put and nothing reflows on hover.
 @media only screen and (min-width: #{$menu-responsive + 1px}) {
   .nevs-main-menu.nevs-main-menu-collapsed {
     width: $menu-collapsed-width;
@@ -102,6 +147,12 @@
     .nevs-main-menu-item-label,
     .nevs-main-menu-subitem-label {
       display: none;
+    }
+
+    // Hidden rather than removed, so the footer keeps its height and the rail does not reflow on hover.
+    // It has to come back while the rail is expanded, otherwise auto-collapse could not be turned off again.
+    .nevs-main-menu-collapse-toggle {
+      visibility: hidden;
     }
 
     // Sub-items mostly have no icon, so they would collapse to blank rows.
@@ -129,6 +180,10 @@
       .nevs-main-menu-item-label,
       .nevs-main-menu-subitem-label {
         display: inline;
+      }
+
+      .nevs-main-menu-collapse-toggle {
+        visibility: visible;
       }
 
       // v-show still wins via its inline style, so only the open group's sub-items come back.

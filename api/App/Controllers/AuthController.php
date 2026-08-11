@@ -6,6 +6,7 @@ use App\Classes\Email;
 use App\Helpers;
 use App\Language;
 use App\Models\AccessToken;
+use App\Models\UserData;
 use Nevs\Config;
 use Nevs\Controller;
 use Nevs\Response;
@@ -46,7 +47,8 @@ class AuthController extends Controller
         ]);
 
         return new Response(json_encode([
-            'user' => $logged_in
+            'user' => $logged_in,
+            'user_data' => (object)UserData::ForUser($logged_in->id)
         ]));
     }
 
@@ -69,8 +71,12 @@ class AuthController extends Controller
 
     public function Session(): Response
     {
+        $user = User::Current();
+
+        // Cast so an empty map still serializes as {} rather than [], which is what the client expects to index.
         return new Response(json_encode([
-            'user' => User::Current()
+            'user' => $user,
+            'user_data' => (object)($user !== null ? UserData::ForUser($user->id) : [])
         ]));
     }
 

@@ -19,7 +19,9 @@
     "delete": "Izbriši",
     "showFilters": "Prikaži filtere",
     "hideFilters": "Sakrij filtere",
-    "clearFilter": "Poništi filter"
+    "clearFilter": "Poništi filter",
+    "enableMenuCollapse": "Automatski sakrij izbornik",
+    "disableMenuCollapse": "Zadrži izbornik otvorenim"
   },
   "modules": {
     "home": "Početna",
