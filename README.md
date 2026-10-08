@@ -25,6 +25,7 @@
 - [Tree view](#tree-view)
 - [Chart](#chart)
 - [Photo upload](#photo-upload)
+- [Image upload](#image-upload)
 - [Multi upload](#multi-upload)
 - [Tabs](#tabs)
 - [Calendar](#calendar)
@@ -571,6 +572,17 @@ A square avatar-style uploader that previews the selected image and supports rep
 | v-model | Object | value (same _{ id, name, link }_ shape as the file upload)     |
 | size    | String | CSS size of the square (default _'120px'_)                     |
 | accept  | String | outputted into _accept_ of the file input (default _'image/*'_) |
+
+# Image upload
+A square uploader for a single image of a thing rather than a face: unlike _NevsPhotoUpload_ it shows the whole image instead of cropping it. The file is uploaded as soon as it is picked.
+```html
+<NevsImageUpload v-model="image"></NevsImageUpload>
+```
+| Prop    | Type   | Description                                                                 |
+|---------|--------|-----------------------------------------------------------------------------|
+| v-model | Object | value (same _{ id, name, link }_ shape as the file upload; empty is _id 0_) |
+| size    | String | CSS size of the square (default _'190px'_)                                  |
+| accept  | String | outputted into _accept_ of the file input (default _'image/*'_)             |
 
 # Multi upload
 A drag-and-drop dropzone for uploading several files at once, with client-side size and type validation.
