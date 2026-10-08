@@ -21,7 +21,24 @@ class Storage
         'png' => 'image/png',
         'gif' => 'image/gif',
         'webp' => 'image/webp',
-        'pdf' => 'application/pdf'
+        'bmp' => 'image/bmp',
+        'tif' => 'image/tiff',
+        'tiff' => 'image/tiff',
+        'heic' => 'image/heic',
+        'svg' => 'image/svg+xml',
+        'pdf' => 'application/pdf',
+        'xml' => 'application/xml',
+        'txt' => 'text/plain',
+        'csv' => 'text/csv',
+        'html' => 'text/html',
+        'json' => 'application/json',
+        'zip' => 'application/zip',
+        'doc' => 'application/msword',
+        'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+        'xls' => 'application/vnd.ms-excel',
+        'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'ppt' => 'application/vnd.ms-powerpoint',
+        'pptx' => 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
     ];
 
     public static function UsesObjectStorage(): bool
@@ -123,8 +140,11 @@ class Storage
         return Config::Get('app_root') . self::UPLOADS_SUBPATH . $name;
     }
 
-    /** Best-effort content type from the file extension, defaulting to application/octet-stream. */
-    private static function ContentType(string $name): string
+    /**
+     * Best-effort content type from the file extension, defaulting to application/octet-stream. Works off the
+     * name alone, so it can be used for files that are not (or not yet) on the local disk.
+     */
+    public static function ContentType(string $name): string
     {
         $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
         return self::CONTENT_TYPES[$extension] ?? 'application/octet-stream';
