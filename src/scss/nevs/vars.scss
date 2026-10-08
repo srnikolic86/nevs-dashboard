@@ -158,3 +158,15 @@ $sand-200: #eef1f5 !default;
 $sand-300: #e3e7ee !default;
 $peach-wash: #eef2f7 !default;
 $danger: #c8362f !default;
+
+// --- Donut chart (NevsDonut). The slice series is a list so a project theme can make it as long or as
+// short as it likes; the component publishes it as custom properties and cycles through whatever is here. ---
+$donut-track: $sand-200 !default;
+$donut-title-color: $ink-strong !default;
+$donut-center-value-color: $ink-strong !default;
+$donut-center-label-color: $ink-muted !default;
+$donut-legend-label-color: $ink-muted !default;
+$donut-legend-percentage-color: $ink-strong !default;
+$donut-legend-value-color: $ink-faint !default;
+$donut-empty-color: $ink-faint !default;
+$donut-slice-colors: (#f4863b, #ff9d3d, #5aa863, #f0ad4e, #8f7d66, #00b7eb, #c8362f, #b8a68f, #7fc98a, #f6897d) !default;

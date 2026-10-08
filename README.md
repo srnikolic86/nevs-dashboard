@@ -24,6 +24,7 @@
 - [Tiny grid](#tiny-grid)
 - [Tree view](#tree-view)
 - [Chart](#chart)
+- [Donut chart](#donut-chart)
 - [Photo upload](#photo-upload)
 - [Image upload](#image-upload)
 - [Multi upload](#multi-upload)
@@ -561,6 +562,23 @@ A dependency-free bar chart rendered as inline SVG.
 | suffix     | String | optional string appended to value labels (e.g. _' €'_)           |
 | height     | Number | chart height in pixels (default _280_)                            |
 | empty-text | String | text shown when _labels_ is empty                                 |
+
+# Donut chart
+A dependency-free donut chart rendered as inline SVG, with a legend listing each slice's colour, label, percentage and value.
+```html
+<NevsDonut :slices="slices" :title="'Revenue by product'" :center-value="'1.250,00 €'" :center-label="'Total'"></NevsDonut>
+```
+| Prop         | Type   | Description                                                                        |
+|--------------|--------|------------------------------------------------------------------------------------|
+| slices       | Array  | array of _{ label, percentage, display }_, largest first; percentages add up to 100 |
+| title        | String | optional chart title                                                               |
+| center-value | String | text shown in the middle of the ring (e.g. the total)                              |
+| center-label | String | smaller text shown under _center-value_                                            |
+| empty-text   | String | text shown when there are no slices                                                |
+| size         | Number | width and height in pixels (default _168_)                                         |
+| thickness    | Number | ring thickness in pixels (default _20_)                                            |
+
+Slice colours are cycled from _$donut-slice-colors_ in _scss/nevs/vars.scss_, which a project can override with a list of any length.
 
 # Photo upload
 A square avatar-style uploader that previews the selected image and supports replacing/removing it.
