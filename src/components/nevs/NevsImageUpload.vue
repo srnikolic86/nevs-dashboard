@@ -10,7 +10,7 @@
             <i class="fa-solid fa-image"></i>
         </span>
 
-        <div class="nevs-image-upload-overlay">
+        <div v-if="!readonly" class="nevs-image-upload-overlay">
             <span v-show="uploadInProgress" class="nevs-image-upload-spinner">
                 <i class="fa-solid fa-spinner fa-spin"></i>
             </span>
@@ -45,6 +45,12 @@ export default {
         accept: {
             type: String,
             default: 'image/*'
+        },
+        // Shows the picture and nothing to change it with: no upload button, no delete button, and the
+        // file dialog cannot be reached at all.
+        readonly: {
+            type: Boolean,
+            default: false
         },
         modelValue: Object
     },

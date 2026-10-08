@@ -596,11 +596,12 @@ A square uploader for a single image of a thing rather than a face: unlike _Nevs
 ```html
 <NevsImageUpload v-model="image"></NevsImageUpload>
 ```
-| Prop    | Type   | Description                                                                 |
-|---------|--------|-----------------------------------------------------------------------------|
-| v-model | Object | value (same _{ id, name, link }_ shape as the file upload; empty is _id 0_) |
-| size    | String | CSS size of the square (default _'190px'_)                                  |
-| accept  | String | outputted into _accept_ of the file input (default _'image/*'_)             |
+| Prop     | Type    | Description                                                                 |
+|----------|---------|-----------------------------------------------------------------------------|
+| v-model  | Object  | value (same _{ id, name, link }_ shape as the file upload; empty is _id 0_) |
+| size     | String  | CSS size of the square (default _'190px'_)                                  |
+| accept   | String  | outputted into _accept_ of the file input (default _'image/*'_)             |
+| readonly | Boolean | only shows the image, without upload/delete buttons (default _false_)       |
 
 # Multi upload
 A drag-and-drop dropzone for uploading several files at once, with client-side size and type validation.
