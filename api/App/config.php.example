@@ -8,6 +8,7 @@ const NEVS_CONFIG = [
         'path' => '/api'
     ],
     'app_root' => '/var/www/html/api/',
+    'app_url' => 'http://localhost/app/api/',
     'router_base' => 'api/',
     'maintenance' => false,
     'maintenance_date' => null,
