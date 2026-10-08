@@ -674,6 +674,7 @@ A rich text editor backed by [Quill](https://quilljs.com/). The value is the edi
 | label    | String  | label of the field                                  |
 | error    | String  | error message                                        |
 | readonly | Boolean | set to _true_ to make the editor read only          |
+| allow-images | Boolean | set to _false_ to block pasted and dropped images, which Quill would otherwise inline as base64 in the HTML (default _true_) |
 
 # Translations
 Default locale is set in _config.json_ for frontend and _config.php_ for backend.\

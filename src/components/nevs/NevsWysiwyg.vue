@@ -10,6 +10,8 @@
 import Quill from 'quill';
 import 'quill/dist/quill.snow.css';
 
+const Delta = Quill.import('delta');
+
 export default {
   name: "NevsWysiwyg",
   props: {
@@ -28,6 +30,11 @@ export default {
     modelValue: {
       type: String,
       default: ''
+    },
+    // Off: images can't be pasted or dropped in. Quill would otherwise inline them as base64 in the HTML.
+    allowImages: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['update:modelValue'],
@@ -65,7 +72,11 @@ export default {
           [{'list': 'ordered'}, {'list': 'bullet'}],
           ['link'],
           ['clean']
-        ]
+        ],
+        ...(this.allowImages ? {} : {
+          uploader: {mimetypes: []},
+          clipboard: {matchers: [['IMG', () => new Delta()]]}
+        })
       }
     });
     if (this.modelValue) {
