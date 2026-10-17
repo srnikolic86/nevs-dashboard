@@ -11,11 +11,15 @@
                 <td :colspan="totalColumns" class="nevs-tiny-grid-empty">{{ emptyText }}</td>
             </tr>
             <tr v-for="(record, index) in records" :key="index" :class="{'nevs-tiny-grid-inactive': isRowInactive(record)}">
-                <td v-for="(column, cIndex) in columns" :key="cIndex" :style="columnStyle(column)">
-                    <!-- A module can supply custom cell markup (a colour swatch, a combined value, ...) via a
-                         #cell-<key> scoped slot; otherwise the plain record value for the column is shown. -->
-                    <slot :name="'cell-' + column.key" :record="record" :index="index">{{ record[column.key] }}</slot>
-                </td>
+                <!-- A cell can cover the columns after it (cellSpan); the ones it covers are not rendered. -->
+                <template v-for="(column, cIndex) in columns" :key="cIndex">
+                    <td v-if="!isCovered(record, cIndex)" :style="columnStyle(column)"
+                        :colspan="spanOf(record, cIndex) > 1 ? spanOf(record, cIndex) : null">
+                        <!-- A module can supply custom cell markup (a colour swatch, a combined value, ...) via a
+                             #cell-<key> scoped slot; otherwise the plain record value for the column is shown. -->
+                        <slot :name="'cell-' + column.key" :record="record" :index="index">{{ record[column.key] }}</slot>
+                    </td>
+                </template>
                 <td v-if="actions.length > 0" class="nevs-tiny-grid-actions">
                     <template v-for="(action, aIndex) in actions" :key="aIndex">
                         <span v-if="actionVisible(action, record)" :title="action.tooltip" class="nevs-tiny-grid-action"
@@ -62,6 +66,12 @@ export default {
         maxWidth: {
             type: String,
             default: ''
+        },
+        // Optional (record, column) => number: how many columns that cell covers, itself included (default
+        // 1). The columns it covers are not rendered for that row. Clamped to the columns that are left.
+        cellSpan: {
+            type: Function,
+            default: null
         }
     },
     emits: ['action'],
@@ -83,6 +93,24 @@ export default {
                 style.width = column.width;
             }
             return style;
+        },
+        spanOf(record, cIndex) {
+            if (this.cellSpan === null) return 1;
+            let span = parseInt(this.cellSpan(record, this.columns[cIndex]), 10);
+            if (!(span > 1)) return 1;
+            return Math.min(span, this.columns.length - cIndex);
+        },
+        // Whether an earlier cell of the row spans over this column. Walked cell by cell, so a column that is
+        // itself covered never gets to span anything.
+        isCovered(record, cIndex) {
+            if (this.cellSpan === null) return false;
+            let i = 0;
+            while (i < cIndex) {
+                let next = i + this.spanOf(record, i);
+                if (next > cIndex) return true;
+                i = next;
+            }
+            return false;
         },
         isRowInactive(record) {
             return this.isInactive !== null ? this.isInactive(record) : false;

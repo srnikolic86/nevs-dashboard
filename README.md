@@ -491,6 +491,7 @@ A compact, capped-width grid for small lists (e.g. line items) with an optional 
 | empty-text  | String   | text for the single full-width row shown when there are no records              |
 | is-inactive | Function | optional _(record) => boolean_ marking a row as inactive (dimmed + italic)      |
 | max-width   | String   | optional override of the grid's default max width (e.g. _'900px'_)              |
+| cell-span   | Function | optional _(record, column) => number_: how many columns that cell covers, itself included (default 1); the covered columns are not rendered for that row |
 
 Event _action_ is emitted with _(name, record)_ when a row action icon is clicked.
 
