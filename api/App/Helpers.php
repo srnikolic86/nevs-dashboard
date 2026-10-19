@@ -10,8 +10,13 @@ class Helpers
      * selection isn't among the capped matches. Search columns should be reflected in the option label so the
      * select components' client-side filter stays consistent with the server-side search.
      *
+     * A label built from several columns (e.g. "first_name last_name") should also pass `search_expressions`:
+     * SQL expressions that rebuild that label, so the whole visible string ("Ivan Hor") is searchable and not
+     * only each column on its own.
+     *
      * $config keys: `table`, `data` (the request data), `label` (callable(row): string), and optionally
-     * `base_where`, `search` (array of columns), `order`, `limit`.
+     * `base_where`, `search` (array of columns), `search_expressions` (array of SQL expressions), `order`,
+     * `limit`.
      */
     static function SelectOptions(array $config): array
     {
@@ -21,6 +26,7 @@ class Helpers
         $data = $config['data'] ?? [];
         $base_where = $config['base_where'] ?? '1=1';
         $search_columns = $config['search'] ?? [];
+        $search_expressions = $config['search_expressions'] ?? [];
         $order = $config['order'] ?? '`id` ASC';
         $limit = (int)($config['limit'] ?? 100);
         $label = $config['label'];
@@ -37,11 +43,17 @@ class Helpers
 
         $where = $base_where;
         $params = [];
-        if ($search !== '' && count($search_columns) > 0) {
+        $searched = array_merge(
+            array_map(fn($column) => '`' . $column . '`', $search_columns),
+            $search_expressions
+        );
+        if ($search !== '' && count($searched) > 0) {
+            // The typed text is matched literally: % and _ are LIKE wildcards, so they are escaped.
+            $pattern = '%' . str_replace(['\\', '%', '_'], ['\\\\', '\\%', '\\_'], $search) . '%';
             $likes = [];
-            foreach ($search_columns as $column) {
-                $likes[] = '`' . $column . '` LIKE ?';
-                $params[] = '%' . $search . '%';
+            foreach ($searched as $expression) {
+                $likes[] = $expression . ' LIKE ?';
+                $params[] = $pattern;
             }
             $where .= ' AND (' . implode(' OR ', $likes) . ')';
         }

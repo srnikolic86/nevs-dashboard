@@ -29,6 +29,7 @@ class UserController extends Controller
             'table' => 'users',
             'base_where' => '`active` = 1',
             'search' => ['first_name', 'last_name'],
+            'search_expressions' => ["CONCAT_WS(' ', `first_name`, `last_name`)"],
             'order' => '`first_name` ASC, `last_name` ASC',
             'label' => fn($row) => $row['first_name'] . ' ' . $row['last_name'],
         ])));

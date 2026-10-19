@@ -99,7 +99,7 @@ export default {
 
             let filtered = [];
             for (let option of this.allOptions) {
-                if (this.$HELPERS.ToCroatianLower(option.label).search(this.$HELPERS.ToCroatianLower(this.search)) !== -1) {
+                if (this.$HELPERS.ToCroatianLower(option.label).includes(this.$HELPERS.ToCroatianLower(this.search))) {
                     filtered.push(option);
                 }
             }
