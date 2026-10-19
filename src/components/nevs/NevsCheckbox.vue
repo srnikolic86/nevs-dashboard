@@ -1,7 +1,8 @@
 <template>
   <div :style="fieldStyle" class="nevs-field">
     <span v-if="reserveHeights" class="nevs-field-label">&nbsp;</span>
-    <div @mouseenter="showHint = true" @mouseleave ="showHint = false" class="nevs-checkbox" @click="toggleValue">
+    <div @mouseenter="showHint = true" @mouseleave ="showHint = false" class="nevs-checkbox"
+         :class="{'nevs-field-readonly': readonly}" @click="toggleValue">
       <span v-if="!value"><i :style="{'font-size': size}" class="fa-regular fa-square"></i></span>
       <span v-if="value"><i :style="{'font-size': size}" class="fa-regular fa-square-check"></i></span>
       <span class="nevs-checkbox-label" v-if="label!== ''" v-html="label"></span>

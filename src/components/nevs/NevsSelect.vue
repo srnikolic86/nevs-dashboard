@@ -1,7 +1,8 @@
 <template>
     <div :style="wrapperStyle" class="nevs-field">
         <span v-if="label!== '' || reserveHeights" class="nevs-field-label">{{ label }}</span>
-        <div class="nevs-select nevs-field-content" ref="fieldContent" @click="dropdownClick">
+        <div class="nevs-select nevs-field-content" :class="{'nevs-field-readonly': readonly}" ref="fieldContent"
+             @click="dropdownClick">
             {{ selected.label }}
             <span v-if="selected.label === ''">&nbsp;</span>
             <span class="nevs-dropdown-icon"><i class="fa-solid fa-angle-down"></i></span>

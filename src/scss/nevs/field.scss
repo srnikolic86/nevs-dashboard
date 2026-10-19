@@ -43,3 +43,12 @@
   outline: none;
   background: $field-background-focused;
 }
+
+// A field that cannot be changed reads as plain text: the default arrow, not the hand of a dropdown or
+// checkbox, nor the text cursor of an input. Inputs and textareas carry the native readonly attribute; the
+// fields that are built from divs carry nevs-field-readonly instead.
+.nevs-field-content[readonly],
+.nevs-field-content.nevs-field-readonly,
+.nevs-checkbox.nevs-field-readonly {
+  cursor: default;
+}
