@@ -64,11 +64,13 @@ export default {
       // of an exact total, and pages are capped here.
       COUNTED_CAP: 10000,
       currentPage: 1,
-      rowsPerPage: 20,
+      // Taken from the prop straight away rather than in mounted(): changing it there would trip the
+      // rowsPerPage watcher and load the table a second time.
+      rowsPerPage: this.defaultRowsPerPage ?? 20,
       // What the footer inputs show. Kept apart from the numbers above so typing does not fire a reload on
       // every keystroke - the value is committed on blur or Enter.
       currentPageText: '1',
-      rowsPerPageText: '20',
+      rowsPerPageText: String(this.defaultRowsPerPage ?? 20),
       sort: {
         field: '',
         descending: false
@@ -162,9 +164,6 @@ export default {
     }
   },
   mounted() {
-    if (this.defaultRowsPerPage !== undefined) {
-      this.rowsPerPage = this.defaultRowsPerPage;
-    }
     if (this.defaultSort !== undefined) {
       this.sort = this.defaultSort;
     } else {
