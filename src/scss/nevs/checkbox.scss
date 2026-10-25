@@ -3,10 +3,24 @@
 .nevs-checkbox {
   display: inline-block;
   cursor: pointer;
-  color: $font-color;
+  color: $field-hint-color;
   line-height: 40px;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &-checked {
+    color: $primary;
+  }
 
   &-label {
     margin-left: 5px;
+    color: $font-color;
   }
+}
+
+.nevs-checkbox.nevs-field-readonly:hover {
+  color: $field-hint-color;
 }

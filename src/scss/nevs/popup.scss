@@ -6,7 +6,8 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: $overlay-background;
+  backdrop-filter: blur(2px);
   z-index: 100;
   // Never let a modal grow taller than the viewport: if it does, the overlay itself scrolls so the whole
   // modal (including its buttons) stays reachable. Scrolling here rather than on .nevs-popup avoids clipping
@@ -17,7 +18,8 @@
 .nevs-popup {
   background: $popup-background;
   color: $popup-foreground;
-  border-radius: 5px;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
   width: 30%;
   margin-left: auto;
   margin-right: auto;
@@ -31,21 +33,24 @@
 }
 
 .nevs-popup-text {
-  padding: 20px;
+  padding: 24px;
+  font-size: 15px;
+  line-height: 1.5;
 }
 
 .nevs-popup-input {
-  padding: 20px;
-  padding-top: 0;
+  padding: 0 19px 19px;
 }
 
 .nevs-popup-buttons {
-  padding: 20px;
+  padding: 14px 20px;
   text-align: right;
+  background: $popup-buttons-background;
+  border-top: 1px solid $border-color;
 }
 
 .nevs-popup-buttons .nevs-button {
-  margin-left: 10px;
+  margin-left: 8px;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -85,22 +90,22 @@
 
 @keyframes nevs-popup-slide-in {
   from {
-    transform: translateY(-20px);
+    transform: translateY(-16px) scale(0.98);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes nevs-popup-slide-out {
   from {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
   to {
-    transform: translateY(-20px);
+    transform: translateY(-16px) scale(0.98);
     opacity: 0;
   }
 }

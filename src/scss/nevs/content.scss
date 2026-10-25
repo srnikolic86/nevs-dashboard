@@ -1,11 +1,19 @@
+@use 'vars' as *;
+
 .nevs-content {
-  padding: 10px;
+  padding: $content-padding;
 
   &-top-buttons {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 
     .nevs-button {
       margin-right: 5px;
     }
+  }
+}
+
+@media only screen and (max-width: $menu-responsive) {
+  .nevs-content {
+    padding: 10px;
   }
 }

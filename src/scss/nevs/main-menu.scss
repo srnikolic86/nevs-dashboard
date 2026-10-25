@@ -8,8 +8,12 @@
   height: 100%;
   overflow: auto;
   background: $menu-background;
-  font-size: 18px;
+  color: $menu-color;
+  font-size: 14px;
+  font-weight: 500;
   z-index: 2;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+  scrollbar-width: thin;
 
   // Column so the footer can be pushed to the bottom of the menu with an auto margin. The items keep their
   // own height instead of being squeezed to fit, so a menu taller than the viewport still scrolls.
@@ -21,15 +25,17 @@
   }
 
   &-separator {
-    border-bottom: 1px solid $font-color ;
+    border-bottom: 1px solid $menu-separator-color;
+    margin: 8px 16px;
   }
 
   &-footer {
     display: flex;
     justify-content: flex-end;
-    padding: 5px;
+    padding: 8px 10px;
     margin-top: auto;
     background: $menu-background;
+    border-top: 1px solid $menu-separator-color;
     // Stays reachable when there are more items than fit: the auto margin only pushes it down while there is
     // free space, so past that it sticks to the bottom edge of the scrolled menu instead of scrolling away.
     position: sticky;
@@ -38,9 +44,11 @@
 
   &-collapse-toggle {
     cursor: pointer;
-    padding: 5px;
-    font-size: 16px;
-    color: $font-color;
+    padding: 6px 10px;
+    border-radius: $radius-sm;
+    font-size: 14px;
+    color: $menu-color;
+    transition: background-color 0.15s ease, color 0.15s ease;
 
     // Pinned (auto-collapse off, the menu stays open) is the engaged state, so it carries the same accent as a
     // selected menu item; unpinned drops back to the plain menu colour. The icon carries the same distinction
@@ -52,6 +60,7 @@
     // Listed after .pinned, which it shares specificity with, so hover reads the same from either state.
     &:hover {
       color: $menu-color-hover;
+      background: $menu-item-hover-background;
     }
   }
 
@@ -61,28 +70,32 @@
     margin-bottom: 10px;
   }
 
+  // Sized so that, inside the collapsed rail, the margin and padding leave exactly the icon's width.
   &-item {
-    width: max-content;
     cursor: pointer;
     display: block;
-    padding: 15px;
-    background: $menu-background;
-    color: $font-color;
+    margin: 2px 10px;
+    padding: 10px 12px;
+    border-radius: $radius;
+    white-space: nowrap;
+    color: $menu-color;
+    transition: background-color 0.15s ease, color 0.15s ease;
 
     &-icon {
       display: inline-block;
       text-align: center;
       width: 20px;
-      margin-right: 5px;
+      margin-right: 10px;
     }
   }
 
   &-item:visited {
-    color: $font-color;
+    color: $menu-color;
   }
 
   &-item:hover {
     color: $menu-color-hover;
+    background: $menu-item-hover-background;
   }
 
   &-item:focus, &-item:active, &-subitem:focus, &-subitem:active {
@@ -91,12 +104,16 @@
     -moz-outline-style: none;
   }
 
+  // Indented to line up with the label of the item it belongs to (item padding + icon + icon margin).
   &-subitem {
     display: block;
-    width: max-content;
-    padding: 5px 5px 5px 15px;
-    background: $menu-background;
-    color: $font-color;
+    margin: 1px 10px;
+    padding: 7px 12px 7px 42px;
+    border-radius: $radius-sm;
+    white-space: nowrap;
+    font-size: 13px;
+    color: $menu-color;
+    transition: background-color 0.15s ease, color 0.15s ease;
 
     &-icon {
       display: inline-block;
@@ -107,15 +124,17 @@
   }
 
   &-subitem:visited {
-    color: $font-color;
+    color: $menu-color;
   }
 
   &-subitem:hover {
     color: $menu-color-hover;
+    background: $menu-item-hover-background;
   }
 
   .active, .active:hover {
     color: $menu-color-selected !important;
+    background: $menu-item-selected-background;
   }
 }
 
@@ -140,7 +159,7 @@
   .nevs-main-menu.nevs-main-menu-collapsed {
     width: $menu-collapsed-width;
     overflow-x: hidden;
-    transition: width 0.2s ease;
+    transition: width 0.2s ease, box-shadow 0.2s ease;
     // Above the top bar, otherwise the expanded menu is covered by it.
     z-index: 4;
 
@@ -163,19 +182,23 @@
     // With the sub-items hidden there is nothing to mark as selected, so the owning group carries the highlight.
     .parent-active {
       color: $menu-color-selected;
+      background: $menu-item-selected-background;
     }
 
     // Expanded again: the selected sub-item is visible and marks itself, so the group goes back to normal.
     &:hover .parent-active {
-      color: $font-color;
+      color: $menu-color;
+      background: transparent;
     }
 
     &:hover .parent-active:hover {
       color: $menu-color-hover;
+      background: $menu-item-hover-background;
     }
 
     &:hover {
       width: $menu-width;
+      box-shadow: $shadow-lg;
 
       .nevs-main-menu-item-label,
       .nevs-main-menu-subitem-label {

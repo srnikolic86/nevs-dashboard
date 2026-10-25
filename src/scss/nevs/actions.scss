@@ -4,13 +4,14 @@
   background: $actions-main-background;
   color: $actions-main-foreground;
   text-align: center;
+  font-weight: 500;
 }
 
 // The dropdown is teleported to <body>, so these overrides target the frame class directly instead of the
 // (no longer surrounding) .nevs-actions-holder.
 .nevs-actions-frame {
   color: $actions-box-foreground;
-  border: 1px solid $actions-box-background;
+  background: $actions-box-background;
   .nevs-dropdown-option {
     background: $actions-box-background;
   }

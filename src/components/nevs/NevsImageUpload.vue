@@ -136,7 +136,7 @@ export default {
 .nevs-image-upload {
     position: relative;
     flex: 0 0 auto;
-    border-radius: 6px;
+    border-radius: $radius;
     overflow: hidden;
     background: $sand-100;
     border: 1px solid $sand-300;

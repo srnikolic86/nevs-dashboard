@@ -6,13 +6,13 @@
 
 .nevs-multi-upload-zone {
   border: 2px dashed $multi-upload-border;
-  border-radius: 8px;
-  padding: 25px 15px;
+  border-radius: $radius-lg;
+  padding: 28px 15px;
   text-align: center;
   cursor: pointer;
   color: $multi-upload-foreground;
   background: $multi-upload-background;
-  transition: background 0.15s, border-color 0.15s;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .nevs-multi-upload-zone:hover {
@@ -29,11 +29,12 @@
   font-size: 32px;
   margin-bottom: 8px;
   display: block;
+  color: $multi-upload-accent;
 }
 
 .nevs-multi-upload-text {
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 600;
 }
 
 .nevs-multi-upload-subtext {

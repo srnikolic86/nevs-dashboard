@@ -4,16 +4,20 @@
   width: 100%;
   text-align: center;
   position: fixed;
-  top: 10px;
+  top: 16px;
   left: 0;
   z-index: 4;
+  pointer-events: none;
    &-message {
      background: $notification-background;
      color: $notification-foreground;
      display: inline-block;
-     padding: 20px;
-     font-size: 16px;
-     border-radius: 5px;
+     padding: 14px 22px;
+     font-size: 14px;
+     font-weight: 500;
+     border-radius: $radius-lg;
+     box-shadow: $shadow-lg;
+     pointer-events: auto;
    }
 }
 
@@ -40,22 +44,22 @@
 
 @keyframes nevs-notification-slide-in {
   from {
-    transform: translateY(-20px);
+    transform: translateY(-20px) scale(0.98);
     opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes nevs-notification-slide-out {
   from {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
   to {
-    transform: translateY(-20px);
+    transform: translateY(-20px) scale(0.98);
     opacity: 0;
   }
 }

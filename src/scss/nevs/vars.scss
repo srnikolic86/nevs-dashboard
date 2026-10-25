@@ -1,13 +1,29 @@
+@use 'sass:color';
+
+// Every variable here is a !default, so a project can configure any of them from its own src/scss/vars.scss.
+// Never rename or drop one: a project that configures a variable which no longer exists fails to build.
+
+// --- Neutral base palette (slate). Declared first because the component defaults below are derived from it. ---
+$white: #ffffff !default;
+$ink-strong: #0f172a !default;
+$ink-muted: #64748b !default;
+$ink-faint: #94a3b8 !default;
+$sand-100: #f8fafc !default;
+$sand-200: #f1f5f9 !default;
+$sand-300: #e2e8f0 !default;
+$peach-wash: #f5f7ff !default;
+$danger: #dc2626 !default;
+
 $font-family: 'Sora', sans-serif !default;
-$font-color: #5e6278 !default;
+$font-color: #334155 !default;
 
-$app-background: #e8eff3 !default;
+$app-background: #f1f5f9 !default;
 
-$primary: #4d4dff !default;
-$secondary: #00b4b4 !default;
-$warning: #ffb734 !default;
-$error: #ff3434 !default;
-$success: #00b300 !default;
+$primary: #4f46e5 !default;
+$secondary: #0d9488 !default;
+$warning: #f59e0b !default;
+$error: #ef4444 !default;
+$success: #16a34a !default;
 
 $primary-foreground: white !default;
 $secondary-foreground: white !default;
@@ -15,149 +31,167 @@ $warning-foreground: white !default;
 $error-foreground: white !default;
 $success-foreground: white !default;
 
-$primary-hover: #1a1aff !default;
-$secondary-hover: #009a9a !default;
-$warning-hover: #ffa501 !default;
-$error-hover: #e70000 !default;
-$success-hover: #009a00 !default;
+$primary-hover: #4338ca !default;
+$secondary-hover: #0f766e !default;
+$warning-hover: #d97706 !default;
+$error-hover: #dc2626 !default;
+$success-hover: #15803d !default;
 
-$button-background: #9296aa !default;
-$button-foreground: white !default;
-$button-hover: #84889f !default;
+// Shape and depth shared by every surface (cards, popups, dropdowns, tables), so they read as one family.
+$radius-sm: 6px !default;
+$radius: 8px !default;
+$radius-lg: 12px !default;
+$border-color: #e2e8f0 !default;
+$shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.06) !default;
+$shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.08), 0 2px 4px -2px rgba(15, 23, 42, 0.05) !default;
+$shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.25), 0 8px 16px -8px rgba(15, 23, 42, 0.1) !default;
+// Ring drawn around a focused control. Kept apart from the border so focusing never shifts the layout.
+$focus-ring: 0 0 0 3px color.change($primary, $alpha: 0.18) !default;
+$overlay-background: rgba(15, 23, 42, 0.45) !default;
+$selection-background: color.change($primary, $alpha: 0.18) !default;
 
-$field-background-base: #f5f8fa !default;
-$field-background-focused: #eef3f7 !default;
-$field-hint-color: #b5b5b5 !default;
-// Optional border around fields for extra contrast against the page background. Off by default; a project can
-// turn it on by setting e.g. `1px solid <color>`. The focused state reuses the same border unless overridden,
-// which (with box-sizing: border-box) keeps the field from shifting when focused.
-$field-border: 1px solid #d3d9e3 !default;
+$button-background: #e2e8f0 !default;
+$button-foreground: #334155 !default;
+$button-hover: #cbd5e1 !default;
+
+$field-background-base: #ffffff !default;
+$field-background-focused: #ffffff !default;
+$field-hint-color: #94a3b8 !default;
+$field-label-color: #475569 !default;
+// Border around fields for contrast against the page background. Set it to `none` to turn it off. The focused
+// state keeps the same width, which (with box-sizing: border-box) keeps the field from shifting when focused.
+$field-border: 1px solid #cbd5e1 !default;
 $field-border-focus: 1px solid $primary !default;
+$field-readonly-background: #f8fafc !default;
 
 $dropdown-background: #ffffff !default;
-$dropdown-border-color: #dde7ef !default;
-$dropdown-option-hover-background: #eef3f7 !default;
+$dropdown-border-color: #e2e8f0 !default;
+$dropdown-option-hover-background: #eef2ff !default;
 
-$scrollbar-background: #f5f8fa !default;
-$scrollbar-foreground: #5e6278 !default;
+$scrollbar-background: transparent !default;
+$scrollbar-foreground: #cbd5e1 !default;
 
-$select-multiple-pill-background: #d8f1ff !default;
+$select-multiple-pill-background: #eef2ff !default;
+$select-multiple-pill-foreground: #4338ca !default;
 
-$actions-main-background: #b8cfdb   !default;
-$actions-main-foreground: #5e6278 !default;
-$actions-box-background: lightgray   !default;
-$actions-box-selection: darkgray   !default;
-$actions-box-foreground: #5e6278 !default;
+$actions-main-background: #f1f5f9 !default;
+$actions-main-foreground: #334155 !default;
+$actions-box-background: #ffffff !default;
+$actions-box-selection: #eef2ff !default;
+$actions-box-foreground: #334155 !default;
 
-$date-field-picker-background: #f5f8fa !default;
-$date-field-picker-day-hover-background: #bacedf !default;
-$date-field-picker-day-disabled-background: #eef3f7 !default;
-$date-field-picker-day-selected-background: #cbdbe7 !default;
-$date-field-picker-separator-color: #dde7ef !default;
-$date-field-picker-border-color: #dde7ef !default;
+$date-field-picker-background: #ffffff !default;
+$date-field-picker-day-hover-background: #eef2ff !default;
+$date-field-picker-day-disabled-background: transparent !default;
+$date-field-picker-day-selected-background: $primary !default;
+$date-field-picker-day-selected-foreground: $primary-foreground !default;
+$date-field-picker-day-disabled-color: #cbd5e1 !default;
+$date-field-picker-separator-color: #f1f5f9 !default;
+$date-field-picker-border-color: #e2e8f0 !default;
 
-$notification-background: #dce775 !default;
-$notification-foreground: #5e6278 !default;
+$notification-background: #1e293b !default;
+$notification-foreground: #f8fafc !default;
 
-$popup-background: #e3e3e3 !default;
-$popup-foreground: #5e6278 !default;
+$popup-background: #ffffff !default;
+$popup-foreground: #334155 !default;
+$popup-buttons-background: #f8fafc !default;
 
-$table-body-background: #dfeaef !default;
-$table-header-background: #b8cfdb !default;
-$table-row-hover: #d2e1e8 !default;
-$table-row-border: #c5d8e2 !default;
-// Padding of every NevsTable cell. Keep it a single length: the sticky offset of the filter row is derived
-// from it in table.scss, so a shorthand like `10px 15px` would break that arithmetic.
+$card-background: #ffffff !default;
+$card-border: 1px solid $border-color !default;
+
+$content-padding: 20px !default;
+
+$table-body-background: #ffffff !default;
+$table-header-background: #f8fafc !default;
+$table-header-color: #64748b !default;
+$table-row-hover: #f5f7ff !default;
+$table-row-border: #f1f5f9 !default;
+// Vertical padding of every NevsTable cell (the horizontal padding is a little wider). Keep it a single length:
+// the sticky offset of the filter row is derived from it in table.scss, so a shorthand would break that arithmetic.
 $table-cell-padding: 10px !default;
-// Border drawn around a whole NevsTable, footer included. Off by default; a project can turn it on by
-// setting e.g. `1px solid <color>`.
-$table-border: none !default;
+// Border drawn around a whole NevsTable, footer included. Set it to `none` to turn it off.
+$table-border: 1px solid $border-color !default;
 // Height of the pagination footer's single line, and of the inputs sitting on it. Together with the
-// footer's 4px padding this is what the whole footer measures.
-$table-footer-line-height: 26px !default;
+// footer's 6px padding this is what the whole footer measures.
+$table-footer-line-height: 28px !default;
 // Column width of the fields inside a NevsTableFilters panel.
 $table-filters-field-width: 300px !default;
+$table-filters-background: #ffffff !default;
+$table-filters-pill-background: #eef2ff !default;
+$table-filters-pill-foreground: #3730a3 !default;
 
-$menu-background: #1e1e2d !default;
-$menu-color-hover: $primary !default;
-$menu-color-selected: $primary !default;
+$menu-background: #0f172a !default;
+$menu-color: #94a3b8 !default;
+$menu-color-hover: #ffffff !default;
+$menu-color-selected: #a5b4fc !default;
+$menu-item-hover-background: rgba(255, 255, 255, 0.06) !default;
+$menu-item-selected-background: color.change($primary, $alpha: 0.22) !default;
+$menu-separator-color: rgba(255, 255, 255, 0.08) !default;
 $menu-width: 250px !default;
 // Width of the icon-only rail used by NevsMainMenu's `collapse` mode.
-$menu-collapsed-width: 60px !default;
+$menu-collapsed-width: 64px !default;
 $menu-responsive: 800px !default;
 
-$top-bar-height: 50px !default;
-$top-bar-background: #28283c !default;
-$top-bar-color: #767b92 !default;
+$top-bar-height: 56px !default;
+$top-bar-background: rgba(255, 255, 255, 0.85) !default;
+$top-bar-border: 1px solid $border-color !default;
+$top-bar-color: #64748b !default;
+$top-bar-current-color: #0f172a !default;
 $top-bar-button-hover-color: $primary !default;
-
-// --- Ported from fytlix for the full Nevs component library (2026-07-15). Neutral !default values;
-// override in the project-level src/scss/vars.scss for theming. ---
+$top-bar-button-hover-background: #f1f5f9 !default;
 
 // NevsMultiUpload
-$multi-upload-border: #b7bcc0 !default;
-$multi-upload-foreground: #5e6278 !default;
-$multi-upload-background: #fafbfc !default;
-$multi-upload-accent: #ffb04d !default;
-$multi-upload-hover-background: #fff7ec !default;
-$multi-upload-active-background: #ffeccc !default;
-$multi-upload-subtext: #9aa0ac !default;
+$multi-upload-border: #cbd5e1 !default;
+$multi-upload-foreground: #475569 !default;
+$multi-upload-background: #f8fafc !default;
+$multi-upload-accent: $primary !default;
+$multi-upload-hover-background: #f5f7ff !default;
+$multi-upload-active-background: #eef2ff !default;
+$multi-upload-subtext: #94a3b8 !default;
 
 // NevsTabs / NevsTab
-$tabs-background: #d7e3ea !default;
-$tabs-color: #5e6278 !default;
-$tabs-hover-background: #c6d8e2 !default;
-$tabs-hover-color: #5e6278 !default;
-$tabs-active-background: $primary !default;
-$tabs-active-hover-background: $primary-hover !default;
-$tabs-active-color: $primary-foreground !default;
-$tabs-body-background: #f5f8fa !default;
-$tabs-body-border: #b7bcc0 !default;
+$tabs-background: #e2e8f0 !default;
+$tabs-color: #64748b !default;
+$tabs-hover-background: rgba(255, 255, 255, 0.5) !default;
+$tabs-hover-color: #0f172a !default;
+$tabs-active-background: #ffffff !default;
+$tabs-active-hover-background: $tabs-active-background !default;
+$tabs-active-color: $primary !default;
+$tabs-body-background: #ffffff !default;
+$tabs-body-border: #e2e8f0 !default;
 
 // NevsWysiwyg
-$wysiwyg-border: #dde7ef !default;
-$wysiwyg-toolbar-background: #f5f8fa !default;
+$wysiwyg-border: #cbd5e1 !default;
+$wysiwyg-toolbar-background: #f8fafc !default;
 $wysiwyg-background: #ffffff !default;
 
 // NevsCalendar
-$calendar-border: #e3e7ee !default;
+$calendar-border: #e2e8f0 !default;
 $calendar-background: #ffffff !default;
-$calendar-toolbar-background: #f1f4f8 !default;
+$calendar-toolbar-background: #f8fafc !default;
 $calendar-button-background: #ffffff !default;
-$calendar-button-border: #d3d9e3 !default;
-$calendar-button-hover-background: #e9eef5 !default;
-$calendar-view-active-background: #ffd496 !default;
-$calendar-view-active-border: #f0ad4e !default;
-$calendar-heading-color: #2f3545 !default;
-$calendar-muted-background: #fafbfc !default;
-$calendar-muted-color: #5e6278 !default;
-$calendar-header-border: #e8ebf1 !default;
-$calendar-grid-border: #eef1f5 !default;
-$calendar-line-border: #f3f5f8 !default;
-$calendar-outside-color: #b0b6c2 !default;
-$calendar-today-background: #fff7ec !default;
-$calendar-hour-label-color: #9aa0ac !default;
-$calendar-event-color: #1d2939 !default;
+$calendar-button-border: #e2e8f0 !default;
+$calendar-button-hover-background: #f1f5f9 !default;
+$calendar-view-active-background: #eef2ff !default;
+$calendar-view-active-border: #c7d2fe !default;
+$calendar-heading-color: #0f172a !default;
+$calendar-muted-background: #f8fafc !default;
+$calendar-muted-color: #64748b !default;
+$calendar-header-border: #e2e8f0 !default;
+$calendar-grid-border: #f1f5f9 !default;
+$calendar-line-border: #f8fafc !default;
+$calendar-outside-color: #cbd5e1 !default;
+$calendar-today-background: #f5f7ff !default;
+$calendar-hour-label-color: #94a3b8 !default;
+$calendar-event-color: #0f172a !default;
 
 // NevsChart
-$chart-bar-background: #f4863b !default;
-$chart-bar-hover-background: #d96f28 !default;
-$chart-grid-line: #eceff4 !default;
-$chart-axis-line: #d5dae1 !default;
-$chart-muted-color: #8a94a6 !default;
+$chart-bar-background: #6366f1 !default;
+$chart-bar-hover-background: #4f46e5 !default;
+$chart-grid-line: #f1f5f9 !default;
+$chart-axis-line: #e2e8f0 !default;
+$chart-muted-color: #94a3b8 !default;
 $chart-label-color: $font-color !default;
-
-// --- Neutral base/palette vars needed by ported grid/photo components (2026-07-15). Grayscale defaults;
-// override in the project theme layer for a branded palette. ---
-$white: #ffffff !default;
-$ink-strong: #1d2939 !default;
-$ink-muted: #5e6278 !default;
-$ink-faint: #9aa0ac !default;
-$sand-100: #f5f8fa !default;
-$sand-200: #eef1f5 !default;
-$sand-300: #e3e7ee !default;
-$peach-wash: #eef2f7 !default;
-$danger: #c8362f !default;
 
 // --- Donut chart (NevsDonut). The slice series is a list so a project theme can make it as long or as
 // short as it likes; the component publishes it as custom properties and cycles through whatever is here. ---
@@ -169,4 +203,4 @@ $donut-legend-label-color: $ink-muted !default;
 $donut-legend-percentage-color: $ink-strong !default;
 $donut-legend-value-color: $ink-faint !default;
 $donut-empty-color: $ink-faint !default;
-$donut-slice-colors: (#f4863b, #ff9d3d, #5aa863, #f0ad4e, #8f7d66, #00b7eb, #c8362f, #b8a68f, #7fc98a, #f6897d) !default;
+$donut-slice-colors: (#6366f1, #14b8a6, #f59e0b, #ec4899, #0ea5e9, #84cc16, #8b5cf6, #f97316, #10b981, #ef4444) !default;

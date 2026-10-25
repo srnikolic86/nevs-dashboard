@@ -119,7 +119,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+@use '../../scss/nevs/vars' as *;
+
 .nevs-tree-view {
   list-style: none;
   margin: 0;
@@ -137,17 +139,19 @@ export default {
 .nevs-tree-row {
   display: flex;
   align-items: center;
-  padding: 4px 6px;
-  border-radius: 6px;
+  padding: 5px 8px;
+  border-radius: $radius-sm;
   cursor: default;
+  transition: background-color 0.1s ease;
 }
 
 .nevs-tree-row:hover {
-  background: rgba(0, 0, 0, 0.05);
+  background: $sand-200;
 }
 
 .nevs-tree-row-selected {
-  background: rgba(0, 0, 0, 0.09);
+  background: $dropdown-option-hover-background;
+  color: $primary;
   font-weight: 600;
 }
 
@@ -155,13 +159,13 @@ export default {
   width: 18px;
   text-align: center;
   cursor: pointer;
-  color: #888;
+  color: $ink-muted;
 }
 
 .nevs-tree-leaf {
   font-size: 7px;
   vertical-align: middle;
-  color: #bbb;
+  color: $ink-faint;
 }
 
 .nevs-tree-label {
@@ -172,8 +176,9 @@ export default {
 
 .nevs-tree-tag {
   font-size: 11px;
-  color: #555;
-  background: rgba(0, 0, 0, 0.07);
+  font-weight: 500;
+  color: $ink-muted;
+  background: $sand-300;
   padding: 1px 8px;
   border-radius: 10px;
   white-space: nowrap;
@@ -194,11 +199,11 @@ export default {
 
 .nevs-tree-action {
   cursor: pointer;
-  color: #888;
+  color: $ink-muted;
   padding: 0 2px;
 }
 
 .nevs-tree-action:hover {
-  color: #333;
+  color: $primary;
 }
 </style>
