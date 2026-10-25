@@ -10,12 +10,12 @@
   }
 
   .ql-toolbar.ql-snow {
-    border-radius: $radius $radius 0 0;
+    border-radius: 5px 5px 0 0;
     background: $wysiwyg-toolbar-background;
   }
 
   .ql-container.ql-snow {
-    border-radius: 0 0 $radius $radius;
+    border-radius: 0 0 5px 5px;
     background: $wysiwyg-background;
     font-family: $font-family;
   }

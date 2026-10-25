@@ -5,7 +5,7 @@
             <span v-if="selected.length === 0">&nbsp;</span>
             <div @click.stop="removeOption(key)" class="nevs-select-multiple-pill" v-for="(option, key) in selected"
                  :key="key">
-                {{ option.label }} <i class="fa-solid fa-xmark"></i></div>
+                {{ option.label }} <i class="fa-solid fa-trash"></i></div>
             <span class="nevs-dropdown-icon"><i class="fa-solid fa-angle-down"></i></span>
             <div class="nevs-clear-float"></div>
         </div>
@@ -192,9 +192,8 @@ export default {
             // Keep it inside the viewport: open upward when there isn't enough room below, and cap the
             // options list to the space actually available so the whole dropdown always fits on screen.
             const margin = 8;
-            // Space taken by the search box above the options, plus the frame around them (its border, the gap to the
-            // field and the padding of the options list); the options list is capped to whatever is left.
-            const searchHeight = 79;
+            // Space taken by the search box above the options; the options list is capped to whatever is left.
+            const searchHeight = 64;
             const spaceBelow = window.innerHeight - rect.bottom - margin;
             const spaceAbove = rect.top - margin;
             const openUp = spaceBelow < 200 && spaceAbove > spaceBelow;

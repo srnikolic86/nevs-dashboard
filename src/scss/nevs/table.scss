@@ -10,14 +10,14 @@
   border: $table-border;
   // The footer carries the bottom half, so the two together read as one bordered box.
   border-bottom: none;
-  border-radius: $radius-lg $radius-lg 0 0;
+  border-radius: 5px 5px 0 0;
   border-collapse: collapse;
   scrollbar-color: $scrollbar-foreground $scrollbar-background;
   scrollbar-width: thin;
   white-space: nowrap;
 
   td {
-    padding: $table-cell-padding ($table-cell-padding + 4px);
+    padding: $table-cell-padding;
     border-bottom: 1px solid $table-row-border;
   }
 
@@ -25,20 +25,12 @@
     border: none;
   }
 
-  // The line height is pinned so the header row measures exactly what the filter row's sticky offset below
-  // expects, whatever the font size of the header labels.
   &-header td {
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 18px;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: $table-header-color;
+    font-weight: bold;
     position: sticky;
     top: 0;
     z-index: 1;
     border: none;
-    box-shadow: inset 0 -1px 0 $border-color;
   }
 
   // Sticks directly under the header row, whose height is one line of text plus the cell padding above
@@ -52,17 +44,15 @@
 
   &-footer {
     box-sizing: border-box;
-    padding: 6px 12px;
+    padding: 4px 10px;
     background: $table-header-background;
-    color: $ink-muted;
-    font-size: 13px;
     text-align: right;
     // Drives the height of the whole footer: everything in it sits on this one line.
     line-height: $table-footer-line-height;
     border: $table-border;
-    // Stands in for the line under the last row, which the rule for the last row drops.
-    border-top: 1px solid $border-color;
-    border-radius: 0 0 $radius-lg $radius-lg;
+    // The table above already drew the line between the two.
+    border-top: none;
+    border-radius: 0 0 5px 5px;
 
     &-label {
       display: inline-block;
@@ -82,16 +72,14 @@
       color: $font-color;
       background: $field-background-base;
       border: $field-border;
-      border-radius: $radius-sm;
+      border-radius: 5px;
       vertical-align: middle;
-      transition: border-color 0.15s ease, box-shadow 0.15s ease;
     }
 
     &-input:focus {
       outline: none;
       background: $field-background-focused;
       border: $field-border-focus;
-      box-shadow: $focus-ring;
     }
   }
 
@@ -100,38 +88,16 @@
 
     &-arrow {
       cursor: pointer;
-      display: inline-block;
-      width: $table-footer-line-height;
-      height: $table-footer-line-height;
-      text-align: center;
-      vertical-align: middle;
-      border-radius: $radius-sm;
-      transition: background-color 0.1s ease, color 0.1s ease;
-    }
-
-    &-arrow:hover {
-      background: $sand-300;
-      color: $primary;
     }
   }
 
   &-sort-arrow {
     float: left;
     margin-right: 5px;
-    color: $primary;
   }
 
   &-sortable-header {
     cursor: pointer;
-    user-select: none;
-  }
-
-  &-sortable-header:hover {
-    color: $ink-strong;
-  }
-
-  tr {
-    transition: background-color 0.1s ease;
   }
 
   tr:hover {
@@ -159,12 +125,6 @@
   &-button {
     cursor: pointer;
     margin: 5px;
-    color: $ink-muted;
-    transition: color 0.1s ease;
-  }
-
-  &-button:hover {
-    color: $primary;
   }
 
   &-linked-cell {
@@ -183,11 +143,9 @@
 
 .nevs-table::-webkit-scrollbar {
   background: $scrollbar-background;
-  width: 8px;
-  height: 8px;
+  width: 10px;
 }
 
 .nevs-table::-webkit-scrollbar-thumb {
   background: $scrollbar-foreground;
-  border-radius: 4px;
 }

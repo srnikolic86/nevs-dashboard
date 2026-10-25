@@ -2,16 +2,13 @@
 
 .nevs-button {
   display: inline-block;
-  padding: 10px 16px;
+  padding: 10px;
   cursor: pointer;
-  user-select: none;
   border: none;
-  border-radius: $radius;
+  border-radius: 5px;
   background: $button-background;
   color: $button-foreground;
-  font-weight: 500;
-  box-shadow: $shadow-sm;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+  transition: background-color 0.2s ease;
 
   &.primary {
     background: $primary;
@@ -61,10 +58,4 @@
 
 .nevs-button:hover {
   background: $button-hover;
-  box-shadow: $shadow-md;
-}
-
-.nevs-button:active {
-  transform: translateY(1px);
-  box-shadow: $shadow-sm;
 }

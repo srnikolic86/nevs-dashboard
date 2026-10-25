@@ -164,8 +164,7 @@ export default {
             }
             this.dropdownStyle = style;
 
-            // Less the frame around the options: its border, the gap to the field and the padding of the list.
-            let optionsMax = Math.max(available - 14, 80);
+            let optionsMax = Math.max(available, 80);
             if (optionsMax > 300) optionsMax = 300;
             this.optionsStyle = {maxHeight: optionsMax + 'px'};
         },

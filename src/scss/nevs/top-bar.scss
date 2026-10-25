@@ -1,64 +1,34 @@
 @use 'vars' as *;
 
 .nevs-top-bar {
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  gap: 4px;
   width: calc(100% - $menu-width);
   height: $top-bar-height;
-  padding: 0 12px 0 6px;
   background: $top-bar-background;
-  border-bottom: $top-bar-border;
-  backdrop-filter: saturate(180%) blur(8px);
-  color: $top-bar-color;
   position: fixed;
   top: 0;
   left: $menu-width;
+  line-height: $top-bar-height;
   z-index: 3;
 
   &-menu-button {
     display: none;
-  }
-
-  &-menu-button, &-button {
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: $radius;
-    color: $top-bar-color;
+    padding: 0 10px;
     cursor: pointer;
-    transition: background-color 0.15s ease, color 0.15s ease;
-  }
-
-  &-menu-button:hover, &-button:hover {
-    background: $top-bar-button-hover-background;
-    color: $top-bar-button-hover-color;
+    overflow: hidden;
   }
 
   &-breadcrumbs {
-    flex: 1;
-    min-width: 0;
+    display: inline-block;
     padding: 0 10px;
-    white-space: nowrap;
+    height: $top-bar-height;
+    width: calc(100% - 200px);
     overflow: hidden;
-    text-overflow: ellipsis;
 
     &-item {
-      display: inline;
+      display: inline-block;
 
       a, a:visited {
         color: $top-bar-color;
-        transition: color 0.15s ease;
-      }
-
-      // Without a link the crumb is the current page, so it reads as the title of the bar.
-      a:not(.active) {
-        color: $top-bar-current-color;
-        font-weight: 600;
-        cursor: default;
       }
 
       a.active:hover {
@@ -66,22 +36,20 @@
       }
 
       &-separator {
-        margin: 0 8px;
-        font-size: 0.75em;
-        opacity: 0.6;
+        margin: 0 5px;
       }
     }
   }
 
-  // Laid out right to left, so the first button sits at the right edge as it did when they were floated.
-  &-buttons {
-    display: flex;
-    flex-direction: row-reverse;
-    gap: 4px;
+  &-button {
+    color: $top-bar-color;
+    cursor: pointer;
+    float: right;
+    padding: 0 10px;
   }
 
-  &-button {
-    display: flex;
+  &-button:hover {
+    color: $top-bar-button-hover-color;
   }
 }
 
@@ -91,7 +59,7 @@
     width: 100%;
 
     &-menu-button {
-      display: flex;
+      display: inline-block;
     }
   }
 }

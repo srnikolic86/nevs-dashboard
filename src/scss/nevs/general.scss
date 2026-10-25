@@ -6,12 +6,6 @@ body {
   font-family: $font-family;
   font-size: 14px;
   color: $font-color;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-::selection {
-  background: $selection-background;
 }
 
 .nevs-clear-float {

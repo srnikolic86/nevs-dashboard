@@ -9,10 +9,8 @@
         <a :class="{'active': breadcrumb.link !== null}" @click.prevent="breadcrumbClick(breadcrumb)" :href="breadcrumb.link">{{ breadcrumb.label }}</a>
       </div>
     </div>
-    <div class="nevs-top-bar-buttons">
-      <span v-for="(button, key) in buttons" :key="key" @click="button.action" :title="button.tooltip" class="nevs-top-bar-button" v-html="button.icon">
-      </span>
-    </div>
+    <span v-for="(button, key) in buttons" :key="key" @click="button.action" :title="button.tooltip" class="nevs-top-bar-button" v-html="button.icon">
+    </span>
   </div>
 </template>
 

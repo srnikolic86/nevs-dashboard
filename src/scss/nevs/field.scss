@@ -9,27 +9,23 @@
   &-content {
     box-sizing: border-box;
     border: $field-border;
-    border-radius: $radius;
+    border-radius: 5px;
     padding: 13px;
     background: $field-background-base;
     color: $font-color;
-    transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: background-color 0.2s ease;
     width: 100%
   }
 
   &-label {
     width: 100%;
     display: block;
-    margin-bottom: 5px;
-    font-size: 13px;
-    font-weight: 500;
-    color: $field-label-color;
+    margin-bottom: 3px;
   }
 
   &-hint {
     width: 100%;
     display: block;
-    margin-top: 3px;
     font-size: 12px;
     color: $field-hint-color;
   }
@@ -37,21 +33,15 @@
   &-error {
     width: 100%;
     display: block;
-    margin-top: 3px;
     color: $error;
     font-size: 12px;
   }
-}
-
-.nevs-field-content:hover {
-  border-color: $ink-faint;
 }
 
 .nevs-field-content:focus {
   border: $field-border-focus;
   outline: none;
   background: $field-background-focused;
-  box-shadow: $focus-ring;
 }
 
 // A field that cannot be changed reads as plain text: the default arrow, not the hand of a dropdown or
@@ -61,12 +51,4 @@
 .nevs-field-content.nevs-field-readonly,
 .nevs-checkbox.nevs-field-readonly {
   cursor: default;
-}
-
-// Listed after :focus and :hover so a readonly field neither lights up nor takes the focus ring.
-.nevs-field-content[readonly],
-.nevs-field-content.nevs-field-readonly {
-  background: $field-readonly-background;
-  border: $field-border;
-  box-shadow: none;
 }

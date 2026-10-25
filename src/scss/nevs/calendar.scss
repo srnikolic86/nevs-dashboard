@@ -2,10 +2,9 @@
 
 .nevs-calendar {
     border: 1px solid $calendar-border;
-    border-radius: $radius-lg;
+    border-radius: 8px;
     overflow: hidden;
     background: $calendar-background;
-    box-shadow: $shadow-sm;
 }
 
 .nevs-calendar-toolbar {
@@ -28,14 +27,12 @@
 .nevs-calendar-nav-button, .nevs-calendar-today-button, .nevs-calendar-view-button {
     cursor: pointer;
     user-select: none;
-    padding: 6px 12px;
-    border-radius: $radius-sm;
+    padding: 5px 10px;
+    border-radius: 5px;
     border: 1px solid $calendar-button-border;
     background: $calendar-button-background;
     color: $calendar-heading-color;
     font-size: 13px;
-    font-weight: 500;
-    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
 .nevs-calendar-nav-button:hover, .nevs-calendar-today-button:hover, .nevs-calendar-view-button:hover {
@@ -45,7 +42,6 @@
 .nevs-calendar-view-button.active {
     background: $calendar-view-active-background;
     border-color: $calendar-view-active-border;
-    color: $primary;
 }
 
 .nevs-calendar-title {
@@ -91,10 +87,8 @@
 .nevs-calendar-month-header-cell {
     padding: 8px;
     text-align: center;
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
     color: $calendar-muted-color;
 }
 
@@ -127,8 +121,8 @@
 }
 
 .nevs-calendar-pill {
-    border-radius: $radius-sm;
-    padding: 2px 6px;
+    border-radius: 4px;
+    padding: 2px 5px;
     margin-bottom: 3px;
     font-size: 12px;
     color: $calendar-event-color;
@@ -201,7 +195,7 @@
 
 .nevs-calendar-event {
     position: absolute;
-    border-radius: $radius-sm;
+    border-radius: 5px;
     padding: 3px 6px;
     box-sizing: border-box;
     overflow: hidden;

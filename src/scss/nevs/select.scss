@@ -6,22 +6,16 @@
   user-select: none;
   &-multiple-pill {
     background: $select-multiple-pill-background;
-    color: $select-multiple-pill-foreground;
     line-height: normal;
     display: inline-block;
-    border-radius: $radius-sm;
-    padding: 1px 8px;
-    margin: 0 2px;
-    font-size: 13px;
-    font-weight: 500;
+    border-radius: 5px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-left: 1px;
+    margin-right: 1px;
     svg {
       height: 0.8em !important;
       margin-bottom: 0.05em;
-      margin-left: 2px;
-      opacity: 0.6;
-    }
-    &:hover svg {
-      opacity: 1;
     }
   }
 }

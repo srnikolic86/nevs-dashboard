@@ -1,18 +1,9 @@
-@use 'vars' as *;
-
 .nevs-upload {
 
   display: inline-block;
 
   &-icon {
     cursor: pointer;
-    color: $ink-muted;
-    margin-right: 10px;
-    transition: color 0.15s ease;
-  }
-
-  &-icon:hover {
-    color: $primary;
   }
 
   &-file-input {

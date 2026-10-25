@@ -3,27 +3,23 @@
 .nevs-tabs {
   display: flex;
   flex-wrap: wrap;
-  width: fit-content;
-  max-width: 100%;
-  box-sizing: border-box;
-  gap: 4px;
-  padding: 4px;
-  margin-bottom: 10px;
+  gap: 6px;
+  padding: 6px;
   background: $tabs-background;
-  border-radius: $radius-lg - 2px;
+  border-radius: 10px;
 }
 
 .nevs-tab {
   border: none;
   cursor: pointer;
-  border-radius: $radius;
+  border-radius: 7px;
   background: transparent;
   color: $tabs-color;
   padding: 8px 16px;
   font-family: inherit;
   font-size: inherit;
   font-weight: 500;
-  transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .nevs-tab:hover {
@@ -34,8 +30,6 @@
 .nevs-tab.active {
   background: $tabs-active-background;
   color: $tabs-active-color;
-  font-weight: 600;
-  box-shadow: $shadow-sm;
 }
 
 .nevs-tab.active:hover {
@@ -43,17 +37,11 @@
   color: $tabs-active-color;
 }
 
-.nevs-tab:focus-visible {
-  outline: none;
-  box-shadow: $focus-ring;
-}
-
 .nevs-tab-body {
   padding: 15px;
-  border: 1px solid $tabs-body-border;
-  border-radius: $radius-lg;
+  border: 2px solid $tabs-body-border;
+  border-radius: 10px;
   background: $tabs-body-background;
-  box-shadow: $shadow-sm;
 }
 
 .nevs-tab-body::after {

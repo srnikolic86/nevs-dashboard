@@ -68,9 +68,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
-@use '../../scss/nevs/vars' as *;
-
+<style scoped>
 .nevs-simple-grid {
     width: 100%;
     border-collapse: collapse;
@@ -86,30 +84,8 @@ export default {
 
 .nevs-simple-grid th, .nevs-simple-grid td {
     text-align: left;
-    padding: 10px 12px;
-    border-bottom: 1px solid $sand-200;
-}
-
-.nevs-simple-grid th {
-    background: $sand-100;
-    color: $ink-muted;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    border-bottom-color: $sand-300;
-}
-
-.nevs-simple-grid tbody tr {
-    transition: background-color 0.1s ease;
-}
-
-.nevs-simple-grid tbody tr:hover {
-    background: $peach-wash;
-}
-
-.nevs-simple-grid tbody tr:last-child td {
-    border-bottom: none;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
 }
 
 .nevs-simple-grid-linked {
