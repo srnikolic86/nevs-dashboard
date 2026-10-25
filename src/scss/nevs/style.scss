@@ -24,3 +24,5 @@
 @use 'multi-upload';
 @use 'calendar';
 @use 'wysiwyg';
+// Last, so its corrections win over the light rules they adjust.
+@use 'dark-mode';
