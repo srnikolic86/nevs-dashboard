@@ -4,7 +4,7 @@
     <div @mouseenter="showHint = true" @mouseleave ="showHint = false" class="nevs-checkbox"
          :class="{'nevs-field-readonly': readonly}" @click="toggleValue">
       <span v-if="!value"><i :style="{'font-size': size}" class="fa-regular fa-square"></i></span>
-      <span v-if="value" class="nevs-checkbox-checked"><i :style="{'font-size': size}" class="fa-regular fa-square-check"></i></span>
+      <span v-if="value"><i :style="{'font-size': size}" class="fa-regular fa-square-check"></i></span>
       <span class="nevs-checkbox-label" v-if="label!== ''" v-html="label"></span>
     </div>
     <span v-if="(hint!== '' || reserveHeights) && showHint" class="nevs-field-hint">{{ hint }}</span>
