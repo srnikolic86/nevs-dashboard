@@ -1,42 +1,27 @@
 <template>
-  <div class="login-screen">
-    <NevsCard class="login-card">
-      <template v-if="!passwordRecoveryMode">
-        <h1 class="login-card-title">{{ $LANG.Get('labels.loginTitle') }}</h1>
-        <p class="login-card-subtitle">{{ $LANG.Get('labels.loginSubtitle') }}</p>
-        <NevsTextField @keyup.enter="loginClick()" :name="'email'" :type="'email'" :label="$LANG.Get('fields.email')"
-                       :width="'100%'" v-model="loginData.email"></NevsTextField>
-        <NevsTextField @keyup.enter="loginClick()" :name="'password'" :type="'password'"
-                       :label="$LANG.Get('fields.password')" :width="'100%'"
-                       v-model="loginData.password"></NevsTextField>
-        <div class="login-card-options">
-          <NevsCheckbox :label="$LANG.Get('labels.rememberLogin')" :width="'auto'" :size="'18px'"
-                        v-model="loginData.remember"></NevsCheckbox>
-          <a href="#" class="login-card-link" @click.prevent="passwordRecoveryToggle">
-            {{ $LANG.Get('labels.forgottenPassword') }}
-          </a>
-        </div>
-        <div class="login-card-footer">
-          <NevsButton @click="loginClick" class="primary login-card-submit">{{ $LANG.Get('buttons.login') }}</NevsButton>
-        </div>
-      </template>
-      <template v-if="passwordRecoveryMode">
-        <h1 class="login-card-title">{{ $LANG.Get('labels.passwordRecoveryTitle') }}</h1>
-        <p class="login-card-subtitle">{{ $LANG.Get('texts.forgottenPasswordExplanation') }}</p>
-        <NevsTextField @keyup.enter="passwordRecoveryClick()" :name="'email'" :type="'email'"
-                       :label="$LANG.Get('fields.email')" :width="'100%'"
-                       v-model="passwordResetData.email"></NevsTextField>
-        <div class="login-card-footer">
-          <NevsButton class="primary login-card-submit" @click="passwordRecoveryClick">
-            {{ $LANG.Get('buttons.recoverPassword') }}
-          </NevsButton>
-          <a href="#" class="login-card-link login-card-back" @click.prevent="passwordRecoveryToggle">
-            <span v-html="backIcon"></span> {{ $LANG.Get('labels.backToLogin') }}
-          </a>
-        </div>
-      </template>
-    </NevsCard>
-  </div>
+  <NevsCard class="login-card">
+    <template v-if="!passwordRecoveryMode">
+      <NevsTextField :name="'email'" :label="$LANG.Get('fields.email')+':'" :width="'100%'"
+                     v-model="loginData.email"></NevsTextField>
+      <NevsTextField @keyup.enter="loginClick()" :name="'password'" :type="'password'" :label="$LANG.Get('fields.password')+':'" :width="'100%'"
+                     v-model="loginData.password"></NevsTextField>
+      <div @click="passwordRecoveryToggle" class="forgotten-password-button">{{ $LANG.Get('labels.forgottenPassword') }}</div>
+      <NevsCheckbox :label="$LANG.Get('labels.rememberLogin')" v-model="loginData.remember"></NevsCheckbox>
+      <div class="login-card-footer">
+        <NevsButton @click="loginClick" class="nevs-float-right">{{ $LANG.Get('buttons.login') }}</NevsButton>
+      </div>
+    </template>
+    <template v-if="passwordRecoveryMode">
+      <div class="login-card-forgotten-password-explanation">{{ $LANG.Get('texts.forgottenPasswordExplanation') }}</div>
+      <NevsTextField class="login-card-forgotten-password-email" :name="'email'" :label="$LANG.Get('fields.email')+':'" :width="'100%'"
+                     v-model="passwordResetData.email"></NevsTextField>
+      <div class="login-card-footer">
+        <NevsButton @click="passwordRecoveryToggle">{{ $LANG.Get('buttons.cancel') }}</NevsButton>
+        <NevsButton class="login-card-forgotten-password-recovery-button" @click="passwordRecoveryClick">{{ $LANG.Get('buttons.recoverPassword') }}</NevsButton>
+      </div>
+    </template>
+    <div class="nevs-clear-float"></div>
+  </NevsCard>
 </template>
 
 <script>
@@ -69,12 +54,6 @@ export default {
         email: ''
       },
       passwordRecoveryMode: false
-    }
-  },
-  computed: {
-    // Through v-html, like the other Font Awesome icons that are not static markup: it swaps an <i> for an <svg>.
-    backIcon() {
-      return '<i class="fa-solid fa-arrow-left"></i>';
     }
   },
   methods: {
