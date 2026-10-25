@@ -1,5 +1,4 @@
 {
 	"API_BASE": "http://localhost/api/",
-	"LOCALE": "en",
-	"ALLOW_DARK_MODE": true
+	"LOCALE": "en"
 }

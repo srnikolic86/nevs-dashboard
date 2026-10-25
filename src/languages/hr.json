@@ -21,9 +21,7 @@
     "hideFilters": "Sakrij filtere",
     "clearFilter": "Poništi filter",
     "enableMenuCollapse": "Automatski sakrij izbornik",
-    "disableMenuCollapse": "Zadrži izbornik otvorenim",
-    "enableDarkMode": "Tamni način",
-    "disableDarkMode": "Svijetli način"
+    "disableMenuCollapse": "Zadrži izbornik otvorenim"
   },
   "modules": {
     "home": "Početna",

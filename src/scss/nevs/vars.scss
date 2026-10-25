@@ -48,9 +48,6 @@ $shadow-lg: 0 20px 40px -12px rgba(15, 23, 42, 0.25), 0 8px 16px -8px rgba(15, 2
 // Ring drawn around a focused control. Kept apart from the border so focusing never shifts the layout.
 $focus-ring: 0 0 0 3px color.change($primary, $alpha: 0.18) !default;
 $overlay-background: rgba(15, 23, 42, 0.45) !default;
-// Dark mode is generated from the light colours (see dark-mode.scss), so there is no second palette to keep.
-// This only softens it: 1 gives pure black and white, lower values pull both towards grey.
-$dark-mode-contrast: 0.88 !default;
 $selection-background: color.change($primary, $alpha: 0.18) !default;
 
 $button-background: #e2e8f0 !default;

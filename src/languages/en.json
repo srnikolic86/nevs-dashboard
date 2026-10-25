@@ -21,9 +21,7 @@
     "hideFilters": "Hide filters",
     "clearFilter": "Clear filter",
     "enableMenuCollapse": "Auto-collapse menu",
-    "disableMenuCollapse": "Keep menu expanded",
-    "enableDarkMode": "Dark mode",
-    "disableDarkMode": "Light mode"
+    "disableMenuCollapse": "Keep menu expanded"
   },
   "modules": {
     "home": "Home",
