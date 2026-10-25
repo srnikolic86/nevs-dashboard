@@ -55,7 +55,11 @@
     "allowedFileTypes": "Dozvoljeni formati: PDF, Word, Excel, slike i sl.",
     "dropFilesHere": "Povucite datoteke ovdje ili kliknite za odabir",
     "filters": "Filteri",
-    "noActiveFilters": "Nema aktivnih filtera"
+    "noActiveFilters": "Nema aktivnih filtera",
+    "loginTitle": "Prijava",
+    "loginSubtitle": "Unesite e-mail adresu i lozinku za nastavak.",
+    "passwordRecoveryTitle": "Nova lozinka",
+    "backToLogin": "Natrag na prijavu"
   },
   "alerts": {
     "passwordResetSuccessful": "Nova lozinka je poslana na unesenu e-mail adresu ako postoji korisnički račun s tom e-mail adresom.",

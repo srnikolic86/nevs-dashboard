@@ -1,46 +1,98 @@
+@use 'sass:color';
+@use 'vars' as *;
+
+// Full-window backdrop the login card sits centred on. Two soft washes of the theme colours keep it from being a
+// flat grey; they come from $primary / $secondary, so a project's theme (and dark mode) carries over on its own.
+.login-screen {
+  box-sizing: border-box;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background:
+    radial-gradient(circle at 15% 15%, color.change($primary, $alpha: 0.14), transparent 45%),
+    radial-gradient(circle at 85% 85%, color.change($secondary, $alpha: 0.12), transparent 45%),
+    $app-background;
+}
+
 .login-card {
-  width: 80%;
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 150px;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+  padding: 30px 27px 27px;
+  border-radius: $radius-lg + 4px;
+  box-shadow: $shadow-lg;
+  animation: login-card-in 0.3s ease;
+
+  // Centred above the fields, together with the subtitle under it.
+  &-title {
+    margin: 0 5px 6px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 600;
+    color: $ink-strong;
+  }
+
+  &-subtitle {
+    margin: 0 5px 24px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.5;
+    color: $ink-muted;
+  }
+
+  // Remember-me on the left, the forgotten password link on the right.
+  &-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0 10px;
+    padding-right: 5px;
+
+    .nevs-field {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
+  &-link {
+    font-size: 13px;
+    font-weight: 500;
+  }
 
   &-footer {
-    padding: 5px;
+    padding: 15px 5px 0;
+    text-align: center;
   }
 
-  &-forgotten-password {
-    &-button {
-      margin-top: 10px;
-      margin-right: 5px;
-      float: right;
-      cursor: pointer;
-    }
-
-    &-explanation {
-      margin: 5px 5px 15px;
-    }
-
-    &-recovery-button {
-      float: right;
-    }
+  &-submit {
+    display: block;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
   }
 
+  &-back {
+    display: inline-block;
+    margin-top: 18px;
+  }
+}
+
+@keyframes login-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media only screen and (max-width: 500px) {
   .login-card {
-    margin-top: 20px;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .login-card {
-    &-forgotten-password {
-      &-recovery-button {
-        float: none;
-        margin-top: 5px;
-      }
-    }
+    padding: 24px 15px 19px;
   }
 }

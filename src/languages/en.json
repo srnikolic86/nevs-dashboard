@@ -54,7 +54,11 @@
     "allowedFileTypes": "Allowed formats: PDF, Word, Excel, images, etc.",
     "dropFilesHere": "Drop files here or click to select",
     "filters": "Filters",
-    "noActiveFilters": "No active filters"
+    "noActiveFilters": "No active filters",
+    "loginTitle": "Sign in",
+    "loginSubtitle": "Enter your e-mail and password to continue.",
+    "passwordRecoveryTitle": "Reset your password",
+    "backToLogin": "Back to login"
   },
   "alerts": {
     "passwordResetSuccessful": "New password was sent to the entered e-mail address if there is an account associated with it.",
