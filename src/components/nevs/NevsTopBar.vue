@@ -21,10 +21,10 @@
 </template>
 
 <script>
+import NevsDarkMode from "@/components/nevs/NevsDarkMode.js";
+
 // Key of the user_data row that keeps the light/dark choice, per user, between sessions.
 const DARK_MODE_KEY = 'dark_mode';
-// Class on <html> that switches the whole page over; see scss/nevs/dark-mode.scss.
-const DARK_MODE_CLASS = 'nevs-dark';
 
 export default {
   name: "NevsTopBar",
@@ -46,15 +46,17 @@ export default {
     'toggleMenu'
   ],
   data() {
-    // ALLOW_DARK_MODE in config.json turns the switch off for the whole app. Only an explicit false does, so a
-    // config written before the setting existed keeps the switch. A saved preference is then ignored rather than
-    // cleared, and comes back if the setting is turned on again.
-    const allowDarkMode = this.$store.state.settings.ALLOW_DARK_MODE !== false;
+    // With dark mode disallowed a saved preference is ignored rather than cleared, and comes back if it is
+    // allowed again.
+    const allowDarkMode = NevsDarkMode.Allowed();
+    // The user's own choice wins, read straight out of the store because the session response already carries
+    // it. A user who never chose gets whatever this device was last left in, which is also what the login
+    // screen just showed, so logging in does not flip the page.
+    const saved = this.$store.state.userData[DARK_MODE_KEY];
+    const preferred = saved === true || saved === false ? saved : NevsDarkMode.Stored() === true;
     return {
       allowDarkMode: allowDarkMode,
-      // Read straight out of the store rather than fetched, because the session response already carries it -
-      // the page would otherwise paint light and then flip.
-      darkMode: allowDarkMode && this.$store.state.userData[DARK_MODE_KEY] === true
+      darkMode: allowDarkMode && preferred
     };
   },
   computed: {
@@ -65,8 +67,12 @@ export default {
     }
   },
   methods: {
+    // Also remembered on this device, so the login screen comes up the way the last user here left it.
     applyDarkMode() {
-      document.documentElement.classList.toggle(DARK_MODE_CLASS, this.darkMode);
+      NevsDarkMode.Apply(this.darkMode);
+      if (this.allowDarkMode) {
+        NevsDarkMode.Store(this.darkMode);
+      }
     },
     // Saved the same way as the menu pin: a failed write is left alone, the switch still holds for this session.
     toggleDarkMode() {
@@ -90,12 +96,9 @@ export default {
       }
     }
   },
+  // Nothing to undo on unmount: after logout the login screen stays in the mode the user left the page in.
   created() {
     this.applyDarkMode();
-  },
-  // The bar goes away on logout, and the login screen belongs to no one's preference, so it is always light.
-  unmounted() {
-    document.documentElement.classList.remove(DARK_MODE_CLASS);
   }
 }
 </script>

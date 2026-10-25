@@ -3,6 +3,10 @@ import 'moment/locale/hr'
 
 import './scss/style.scss'
 
+// Before the app mounts, so the login screen does not paint light first on a device last left in dark mode.
+import NevsDarkMode from './components/nevs/NevsDarkMode.js'
+NevsDarkMode.ApplyStored();
+
 import {createApp} from 'vue'
 import App from './App.vue'
 const app = createApp(App)
